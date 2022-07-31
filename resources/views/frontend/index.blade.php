@@ -57,7 +57,7 @@
                                     <a class="ud-menu-scroll" href="#team">Time</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="ud-menu-scroll" href="#contact">FAQ</a>
+                                    <a class="ud-menu-scroll" href="#faq">FAQ</a>
                                 </li>
                             </ul>
                             </li>
@@ -68,7 +68,7 @@
                             <a href="/loginOnvet" class="ud-main-btn ud-login-btn">
                                 Ir para aplicação
                             </a>
-                            <a href="/cadastre-se" class="ud-main-btn ud-white-btn">
+                            <a href="#contact" class="ud-main-btn ud-white-btn">
                                Contato
                             </a>
                         </div>
@@ -373,9 +373,9 @@
 
     <!-- ====== FAQ Start ====== -->
     <section id="faq" class="ud-faq">
-        <div class="shape">
+        {{-- <div class="shape">
             <img src="images/faq/shape.svg" alt="shape" />
-        </div>
+        </div> --}}
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -564,7 +564,8 @@
     <!-- ====== Contact End ====== -->
 
     <!-- ====== Footer Start ====== -->
-    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s" style="
+    background-color: #505df0;>
 
         <div class="ud-footer-widgets">
             <div class="container">
@@ -641,7 +642,7 @@
                     <div class="col-md-4">
                         <p class="ud-footer-bottom-right">
                             ©OnVet 2022. Todos os Direitos Reservados.
-                            <a href="#" rel="nofollow">Projeto-Vet</a>
+                            <a href="https://github.com/DevsDoVillageSul/Onvet-4" rel="nofollow" style="color:#000;">Projeto-Vet</a>
                         </p>
                     </div>
                 </div>
@@ -651,7 +652,7 @@
     <!-- ====== Footer End ====== -->
 
     <!-- ====== Back To Top Start ====== -->
-    <a href="javascript:void(0)" class="back-to-top">
+    <a href="/" class="back-to-top">
         <i class="lni lni-chevron-up"> </i>
     </a>
     <!-- ====== Back To Top End ====== -->
