@@ -572,7 +572,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6">
                         <div class="ud-widget">
                             <a href="index.html" class="ud-footer-logo">
-                                <img src="images/logo/logo.svg" alt="logo" />
+                                <img src="images/logo/on_vet_transp_2.png" alt="logo" />
                             </a>
                             <p class="ud-widget-desc">
                                 Criamos experiências digitais para marcar empresas usando tecnologia.
