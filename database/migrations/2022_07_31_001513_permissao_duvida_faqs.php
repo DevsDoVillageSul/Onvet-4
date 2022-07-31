@@ -15,7 +15,7 @@ class PermissaoDuvidaFaqs extends Migration
                 'position' => '1',
                 'permission_id' => 7,
                 'name' => 'menu.duvida.faqs',
-                'icon' => 'thumbs_up',
+                'icon' => 'thumbs-up',
                 'url' => 'duvida/faqs',
             ]
         );
