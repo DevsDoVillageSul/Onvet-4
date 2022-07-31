@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 
-Route::get('/front', function () {
+Route::get('/', function () {
     return view('frontend.index');
 });
 
-Route::get('/', function () {
+Route::get('/loginOnvet', function () {
     return redirect('dashboard');
 })->name('home');
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
