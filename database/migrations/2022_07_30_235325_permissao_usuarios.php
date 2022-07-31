@@ -15,7 +15,7 @@ class PermissaoUsuarios extends Migration
                 'position' => '2',
                 'permission_id' => 1,
                 'name' => 'menu.cadastros.usuarios',
-                'icon' => 'users',
+                'icon' => 'user-plus',
                 'url' => 'security/users',
             ]
         );

@@ -4,18 +4,18 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PermissaoCadastros extends Migration
+class PermissaoProtocolos extends Migration
 {
     public function up()
     {
         DB::table('permissions')->insert(
             [
-                'id' => '1',
+                'id' => '5',
                 'menu' => '1',
                 'position' => '1',
                 'permission_id' => null,
-                'name' => 'menu.cadastros',
-                'icon' => 'database',
+                'name' => 'menu.protocolos',
+                'icon' => 'list',
                 'url' => '',
             ]
         );
@@ -23,8 +23,8 @@ class PermissaoCadastros extends Migration
 
     public function down()
     {
-        DB::table('role_permissions')->where('permission_id', 1)->delete();
+        DB::table('role_permissions')->where('permission_id', 5)->delete();
 
-        DB::table('permissions')->where('id', 1)->delete();
+        DB::table('permissions')->where('id',5)->delete();
     }
 }
