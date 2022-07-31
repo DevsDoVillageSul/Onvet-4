@@ -14,22 +14,23 @@ class AddRoles extends Migration
      */
     public function up()
     {
-        DB::table('roles')->insert(
+        //gera automatico as roles
+        /* DB::table('roles')->insert(
             [
                 [
                     'id' => 9,
-                    'name' => 'Parceiro Administrador Prog TV',
+                    'name' => 'Nome da role',
                     'created_at' => '2022-01-26 16:55:45',
                     'updated_at' => '2022-01-26 16:55:45'
                 ],
                 [
                     'id' => 10,
-                    'name' => 'Parceiro Prog TV',
+                    'name' => 'Nome da role',
                     'created_at' => '2022-01-26 16:55:45',
                     'updated_at' => '2022-01-26 16:55:45'
                 ],
             ]
-        );
+        ); */
 
         DB::table('role_permissions')->insert(
             [
