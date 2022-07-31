@@ -15,7 +15,7 @@ class PermissaoIatfs extends Migration
                 'position' => '2',
                 'permission_id' => 5,
                 'name' => 'menu.protocolos.iatfs',
-                'icon' => 'corner_down_right',
+                'icon' => 'arrow-right',
                 'url' => 'protocolos/iatfs',
             ]
         );
