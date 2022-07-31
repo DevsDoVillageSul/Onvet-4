@@ -21,7 +21,7 @@ class CreateCadastrosFornecedores extends Migration
             $table->string('razao', 50);
             $table->string('tipo', 20);
             $table->string('email')->nullable();  
-            $table->string('telefone', 11);
+            $table->string('telefone', 20);
             $table->string('cep', 10);
             $table->string('endereco', 100);
             $table->string('numero', 50);
