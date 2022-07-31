@@ -30,13 +30,13 @@ Route::middleware(['auth'])->group(function () {
     include('modules/tema.php');
 
     //nossas  
-   // include('modules/general/security.php');
-   // include('modules/cadastro/index.php');      
-   // include('modules/tema.php');
-    //include('modules/data/endpoints.php');
-   // include('modules/duvida/index.php');
-  //  include('modules/rebanho/index.php');
-   // include('modules/protocolo/index.php');
+    // include('modules/general/security.php');
+    // include('modules/cadastro/index.php');      
+    // include('modules/tema.php');
+    // include('modules/data/endpoints.php');
+    // include('modules/duvida/index.php');
+    // include('modules/rebanho/index.php');
+    // include('modules/protocolo/index.php');
 
     include('modules/data/endpoints.php');
 });
