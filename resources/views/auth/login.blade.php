@@ -22,7 +22,7 @@ $configData = Helper::applClasses();
         <!-- Left Text-->
         <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
             <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
-                <img class="img-fluid" src="{{asset('images/pages/login.png')}}" alt="" />
+                <img class="img-fluid" src="{{asset('img\vacaLeitera.png')}}" alt="" style="width: 40%;" />
             </div>
         </div>
         <!-- /Left Text-->
@@ -31,9 +31,14 @@ $configData = Helper::applClasses();
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                 <div class="col-12 text-center"> 
                     <img class="img-fluid" src="{{ asset('images/logo/on_vet_transp_2.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
-                    <br><br>
+                    <br>
                 </div>
-                <h2 class="card-title font-weight-bold mb-1">Bem vindo!  &#x1F44B;</h2>
+                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                <h1>
+                    Bem vindo 
+                    <span style="color: blue;">On</span>Vet
+                </h1>
+                </div>
                 <p class="card-text mb-2">Informe seus dados de acesso</p>
                 <form class="auth-login-form mt-2" action="" method="POST">
                     <div class="form-group">
