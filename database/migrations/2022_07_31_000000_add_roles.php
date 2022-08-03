@@ -16,7 +16,7 @@ class AddRoles extends Migration
     {
         DB::table('roles')->insert(
             [
-                [
+                /*[
                     'id' => 9,
                     'name' => 'Parceiro Administrador Prog TV',
                     'created_at' => '2022-01-26 16:55:45',
@@ -27,7 +27,7 @@ class AddRoles extends Migration
                     'name' => 'Parceiro Prog TV',
                     'created_at' => '2022-01-26 16:55:45',
                     'updated_at' => '2022-01-26 16:55:45'
-                ],
+                ]*/
             ]
         );
 
