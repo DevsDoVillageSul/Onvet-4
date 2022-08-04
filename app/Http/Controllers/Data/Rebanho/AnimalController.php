@@ -7,6 +7,7 @@ use App\Models\Rebanho\Animal;
 use App\Models\Rebanho\Lote;
 use App\Models\Cadastro\Fornecedor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use Exception;
 
@@ -15,6 +16,14 @@ class AnimalController extends Controller
     protected $model = Animal::class;
     public function save(Request $request)
     {
+        $validate = Validator::make($request->all(), [
+            'nome' => 'required|max:255',
+            'lote_id' => 'required',
+            'fornecedor_id' => 'required',
+            'email' => 'required|max:255', 
+            
+        ]);
+
         try {
             $animal = $this->model::findOrNew($request->id);
             $animal->nome = $request->nome;

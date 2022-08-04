@@ -74,32 +74,28 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label class="form-label" for="fornecedor_id">Fornecedor</label>
-                                    <select name="fornecedor_id" id="fornecedor_id" class="form-control" required>
-                                        <option value="">Selecione:</option>
-                                        @foreach ($fornecedores as $fornecedor)
-                                            <option value="{{ $fornecedor->id }}"
-                                                {{ $fornecedor->id == $fornecedor->fornecedor_id ? 'selected="selected"' : '' }}>
-                                                {{ $fornecedor->nome }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="fornecedor">Fornecedores</label>
+                                <select name="fornecedor_id" id="fornecedor_id" class="form-control" required>
+                                    <option value="">Selecione:</option>
+                                    @foreach($fornecedores as $fornecedor)
+                                    <option value="{{ $fornecedor->id }}" {{$fornecedor->id == $animal->fornecedor_id ?'selected="selected"' : '' }}> {{ $fornecedor->nome }} </option>
+                                    @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label class="form-label" for="lote_id">Lote</label>
-                                    <select name="lote_id" id="lote_id" class="form-control" required>
-                                        <option value="">Selecione:</option>
-                                        @foreach ($lotes as $lote)
-                                            <option value="{{ $lote->id }}"
-                                                {{ $lote->id == $lote->lote_id ? 'selected="selected"' : '' }}>
-                                                {{ $lote->nome }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label" for="lote">Lotes</label>
+                                <select name="lote_id" id="lote_id" class="form-control" required>
+                                    <option value="">Selecione:</option>
+                                    @foreach($lotes as $lote)
+                                    <option value="{{ $lote->id }}" {{$lote->id == $animal->lote_id ?'selected="selected"' : '' }}> {{ $lote->nome }} </option>
+                                    @endforeach
+                                </select>
                             </div>
+                        </div>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-12">

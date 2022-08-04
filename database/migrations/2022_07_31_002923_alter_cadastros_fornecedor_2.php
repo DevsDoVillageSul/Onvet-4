@@ -27,7 +27,7 @@ class AlterCadastrosFornecedor2 extends Migration
     public function down()
     {
         Schema::table('fornecedor', function (Blueprint $table) {
-            $table->string('cpf', 20)->nullable(false)->change(); 
+            $table->string('cpf', 20)->nullable()->change(); 
             $table->string('cnpj', 20)->nullable()->change();          
         });
     }
