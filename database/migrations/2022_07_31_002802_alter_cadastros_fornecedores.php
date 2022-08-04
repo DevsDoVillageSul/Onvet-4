@@ -21,7 +21,7 @@ class AlterCadastrosFornecedores extends Migration
     {
         Schema::table('fornecedor', function (Blueprint $table) {
             $table->string('razao', 50)->nullable(false)->change();
-            $table->string('telefone', 11)->nullable(false)->change();
+            $table->string('telefone', 20)->nullable(false)->change();
             $table->string('complemento', 100)->nullable(false)->change();
         });
     }

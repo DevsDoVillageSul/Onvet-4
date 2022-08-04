@@ -26,7 +26,7 @@ class AlterCadastrosFornecedorContato extends Migration
     public function down()
     {
         Schema::table('fornecedor_contato', function (Blueprint $table) {
-            $table->string('telefone', 11)->change();            
+            $table->string('telefone', 20)->change();            
         });
     }
 }

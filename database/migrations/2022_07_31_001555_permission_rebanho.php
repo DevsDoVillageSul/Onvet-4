@@ -26,11 +26,6 @@ class PermissionRebanho extends Migration
         );
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         DB::table('role_permissions')->where('permission_id', 16)->delete();
