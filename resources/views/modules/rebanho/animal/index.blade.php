@@ -3,7 +3,7 @@
 @section('title', 'Animais')
 
 @section('content')
-    <div class="row" id="table-hover-row">
+    {{-- <div class="row" id="table-hover-row">
         <div class="col-lg-12 col-12">
             <div class="row">
                 <div class="col-lg-12 col-12">
@@ -14,9 +14,7 @@
                                 <p class="card-text mr-25 mb-0"></p>
                             </div>
                         </div>
-
                         <div class="card-body statistics-body">
-
                             <div class="row">
                                 <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
                                     <div class="media">
@@ -66,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -128,6 +126,7 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                        <th>#</th>
                                         <th>Nome</th>
                                         <th>Sexo</th>
                                         <th>Grau de Sangue</th>
@@ -141,6 +140,9 @@
                                 <tbody>
                                     @foreach ($animais as $animal)
                                         <tr>
+                                            <td>
+                                                {{ $animal->id }}
+                                            </td>
                                             <td>
                                                 {{ $animal->nome }}
                                             </td>
