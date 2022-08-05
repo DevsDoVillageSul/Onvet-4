@@ -26,7 +26,7 @@ class AlterCadastrosFuncionario extends Migration
     public function down()
     {
         Schema::table('funcionario', function (Blueprint $table) {
-            $table->string('telefone', 11)->change();            
+            $table->string('telefone', 20)->change();            
         });
     }
 }

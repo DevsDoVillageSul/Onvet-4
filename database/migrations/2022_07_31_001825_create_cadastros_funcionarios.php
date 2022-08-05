@@ -20,7 +20,7 @@ class CreateCadastrosFuncionarios extends Migration
             $table->string('dt_nasc', 20);
             $table->string('sexo', 10);
             $table->string('funcao', 20);
-            $table->string('telefone', 11);
+            $table->string('telefone', 20);
             $table->string('cep', 10);
             $table->string('endereco', 100);
             $table->string('numero', 50);

@@ -18,13 +18,13 @@ class AddRoles extends Migration
             [
                 [
                     'id' => 9,
-                    'name' => 'Parceiro Administrador Prog TV',
+                    'name' => 'Veterinário',
                     'created_at' => '2022-01-26 16:55:45',
                     'updated_at' => '2022-01-26 16:55:45'
                 ],
                 [
                     'id' => 10,
-                    'name' => 'Parceiro Prog TV',
+                    'name' => 'Financeiro',
                     'created_at' => '2022-01-26 16:55:45',
                     'updated_at' => '2022-01-26 16:55:45'
                 ],

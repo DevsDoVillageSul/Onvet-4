@@ -11,7 +11,7 @@ class AlterCadastrosFuncionarios extends Migration
     {
         Schema::table('funcionario', function (Blueprint $table) {
             $table->string('funcao', 50)->nullable()->change();
-            $table->string('telefone', 11)->nullable()->change();
+            $table->string('telefone', 20)->nullable()->change();
             $table->string('complemento', 100)->nullable()->change();
            
         });
@@ -21,7 +21,7 @@ class AlterCadastrosFuncionarios extends Migration
     {
         Schema::table('funcionario', function (Blueprint $table) {
             $table->string('funcao', 50)->nullable(false)->change();
-            $table->string('telefone', 11)->nullable(false)->change();
+            $table->string('telefone', 20)->nullable(false)->change();
             $table->string('complemento', 100)->nullable(false)->change();
         });
     }
