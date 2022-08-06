@@ -15,11 +15,14 @@ class CreateAnimais extends Migration
     {
         Schema::create('animais', function (Blueprint $table) {
             $table->id();
+            $table->integer('imagem_id')->default(0); 
+            $table->string('video')->nullable();    
             $table->string('nome', 50);
             $table->string('sexo', 20);
             $table->string('sangue', 20);
             $table->string('raca', 50);
             $table->integer('brinco');
+            $table->string('origem', 20);
 
             $table->unsignedBigInteger('lote_id');
             $table->foreign('lote_id')

@@ -18,6 +18,12 @@ class Animal extends Model implements Auditable
         'FEMEA' => 'Fêmea',
     ];
 
+    protected $origens = [
+        'NASCIMENTO' => 'Nascimento',
+        'COMPRA' => 'Compra',
+        'OUTROS' => 'Outros',
+    ];
+
     protected $sangues = [
         '1/2' => '1/2',
         '1/4' => '1/4',
@@ -103,6 +109,16 @@ class Animal extends Model implements Auditable
     public function getSexos()
     {
         return $this->sexos;
+    }
+
+    public function getOrigem()
+    {
+        return $this->origens[$this->origem];
+    }
+
+    public function getOrigens()
+    {
+        return $this->origens;
     }
 
     public function getSangue()
