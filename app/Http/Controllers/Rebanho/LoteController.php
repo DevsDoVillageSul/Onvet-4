@@ -52,7 +52,7 @@ class LoteController extends Controller
         $lotes = $lotes->get();
         $view = 'modules/rebanho/lote/indexExcel';
         $arquivo = 'Lotes.xlsx';
-        $dados = ['Lotes' => $lotes];
+        $dados = ['lotes' => $lotes];
 
         return Excel::download(new ExcelExport($view, $dados), $arquivo);
     }

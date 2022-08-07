@@ -1,4 +1,4 @@
-@extends('layouts.templatePDF', ['header' => 'Parceiros', 'title' => ''])
+@extends('layouts.templatePDF', ['header' => 'Funxionários', 'title' => ''])
 @section('content')
 
 <table class="table-linhas">

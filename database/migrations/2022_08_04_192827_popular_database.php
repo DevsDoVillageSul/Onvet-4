@@ -44,7 +44,7 @@ class PopularDatabase extends Migration
                     'nome' => 'Gabriel',
                     'cpf' => '999.999.999-99',
                     'dt_nasc' => '04/03/1998',
-                    'sexo' => 'Masculino',
+                    'sexo' => 'M',
                     'funcao' => 'Desenvolvedor',
                     'telefone' => '(99)99999-9999',
                     'cep' => '75780-000',
