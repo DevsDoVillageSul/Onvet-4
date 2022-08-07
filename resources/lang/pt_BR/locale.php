@@ -201,5 +201,6 @@ return [
     "menu.rebanho.lotes" => "Lotes",
     "menu.rebanho.animais" => "Animais",
     "menu.rebanho.semens" => "Sêmens",
+    "menu.rebanho.embrioes" => "Embriões",
     
 ];

@@ -52,7 +52,7 @@ class SemenController extends Controller
         $semens = $semens->get();
         $view = 'modules/rebanho/semen/indexExcel';
         $arquivo = 'Semens.xlsx';
-        $dados = ['Semens' => $semens];
+        $dados = ['semens' => $semens];
 
         return Excel::download(new ExcelExport($view, $dados), $arquivo);
     }

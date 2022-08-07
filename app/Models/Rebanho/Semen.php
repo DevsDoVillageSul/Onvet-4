@@ -47,11 +47,6 @@ class Semen extends Model implements Auditable
         'WEST FLEMISH RER' => 'West Flemish Rer',
         'OUTROS' => 'Outros Cruzamentos',
     ];
-
-    public function opcoes()
-    {
-        return $this->hasMany(SemenOpcao::class, 'semen_id');
-    }
     
     public function scopeFiltros($query, $request)
     {

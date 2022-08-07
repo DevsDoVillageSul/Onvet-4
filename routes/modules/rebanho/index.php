@@ -3,6 +3,7 @@
 use App\Http\Controllers\Rebanho\LoteController;
 use App\Http\Controllers\Rebanho\AnimalController;
 use App\Http\Controllers\Rebanho\SemenController;
+use App\Http\Controllers\Rebanho\EmbriaoController;
 
 Route::group(['prefix' => 'rebanho'], function () {
     Route::group(['prefix' => 'lotes'], function () {
@@ -56,6 +57,26 @@ Route::group(['prefix' => 'rebanho'], function () {
         Route::get('/show/{id}', [SemenController::class, 'show'])->middleware('checkPermission:19')
         ->name('semens-show')
         ->middleware('checkPermission:19')
+        ; 
+
+    });
+
+    Route::group(['prefix' => 'embrioes'], function () {
+        Route::any('/', [EmbriaoController::class, 'index'])
+            ->name('embrioes-index')
+            ->middleware('checkPermission:20')
+        ;
+        Route::get('/delete/{id}', [EmbriaoController::class, 'destroy'])
+            ->name('embrioes-destroy')
+            ->middleware('checkPermission:20')
+        ;
+        Route::get('/create/{id}', [EmbriaoController::class, 'create'])
+            ->name('embrioes-create')
+            ->middleware('checkPermission:20')
+        ;
+        Route::get('/show/{id}', [EmbriaoController::class, 'show'])->middleware('checkPermission:20')
+        ->name('embrioes-show')
+        ->middleware('checkPermission:20')
         ; 
 
     });
