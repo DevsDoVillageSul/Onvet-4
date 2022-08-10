@@ -3,6 +3,7 @@
 @section('title', 'Pastagens')
 
 @section('content')
+<body> 
 <form id="formPastagemData" action="{{ url('data/cadastros/pastagens/save') }}" class="form">
     <input type="hidden" name="id" id="id" value="{{ $pastagem->id ?? '0' }}" />
     <div class="row">
@@ -53,21 +54,22 @@
                             <div class="form-group">
                             <label class="form-label" for="nome">Área (ha)</label>
                                 <input type="text" name="area" class="form-control" id="area"
-                                    placeholder="Digite a área da pastagem" value="{{ $pastagem->area ?? '' }}" />
+                                    placeholder="Digite a área da pastagem" onblur="calcular()" value="{{ $pastagem->area ?? '' }}" />
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                             <label class="form-label" for="nome">Custo de Formação(R$/ha)</label>
-                                <input type="text" name="custo" class="form-control" id="custo"
+                                <input type="text" name="custo" class="form-control" onblur="calcular();" id="custo" 
                                   value="{{ $pastagem->custo ?? '' }}" />
                             </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">
                             <label class="form-label" for="nome">Custo de Formação Total</label>
+                            {{-- <span class="form-control" id="total"></span> --}}
                                 <input type="text" name="total" class="form-control" id="total"
-                                  value="{{ $pastagem->total ?? '' }}" />
+                                  value="{{ $pastagem->total ?? '' }}"/>
                             </div>
                         </div>
                     </div>
@@ -93,6 +95,7 @@
         </div>
     </div>
 </form>
+</body>
 @endsection
 @section('vendor-script')
 <!-- vendor files -->
@@ -101,10 +104,23 @@
 @section('page-script')
 <script>
     $(document).ready(function() {
+        console.log($('#formPastagemData'));
         $('#formPastagemData').on('submit', function() {
             postData('formPastagemData', '{{ url("cadastros/pastagens") }}');
             return false;
         });
     });
+
+    //var variaveljs = 'Eu sou uma variável JavaScript.';
+
+</script>
+<script>
+function calcular() {
+    var area = Number(document.getElementById("area").value);
+    var custo = Number(document.getElementById("custo").value);
+    var total = document.getElementById("total");
+
+    total.setAttribute('value',(area*custo));
+    }
 </script>
 @endsection
