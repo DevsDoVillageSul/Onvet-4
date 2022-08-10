@@ -12,7 +12,7 @@ class PastagemController extends Controller
 {
     protected $model = Pastagem::class;
     public function save(Request $request)
-    {
+    {   
         try {
             $pastagem = $this->model::findOrNew($request->id);
             $pastagem->nome = $request->nome;
@@ -26,7 +26,7 @@ class PastagemController extends Controller
             return $pastagem;
         } catch (Exception $ex) {
             return response()->json([
-                'message' => 'Ocorreu um Erro ao salvar a pastagem!',
+                'message' => $ex ->getMessage(),
                 'exception' => $ex->getMessage()
             ], 404);
         }
