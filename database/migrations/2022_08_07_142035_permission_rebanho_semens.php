@@ -20,7 +20,7 @@ class PermissionRebanhoSemens extends Migration
                 'position' => '2',
                 'permission_id' => 16,
                 'name' => 'menu.rebanho.semens',
-                'icon' => 'gitlab',
+                'icon' => 'droplet',
                 'url' => 'rebanho/semens',
             ]
         );

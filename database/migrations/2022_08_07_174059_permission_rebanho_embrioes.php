@@ -20,7 +20,7 @@ class PermissionRebanhoEmbrioes extends Migration
                 'position' => '3',
                 'permission_id' => 16,
                 'name' => 'menu.rebanho.embrioes',
-                'icon' => 'gitlab',
+                'icon' => 'filter',
                 'url' => 'rebanho/embrioes',
             ]
         );
