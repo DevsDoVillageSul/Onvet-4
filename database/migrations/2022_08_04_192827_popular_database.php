@@ -115,6 +115,7 @@ class PopularDatabase extends Migration
                     'tipo' => 'ANUAL',
                     'custo' => '9000',
                     'total' => '297000',
+                    'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]

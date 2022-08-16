@@ -58,4 +58,23 @@ class CulturaController extends Controller
         $dataView = compact('breadcrumbs', 'cultura');
         return view('modules/cadastro/cultura/create', $dataView);       
     }
+
+    private function indexPdf($culturas)
+    {
+        $culturas = $culturas->get();
+        return \PDF::loadView('modules/cadastro/cultura/indexPdf', compact('culturas'))
+            ->setPaper('a4')
+            ->download('Culturas.pdf')
+        ;
+    }
+
+    private function indexExcel($culturas)
+    {
+        $culturas = $culturas->get();
+        $view = 'modules/cadastro/cultura/indexExcel';
+        $arquivo = 'Culturas.xlsx';
+        $dados = ['culturas' => $culturas];
+
+        return Excel::download(new ExcelExport($view, $dados), $arquivo);
+    }
 }
