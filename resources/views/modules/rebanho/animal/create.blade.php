@@ -1,4 +1,4 @@
-@extends('layouts/contentLayoutMaster')
+Você disse:@extends('layouts/contentLayoutMaster')
 
 @section('title', 'ANIMAIS')
 
@@ -100,19 +100,6 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label class="form-label" for="fornecedor">Fornecedores</label>
-                                    <select name="fornecedor_id" id="fornecedor_id" class="form-control" required>
-                                        <option value="">Selecione:</option>
-                                        @foreach ($fornecedores as $fornecedor)
-                                            <option value="{{ $fornecedor->id }}"
-                                                {{ $fornecedor->id == $animal->fornecedor_id ? 'selected="selected"' : '' }}>
-                                                {{ $fornecedor->nome }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
                                     <label class="form-label" for="lote">Lotes</label>
                                     <select name="lote_id" id="lote_id" class="form-control" required>
                                         <option value="">Selecione:</option>
@@ -135,9 +122,19 @@
                                                 value="{{ $value }}">
                                                 {{ $label }}
                                             </option>
-                                            {{-- <option value='NASCIMENTO'>Nascimento</option>
-                                            <option value='COMPRA'>Compra</option>
-                                            <option value='OUTROS'>Outros</option> --}}
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group" id="fornecedor">
+                                    <label class="form-label" for="fornecedor">Fornecedores</label>
+                                    <select name="fornecedor_id" id="fornecedor_id" class="form-control">
+                                        <option value="">Selecione:</option>
+                                        @foreach ($fornecedores as $fornecedor)
+                                            <option value="{{ $fornecedor->id }}"
+                                                {{ $fornecedor->id == $animal->fornecedor_id ? 'selected="selected"' : '' }}>
+                                                {{ $fornecedor->nome }} </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -204,5 +201,15 @@
                 URL.revokeObjectURL(output.src)
             }
         };
+
+        $("#origem").change(function() {
+            if ($("#origem").val() === "NASCIMENTO") {
+                $('#fornecedor').hide();
+            } else if ($("#origem").val() === "COMPRA") {
+                $('#fornecedor').show();
+            }else if ($("#origem").val() === "OUTROS") {
+                $('#fornecedor').show();
+            }
+        });
     </script>
 @endsection
