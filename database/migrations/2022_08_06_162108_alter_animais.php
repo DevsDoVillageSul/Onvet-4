@@ -14,7 +14,7 @@ class AlterAnimais extends Migration
     public function up()
     {
         Schema::table('animais', function (Blueprint $table) {
-            $table->text('video')->nullable()->change();
+            $table->string('video')->nullable()->change();
             $table->dropColumn('imagem_id');
             $table->string('imagem')->nullable()->after('video');
            

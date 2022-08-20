@@ -20,7 +20,6 @@ class AnimalController extends Controller
         $validate = Validator::make($request->all(), [
             'nome' => 'required|max:255',
             'lote_id' => 'required',
-            'fornecedor_id' => 'required',
         ]);
         if (!$validate->fails()) {
             try {

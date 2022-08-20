@@ -30,8 +30,8 @@ class CreateAnimais extends Migration
                 ->on('lotes')
             ;
 
-            $table->unsignedBigInteger('fornecedor_id');
-            $table->foreign('fornecedor_id')->nullable()->constrained("fornecedor_id")->cascadeOnUpdate()->nullOnDelete()->default(0)
+            $table->bigInteger('fornecedor_id')->nullable()->unsigned();
+            $table->foreign('fornecedor_id')->nullable()->unsigned()
                 ->references('id')
                 ->on('fornecedor');
             ;
