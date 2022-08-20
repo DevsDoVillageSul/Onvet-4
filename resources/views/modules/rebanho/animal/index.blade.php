@@ -128,7 +128,6 @@
                             <th>Nome</th>
                             <th>Video</th>
                             <th>Lote</th>
-                            <th>Fornecedor</th>
                             <th style="width: 5%;">Status</th>
                             <th style="width: 5%;">Ações</th>
                         </tr>
@@ -151,7 +150,6 @@
                                     {!! nl2br($animal->video) !!}
                                 </td>
                                 <td>{{ $animal->lote->nome }}</td>
-                                <td>{{ $animal->fornecedor->nome }}</td>
                                 <td>
                                     {!! Helper::getAtivoInativo($animal->ativo) !!}
                                 </td>
