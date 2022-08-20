@@ -31,9 +31,9 @@ class CreateAnimais extends Migration
             ;
 
             $table->unsignedBigInteger('fornecedor_id');
-            $table->foreign('fornecedor_id')
+            $table->foreign('fornecedor_id')->nullable()->constrained("fornecedor_id")->cascadeOnUpdate()->nullOnDelete()->default(0)
                 ->references('id')
-                ->on('fornecedor')
+                ->on('fornecedor');
             ;
 
             $table->tinyInteger('ativo');
