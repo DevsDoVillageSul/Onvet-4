@@ -52,22 +52,23 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label class="form-label" for="nome">Área (ha)</label>
-                                    <input type="text" name="ha" class="form-control" id="ha" onblur="calcular();"
-                                        placeholder="Digite o tamanho da cultura" value="{{ $cultura->ha ?? '' }}" />
+                                    <label class="form-label" for="area">Área (ha)</label>
+                                    <input type="text" name="ha" class="form-control" id="ha"
+                                        onblur="calcular();" placeholder="Digite o tamanho da cultura"
+                                        value="{{ $cultura->ha ?? '' }}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label class="form-label" for="nome">Custo de Formação(R$/ha)</label>
-                                    <input type="text" name="custo" class="form-control" id="custo" onblur="calcular();"
-                                        value="{{ $cultura->custo ?? '' }}" />
+                                    <label class="form-label" for="custo">Custo de Formação(R$/ha)</label>
+                                    <input type="text" name="custo" class="form-control" id="custo"
+                                        onblur="calcular();" value="{{ $cultura->custo ?? '' }}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                            <div class="form-group">
-                            <label class="form-label" for="nome">Custo de Formação Total</label>
-                                <input type="text" name="total" class="form-control" id="total"
+                                <div class="form-group">
+                                    <label class="form-label" for="total">Custo de Formação Total</label>
+                                    <input type="text" name="total" class="form-control" id="total"
                                         value="{{ $cultura->total ?? '' }}" />
                                 </div>
                             </div>
@@ -126,12 +127,27 @@
         });
     </script>
     <script>
-function calcular() {
-    var ha = Number(document.getElementById("ha").value);
-    var custo = Number(document.getElementById("custo").value);
-    var total = document.getElementById("total");
+            new Cleave('#ha', {
+            numericOnly: true,
+            blocks: [10],
+        });
 
-    total.setAttribute('value',(ha*custo));
-    }
-</script>
+        new Cleave('#custo', {
+            numericOnly: true,
+            blocks: [7],
+        });
+
+        new Cleave('#total', {
+            numericOnly: true,
+            blocks: [10],
+        });
+
+        function calcular() {
+            var ha = Number(document.getElementById("ha").value);
+            var custo = Number(document.getElementById("custo").value);
+            var total = document.getElementById("total");
+
+            total.setAttribute('value', (ha * custo));
+        }
+    </script>
 @endsection

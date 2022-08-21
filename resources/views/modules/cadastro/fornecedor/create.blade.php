@@ -327,7 +327,11 @@
                 postData('formFornecedorData', '{{ url('cadastros/fornecedores') }}');
                 return false;
             });
-
+            new Cleave('#numero', {
+                numericOnly: true,
+                 blocks: [5],
+            });
+            
             new Cleave('#cep', {
                 numericOnly: true,
                 blocks: [5, 3],
