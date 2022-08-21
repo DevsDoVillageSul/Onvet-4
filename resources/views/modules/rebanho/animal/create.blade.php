@@ -127,6 +127,57 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
+                                <div class="form-group" id="dt_nasc">
+                                    <label class="form-label" for="nome">Data de nascimento</label>
+                                    <input type="date" name="dt_nasc" class="form-control" id="dt_nasc"
+                                        placeholder="Digite a data de nascimento" value="{{ $animal->dt_nasc ?? '' }}"
+                                        required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="peso">Peso no Nascimento (KG)</label>
+                                    <input type="text" name="peso" class="form-control" id="peso"
+                                        value="{{ $animal->peso ?? '' }}" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="nome_reg">Nome de registro</label>
+                                    <input type="text" name="nome_reg" class="form-control" id="nome_reg"
+                                        value="{{ $animal->nome_reg ?? '' }}" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="num_reg">Número de registro</label>
+                                    <input type="text" name="num_reg" class="form-control" id="num_reg"
+                                        value="{{ $animal->num_reg ?? '' }}" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="pelagem">Pelagem</label>
+                                    <input type="text" name="pelagem" class="form-control" id="pelagem"
+                                        value="{{ $animal->pelagem ?? '' }}" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="raca">Raça 2</label>
+                                    <select name="raca_2" id="raca_2" class="form-control" required>
+                                        <option value=""></option>
+                                        @foreach ($animal->getRacas2() as $value => $label)
+                                            <option
+                                                {{ isset($animal->raca_2) && $animal->raca_2 == $value ? 'selected="selected"' : '' }}
+                                                value="{{ $value }}">
+                                                {{ $label }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
                                 <div class="form-group" id="fornecedor" style="display: none">
                                     <label class="form-label" for="fornecedor">Fornecedores</label>
                                     <select name="fornecedor_id" id="fornecedor_id" class="form-control">
@@ -137,6 +188,20 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                                 {{ $fornecedor->nome }} </option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group" id="dt_entrada" style="display: none">
+                                    <label class="form-label" for="dt_entrada">Data de entrada</label>
+                                    <input type="date" name="dt_entrada" class="form-control" id="dt_entrada"
+                                        value="{{ $animal->dt_entrada ?? '' }}" required />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group" id="peso_entrada" style="display: none">
+                                    <label class="form-label" for="peso_entrada">Peso na Entrada (KG)</label>
+                                    <input type="text" name="peso_entrada" class="form-control" id="peso_entrada"
+                                        value="{{ $animal->peso_entrada ?? '' }}" required />
                                 </div>
                             </div>
                         </div>
@@ -194,6 +259,21 @@ Você disse:@extends('layouts/contentLayoutMaster')
             });
         });
 
+        new Cleave('#num_reg', {
+            numericOnly: true,
+            blocks: [4],
+        });
+
+        new Cleave('#peso_entrada', {
+            numericOnly: true,
+            blocks: [4],
+        });
+
+        new Cleave('#peso', {
+            numericOnly: true,
+            blocks: [4],
+        });
+
         new Cleave('#brinco', {
             numericOnly: true,
             blocks: [7],
@@ -210,11 +290,21 @@ Você disse:@extends('layouts/contentLayoutMaster')
         $("#origem").change(function() {
             if ($("#origem").val() === "NASCIMENTO") {
                 $('#fornecedor').hide();
+                $('#dt_entrada').hide();
+                $('#peso_entrada').hide();
             } else if ($("#origem").val() === "COMPRA") {
                 $('#fornecedor').show();
+                $('#dt_entrada').show();
+                $('#peso_entrada').show();
             } else if ($("#origem").val() === "OUTROS") {
                 $('#fornecedor').show();
-            } else {}
+                $('#dt_entrada').show();
+                $('#peso_entrada').show();
+            } else {
+                $('#fornecedor').hide();
+                $('#dt_entrada').hide();
+                $('#peso_entrada').hide();
+            }
         });
     </script>
 @endsection

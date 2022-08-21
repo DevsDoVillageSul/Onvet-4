@@ -77,6 +77,39 @@ class Animal extends Model implements Auditable
         'WEST FLEMISH RER' => 'West Flemish Rer',
         'OUTROS' => 'Outros Cruzamentos',
     ];
+
+    protected $racas_2 = [
+        'ANGUS' => 'Aberdeen Angus',
+        'ANELORADO' => 'Anelorado',
+        'BRAFORD' => 'Braford',
+        'BRAHMAN' => 'Brahman',
+        'BRANGUS' => 'Brangus',
+        'CANCHIM' => 'Canchim',
+        'CARACU' => 'Caracu',
+        'COMPOSTO' =>'Composto',
+        'CRUZADO' => 'Cruzado de corte',
+        'GIR' => 'Gir',
+        'GIR LEITEIRO' => 'Gir leiteiro',
+        'GIROLANDO' => 'Girolando',
+        'GUZERA' => 'Guzerá',
+        'GUZOLANDO' => 'PC',
+        'HOLANDES' => 'Holandês',
+        'HOLANDES VERMELHO' => 'Holandês Vermelho',
+        'JERSEY' => 'Jersey',
+        'JERSOLANDA' => 'Jersolanda',
+        'NELORE' => 'Nelore',
+        'NORNMANDO' => 'Normando',
+        'PARDO SUICO' => 'Pardo Suíço',
+        'PARDO SUICO - LEITE' => 'Pardo Suíço - Leite',
+        'SENEPOL' => 'Senepol',
+        'SIMENTAL' => 'Simental',
+        'SIMENTAL MOCHO' => 'Simental Mocho',
+        'SINDI' => 'SINDI',
+        'TABAPUÃ' => 'Tbapuã',
+        'TRICROSS' => 'Tricross',
+        'WEST FLEMISH RER' => 'West Flemish Rer',
+        'OUTROS' => 'Outros Cruzamentos',
+    ];
     
     public function scopeFiltros($query, $request)
     {
@@ -140,6 +173,17 @@ class Animal extends Model implements Auditable
     {
         return $this->racas;
     }
+
+    public function getRaca2()
+    {
+        return $this->racas_2[$this->raca_2];
+    }
+
+    public function getRacas2()
+    {
+        return $this->racas_2;
+    }
+
 
     //ativo 
     public function scopeAtivo($query)

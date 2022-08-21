@@ -29,6 +29,17 @@ class AnimalController extends Controller
                 $animal->video = $request->video;
                 $animal->sangue =  $request->sangue;
                 $animal->origem =  $request->origem;
+
+                //itens hide, show
+                $animal->dt_nasc = $request->dt_nasc;
+                $animal->dt_entrada = $request->dt_entrada;
+                $animal->peso = $request->peso;
+                $animal->peso_entrada = $request->peso_entrada;
+                $animal->nome_reg = $request->nome_reg;
+                $animal->num_reg = $request->num_reg;
+                $animal->pelagem = $request->pelagem;
+                $animal->raca_2 = $request->raca_2;
+
                 $animal->raca = $request->raca;
                 $animal->brinco = $request->brinco;
                 $animal->lote_id = $request->lote_id;
