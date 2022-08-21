@@ -127,7 +127,7 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
-                                <div class="form-group" id="fornecedor">
+                                <div class="form-group" id="fornecedor" style="display: none">
                                     <label class="form-label" for="fornecedor">Fornecedores</label>
                                     <select name="fornecedor_id" id="fornecedor_id" class="form-control">
                                         <option value="">Selecione:</option>
@@ -194,6 +194,11 @@ Você disse:@extends('layouts/contentLayoutMaster')
             });
         });
 
+        new Cleave('#brinco', {
+            numericOnly: true,
+            blocks: [7],
+        });
+
         var loadFile = function(event) {
             var output = document.getElementById('imagePreview');
             output.src = URL.createObjectURL(event.target.files[0]);
@@ -207,9 +212,9 @@ Você disse:@extends('layouts/contentLayoutMaster')
                 $('#fornecedor').hide();
             } else if ($("#origem").val() === "COMPRA") {
                 $('#fornecedor').show();
-            }else if ($("#origem").val() === "OUTROS") {
+            } else if ($("#origem").val() === "OUTROS") {
                 $('#fornecedor').show();
-            }
+            } else {}
         });
     </script>
 @endsection

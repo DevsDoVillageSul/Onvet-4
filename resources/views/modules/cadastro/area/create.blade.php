@@ -118,5 +118,14 @@
                 return false;
             });
         });
+        new Cleave('#ha', {
+            numericOnly: true,
+            blocks: [3, 3, 3, 3],
+            delimiters: [".", ".", ".", "."]
+        });
+        new Cleave('#util', {
+            numericOnly: true,
+            blocks: [3],
+        });
     </script>
 @endsection
