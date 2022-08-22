@@ -96,6 +96,10 @@
                 postData('formSemenData', '{{ url('rebanho/semens') }}');
                 return false;
             });
+        new Cleave('#registro', {
+            numericOnly: true,
+            blocks: [7],
+        });
 
             $('#tipos').select2({
                 closeOnSelect: false

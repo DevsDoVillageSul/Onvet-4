@@ -127,11 +127,24 @@
             return false;
         });
     });
-
     //var variaveljs = 'Eu sou uma variável JavaScript.';
 
 </script>
 <script>
+            new Cleave('#area', {
+            numericOnly: true,
+            blocks: [10],
+        });
+
+        new Cleave('#custo', {
+            numericOnly: true,
+            blocks: [7],
+        });
+
+        new Cleave('#total', {
+            numericOnly: true,
+            blocks: [10],
+        });
 function calcular() {
     var area = Number(document.getElementById("area").value);
     var custo = Number(document.getElementById("custo").value);
