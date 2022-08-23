@@ -202,5 +202,7 @@ return [
     "menu.rebanho.animais" => "Animais",
     "menu.rebanho.semens" => "Sêmens",
     "menu.rebanho.embrioes" => "Embriões",
+    "menu.dados" => "Dados",
+    "menu.dados.dashboard" => "Dashboard",
     
 ];

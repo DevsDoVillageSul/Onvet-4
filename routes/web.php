@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     include('modules/tema.php');
     include('modules/duvida/index.php');
     include('modules/rebanho/index.php');
+    include('modules/dados/index.php');
     include('modules/protocolo/index.php');
     include('modules/data/endpoints.php');
 });

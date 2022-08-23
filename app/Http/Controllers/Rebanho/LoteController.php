@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Rebanho;
+namespace App\Http\Controllers\Dados;
 
 use App\Exports\ExcelExport;
 use App\Http\Controllers\Controller;
-use App\Models\Rebanho\Lote;
+use App\Models\Dados\Dashboard;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
