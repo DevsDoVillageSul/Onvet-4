@@ -130,7 +130,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
+                                            {{-- <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="animal">Mãe</label>
                                                     <select name="animal_id" id="animal_id" class="form-control"
@@ -143,7 +143,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>

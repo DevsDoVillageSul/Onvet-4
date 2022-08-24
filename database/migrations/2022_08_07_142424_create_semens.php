@@ -27,11 +27,11 @@ class CreateSemens extends Migration
                 ->on('animais');
             ;
 
-            $table->bigInteger('animal_id')->nullable()->unsigned();
-            $table->foreign('animais_id')->nullable()->unsigned()
-                ->references('id')
-                ->on('animais');
-            ;
+            // $table->bigInteger('animal_id')->nullable()->unsigned();
+            // $table->foreign('animais_id')->nullable()->unsigned()
+            //     ->references('id')
+            //     ->on('animais');
+            // ;
             
             $table->string('sangue', 20);
             $table->string('raca_2', 50);
