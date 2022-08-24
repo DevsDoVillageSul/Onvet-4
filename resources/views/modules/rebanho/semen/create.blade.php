@@ -79,6 +79,77 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-lg-12 col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Mais opções</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="sangue">Grau de Sangue</label>
+                                                    <select name="sangue" id="sangue" class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach ($semen->getSangues() as $value => $label)
+                                                            <option
+                                                                {{ isset($semen->sangue) && $semen->sangue == $value ? 'selected="selected"' : '' }}
+                                                                value="{{ $value }}">
+                                                                {{ $label }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="raca">Raça 2</label>
+                                                    <select name="raca_2" id="raca_2" class="form-control" required>
+                                                        <option value=""></option>
+                                                        @foreach ($semen->getRacas2() as $value => $label)
+                                                            <option
+                                                                {{ isset($semen->raca_2) && $semen->raca_2 == $value ? 'selected="selected"' : '' }}
+                                                                value="{{ $value }}">
+                                                                {{ $label }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="animal">Pai</label>
+                                                    <select name="animal_id" id="animal_id" class="form-control"
+                                                        required>
+                                                        <option value="">Selecione:</option>
+                                                        @foreach ($animais as $animal)
+                                                            <option value="{{ $animal->id }}"
+                                                                {{ $animal->id == $semen->animal_id ? 'selected="selected"' : '' }}>
+                                                                {{ $animal->nome }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="animal">Mãe</label>
+                                                    <select name="animal_id" id="animal_id" class="form-control"
+                                                        required>
+                                                        <option value="">Selecione:</option>
+                                                        @foreach ($animais2 as $animal)
+                                                            <option value="{{ $animal->id }}"
+                                                                {{ $animal->id == $semen->animais_id ? 'selected="selected"' : '' }}>
+                                                                {{ $animal->nome }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6 col-12">
                                 <button type="submit" class="btn btn-primary data-submit mr-1">Salvar</button>
                             </div>
@@ -96,10 +167,10 @@
                 postData('formSemenData', '{{ url('rebanho/semens') }}');
                 return false;
             });
-        new Cleave('#registro', {
-            numericOnly: true,
-            blocks: [7],
-        });
+            new Cleave('#registro', {
+                numericOnly: true,
+                blocks: [7],
+            });
 
             $('#tipos').select2({
                 closeOnSelect: false

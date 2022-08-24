@@ -194,14 +194,14 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 <div class="form-group" id="dt_entrada" style="display: none">
                                     <label class="form-label" for="dt_entrada">Data de entrada</label>
                                     <input type="date" name="dt_entrada" class="form-control" id="dt_entrada"
-                                        value="{{ $animal->dt_entrada ?? '' }}" required />
+                                        value="{{ $animal->dt_entrada ?? '' }}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group" id="peso_entrada" style="display: none">
                                     <label class="form-label" for="peso_entrada">Peso na Entrada (KG)</label>
                                     <input type="text" name="peso_entrada" class="form-control" id="peso_entrada"
-                                        value="{{ $animal->peso_entrada ?? '' }}" required />
+                                        value="{{ $animal->peso_entrada ?? '' }}"/>
                                 </div>
                             </div>
                         </div>
