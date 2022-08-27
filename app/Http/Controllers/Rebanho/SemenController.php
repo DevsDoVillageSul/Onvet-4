@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Rebanho;
 use App\Exports\ExcelExport;
 use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Semen;
+use App\Models\Rebanho\Animal;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Illuminate\Support\Facades\DB;
 class SemenController extends Controller
 {
     protected $model = Semen::class;
@@ -60,8 +61,10 @@ class SemenController extends Controller
     public function create($id)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $animais = Animal::select('id', 'nome')->where('sexo', '=', 'MACHO')->orderBy('nome')->get();
+        $animais2 = Animal::select('id', 'nome')->where('sexo', '=', 'FEMEA')->orderBy('nome')->get();
         $semen = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'semen');
+        $dataView = compact('breadcrumbs', 'semen','animais','animais2');
         return view('modules/rebanho/semen/create', $dataView);
     }
 

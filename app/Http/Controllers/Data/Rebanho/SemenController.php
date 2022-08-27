@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Data\Rebanho;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Semen;
+use App\Models\Rebanho\Animal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -19,7 +20,8 @@ class SemenController extends Controller
         $validate = Validator::make($request->all(), [
             'raca' => 'required|max:255',
             'nome' => 'required|max:255', 
-            'registro' => 'required',        
+            'registro' => 'required', 
+            'animal_id' => 'required',       
         ]);
 
         if ($validate->fails()) {
@@ -33,6 +35,13 @@ class SemenController extends Controller
             $semen->raca =  $request->raca;
             $semen->central = $request->central;
             $semen->tipos = $request->tipos;
+
+            // $semen->animal_id = $request->animal_id;
+            $semen->animais_id = $request->animais_id;
+            $semen->raca_2 = $request->raca_2;
+            $semen->sangue =  $request->sangue;
+
+
             $semen->save();
             return $semen;
         } catch (Exception $ex) {
