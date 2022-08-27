@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Rebanho;
 use App\Exports\ExcelExport;
 use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Embriao;
+use App\Models\Rebanho\Animal;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -56,12 +57,14 @@ class EmbriaoController extends Controller
 
         return Excel::download(new ExcelExport($view, $dados), $arquivo);
     }
-
+    
     public function create($id)
     {
         $breadcrumbs = $this->breadcrumbs;
         $embriao = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'embriao');
+        $animais = Animal::select('id', 'nome')->where('sexo', '=', 'MACHO')->orderBy('nome')->get();
+        $animais2 = Animal::select('id', 'nome')->where('sexo', '=', 'FEMEA')->orderBy('nome')->get();
+        $dataView = compact('breadcrumbs', 'embriao','animais','animais2');
         return view('modules/rebanho/embriao/create', $dataView);
     }
 

@@ -37,6 +37,34 @@
                                     </select>
                                 </div>
                             </div>
+                              <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="pai">Pai</label>
+                                                    <select name="pai" id="pai" class="form-control"
+                                                        required>
+                                                        <option value="">Selecione:</option>
+                                                        @foreach ($animais as $animal)
+                                                            <option value="{{ $animal->id }}"
+                                                                {{ $animal->id == $embriao->pai ? 'selected="selected"' : '' }}>
+                                                                {{ $animal->nome }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="mae">Mãe</label>
+                                                    <select name="mae" id="mae" class="form-control"
+                                                        required>
+                                                        <option value="">Selecione:</option>
+                                                        @foreach ($animais2 as $animal)
+                                                            <option value="{{ $animal->id }}"
+                                                                {{ $animal->id == $embriao->mae ? 'selected="selected"' : '' }}>
+                                                                {{ $animal->nome }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-12">
