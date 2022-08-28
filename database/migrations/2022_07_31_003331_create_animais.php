@@ -23,16 +23,20 @@ class CreateAnimais extends Migration
             $table->string('raca', 50);
             $table->integer('brinco');
             $table->string('origem', 20);
-
-            //campos hidden show
             $table->string('dt_nasc', 20);
             $table->integer('peso');  
             $table->string('nome_reg', 50);
             $table->integer('num_reg'); 
             $table->string('raca_2', 50);
             $table->string('pelagem', 50);
+
+            //campos hidden show         
             $table->string('dt_entrada', 20)->nullable();
             $table->integer('peso_entrada')->nullable(); 
+            $table->string('cat_macho', 50)->nullable();
+            $table->string('cat_femea', 50)->nullable();
+            $table->integer('valor')->nullable();  
+            $table->tinyInteger('desmame')->nullable();
 
 
             $table->unsignedBigInteger('lote_id');

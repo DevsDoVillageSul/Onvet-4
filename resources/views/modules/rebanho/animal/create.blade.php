@@ -201,11 +201,56 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 <div class="form-group" id="peso_entrada" style="display: none">
                                     <label class="form-label" for="peso_entrada">Peso na Entrada (KG)</label>
                                     <input type="text" name="peso_entrada" class="form-control" id="peso_entrada"
-                                        value="{{ $animal->peso_entrada ?? '' }}"/>
+                                        value="{{ $animal->peso_entrada ?? '' }}" />
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="row" id="despesa_macho" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Lançar Despesas</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="despesa_femea" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Lançar Despesas</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row" id="cria" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Crias</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="col-6 md-12">
                             <div class="card">
@@ -287,24 +332,22 @@ Você disse:@extends('layouts/contentLayoutMaster')
             }
         };
 
-        $("#origem").change(function() {
-            if ($("#origem").val() === "NASCIMENTO") {
-                $('#fornecedor').hide();
-                $('#dt_entrada').hide();
-                $('#peso_entrada').hide();
-            } else if ($("#origem").val() === "COMPRA") {
-                $('#fornecedor').show();
-                $('#dt_entrada').show();
-                $('#peso_entrada').show();
-            } else if ($("#origem").val() === "OUTROS") {
-                $('#fornecedor').show();
-                $('#dt_entrada').show();
-                $('#peso_entrada').show();
-            } else {
-                $('#fornecedor').hide();
-                $('#dt_entrada').hide();
-                $('#peso_entrada').hide();
-            }
+        $("#sexo").change(function() {
+            if ($("#sexo").val() === "FEMEA"){
+            $('#cria').show();
+            $('#despesa_femea').show();
+            $('#despesa_macho').hide();
+            }else if ($("#sexo").val() === "MACHO") {
+                $('#cria').hide();
+                $('#despesa_macho').show();
+                $('#despesa_femea').hide();
+         }else{
+             $('#cria').hide();
+             $('#despesa_macho').hide();
+             $('#despesa_femea').hide();
+         }
+
+         
         });
     </script>
 @endsection
