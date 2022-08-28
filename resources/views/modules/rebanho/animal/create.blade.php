@@ -206,7 +206,6 @@ Você disse:@extends('layouts/contentLayoutMaster')
                             </div>
                         </div>
                     </div>
-
                     <div class="row" id="despesa_macho" style="display: none">
                         <div class="col-lg-12 col-12">
                             <div class="card">
@@ -215,12 +214,33 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cat_macho">Categoria</label>
+                                                <select name="cat_macho" id="cat_macho" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getCatMachos() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->cat_macho) && $animal->cat_macho == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="valor">Valor Pago/Cabeça (R$)</label>
+                                                <input type="text" name="valor" class="form-control" id="valor"
+                                                    value="{{ $animal->valor ?? '' }}" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="row" id="despesa_femea" style="display: none">
                         <div class="col-lg-12 col-12">
                             <div class="card">
@@ -229,41 +249,46 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cat_femea">Categoria</label>
+                                                <select name="cat_femea" id="cat_femea" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getCatFemeas() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->cat_femea) && $animal->cat_femea == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="valor">Valor Pago/Cabeça (R$)</label>
+                                                <input type="text" name="valor" class="form-control" id="valor"
+                                                    value="{{ $animal->valor ?? '' }}" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-                    <div class="row" id="cria" style="display: none">
-                        <div class="col-lg-12 col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3>Crias</h3>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
+                    <div class="row" id="desmame" style="display: none">
                         <div class="col-6 md-12">
                             <div class="card">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
-                                                <label class="form-label">Status</label>
+                                                <label class="form-label">Lançar desmame</label>
                                                 <div class="custom-control-primary custom-switch">
-                                                    <input type="checkbox" name="ativo" class="custom-control-input"
-                                                        id="ativo" value="1"
-                                                        {{ !isset($animal->ativo) || (isset($animal->ativo) && $animal->ativo == 1) ? 'checked="checked"' : '' }}>
-                                                    <label class="custom-control-label" for="ativo">
+                                                    <input type="checkbox" name="desmame" class="custom-control-input"
+                                                        id="desmame" value="1"
+                                                        {{ !isset($animal->desmame) || (isset($animal->desmame) && $animal->desmame == 1) ? 'checked="checked"' : '' }}>
+                                                    <label class="custom-control-label" for="desmame">
                                                         <span class="switch-icon-left">
                                                             <i data-feather="check"></i>
                                                         </span>
@@ -276,17 +301,56 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                         </div>
                                     </div>
                                     <div class="row">&nbsp;</div>
-
-                                    <div class="row">
-                                        <div class="col-md-6 col-12">
-                                            <button type="submit"
-                                                class="btn btn-primary data-submit mr-1">Salvar</button>
+                                    <div class="row" id="cria" style="display: none">
+                                        <div class="col-lg-12 col-12">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3>Crias</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                    <div class="row">
+                                        <div class="col-6 md-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label">Status</label>
+                                                                <div class="custom-control-primary custom-switch">
+                                                                    <input type="checkbox" name="ativo"
+                                                                        class="custom-control-input" id="ativo"
+                                                                        value="1"
+                                                                        {{ !isset($animal->ativo) || (isset($animal->ativo) && $animal->ativo == 1) ? 'checked="checked"' : '' }}>
+                                                                    <label class="custom-control-label" for="ativo">
+                                                                        <span class="switch-icon-left">
+                                                                            <i data-feather="check"></i>
+                                                                        </span>
+                                                                        <span class="switch-icon-right">
+                                                                            <i data-feather="x"></i>
+                                                                        </span>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">&nbsp;</div>
+
+                                                    <div class="row">
+                                                        <div class="col-md-6 col-12">
+                                                            <button type="submit"
+                                                                class="btn btn-primary data-submit mr-1">Salvar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
     </form>
     <iframe id="uploadImagem" name="uploadImagem" style="display:none;"></iframe>
 @endsection
@@ -324,6 +388,11 @@ Você disse:@extends('layouts/contentLayoutMaster')
             blocks: [7],
         });
 
+        new Cleave('#valor', {
+            numericOnly: true,
+            blocks: [10],
+        });
+
         var loadFile = function(event) {
             var output = document.getElementById('imagePreview');
             output.src = URL.createObjectURL(event.target.files[0]);
@@ -333,21 +402,42 @@ Você disse:@extends('layouts/contentLayoutMaster')
         };
 
         $("#sexo").change(function() {
-            if ($("#sexo").val() === "FEMEA"){
-            $('#cria').show();
-            $('#despesa_femea').show();
-            $('#despesa_macho').hide();
-            }else if ($("#sexo").val() === "MACHO") {
+            if ($("#sexo").val() === "FEMEA") {
+                $('#despesa_macho').hide();
+                $('#cria').show();
+                $('#despesa_femea').show();
+                $('#desmame').show();
+            } else if ($("#sexo").val() === "MACHO") {
                 $('#cria').hide();
-                $('#despesa_macho').show();
                 $('#despesa_femea').hide();
-         }else{
-             $('#cria').hide();
-             $('#despesa_macho').hide();
-             $('#despesa_femea').hide();
-         }
+                $('#despesa_macho').show();
+                $('#desmame').show();
+            } else {
+                $('#cria').hide();
+                $('#despesa_macho').hide();
+                $('#despesa_femea').hide();
+                $('#desmame').hide();
+            }
+        });
 
-         
+        $("#origem").change(function() {
+            if ($("#origem").val() === "NASCIMENTO") {
+                $('#fornecedor').hide();
+                $('#dt_entrada').hide();
+                $('#peso_entrada').hide();
+            } else if ($("#origem").val() === "COMPRA") {
+                $('#fornecedor').show();
+                $('#dt_entrada').show();
+                $('#peso_entrada').show();
+            } else if ($("#origem").val() === "OUTROS") {
+                $('#fornecedor').show();
+                $('#dt_entrada').show();
+                $('#peso_entrada').show();
+            } else {
+                $('#fornecedor').hide();
+                $('#dt_entrada').hide();
+                $('#peso_entrada').hide();
+            }
         });
     </script>
 @endsection

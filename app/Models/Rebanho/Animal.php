@@ -18,6 +18,18 @@ class Animal extends Model implements Auditable
         'FEMEA' => 'Fêmea',
     ];
 
+    protected $cat_machos = [
+        'MACHOS 0 - 12 MESES' => 'Machos 0 - 12 meses',
+        'MACHOS 12 - 24 MESES' => 'Machos 12 - 24 meses',
+        'MACHOS ACIMA DE 24 MESES' => 'Machos acima de 24 meses',
+    ];
+
+    protected $cat_femeas = [
+        'FEMEAS 0 - 12 MESES' => 'Fêmeas 0 - 12 meses',
+        'FEMEAS 12 - 24 MESES' => 'Fêmeas 12 - 24 meses',
+        'FEMEAS ACIMA DE 24 MESES' => 'Fêmeas acima de 24 meses',
+    ];
+
     protected $origens = [
         'NASCIMENTO' => 'Nascimento',
         'COMPRA' => 'Compra',
@@ -111,19 +123,6 @@ class Animal extends Model implements Auditable
         'OUTROS' => 'Outros Cruzamentos',
     ];
      
-    protected $cat_macho = [
-        'MACHOS 0 - 12 MESES' => 'Machos 0 - 12 meses',
-        'MACHOS 12 - 24 MESES' => 'Machos 12 - 24 meses',
-        'MACHOS ACIMA DE 24 MESES' => 'Machos acima de 24 meses',
-    ];
-
-    protected $cat_femea = [
-        'FEMEAS 0 - 12 MESES' => 'Fêmeas 0 - 12 meses',
-        'FEMEAS 12 - 24 MESES' => 'Fêmeas 12 - 24 meses',
-        'FEMEAS ACIMA DE 24 MESES' => 'Fêmeas acima de 24 meses',
-    ];
-
-
 
     public function scopeFiltros($query, $request)
     {
@@ -156,6 +155,26 @@ class Animal extends Model implements Auditable
     public function getSexos()
     {
         return $this->sexos;
+    }
+
+    public function getCatMacho()
+    {
+        return $this->cat_machos[$this->cat_macho];
+    }
+
+    public function getCatMachos()
+    {
+        return $this->cat_machos;
+    }
+
+    public function getCatFemea()
+    {
+        return $this->cat_femeas[$this->cat_femea];
+    }
+
+    public function getCatFemeas()
+    {
+        return $this->cat_femeas;
     }
 
     public function getOrigem()
@@ -196,26 +215,6 @@ class Animal extends Model implements Auditable
     public function getRacas2()
     {
         return $this->racas_2;
-    }
-
-    public function getCatMacho()
-    {
-        return $this->cat_machos[$this->cat_macho];
-    }
-
-    public function getCatMachos()
-    {
-        return $this->cat_machos;
-    }
-
-    public function getCatFemea()
-    {
-        return $this->cat_femeas[$this->cat_femea];
-    }
-
-    public function getCatFemeas()
-    {
-        return $this->cat_femeas;
     }
 
 
