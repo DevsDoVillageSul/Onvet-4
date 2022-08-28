@@ -35,10 +35,10 @@ class SemenController extends Controller
             $semen->central = $request->central;
             $semen->tipos = $request->tipos;
 
-            $semen->mae = $request->mae;
-            $semen->pai = $request->pai;
             $semen->raca_2 = $request->raca_2;
             $semen->sangue =  $request->sangue;
+            $semen->animal_id = $request->animal_id;
+            $semen->animais_id = $request->animais_id;
 
 
             $semen->save();

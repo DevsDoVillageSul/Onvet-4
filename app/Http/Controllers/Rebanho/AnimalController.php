@@ -15,7 +15,7 @@ class AnimalController extends Controller
 {
     protected $model = Animal::class;
     protected $breadcrumbs = [
-        ['name' => "Cadastro de Lotes"],
+        ['name' => "Cadastro de Animais"],
         ['link' => "/rebanho/animais", 'name' => "Animais"]
     ];
 

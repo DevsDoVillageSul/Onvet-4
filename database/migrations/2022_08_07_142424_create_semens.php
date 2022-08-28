@@ -21,14 +21,14 @@ class CreateSemens extends Migration
             $table->string('central', 20);
             $table->string('tipos');
 
-            $table->bigInteger('mae')->nullable()->unsigned();
-            $table->foreign('mae')->nullable()->unsigned()
+            $table->bigInteger('animal_id')->nullable()->unsigned();
+            $table->foreign('animal_id')->nullable()->unsigned()
                 ->references('id')
                 ->on('animais');
             ;
 
-            $table->bigInteger('pai')->nullable()->unsigned();
-            $table->foreign('pai')->nullable()->unsigned()
+            $table->bigInteger('animais_id')->nullable()->unsigned();
+            $table->foreign('animais_id')->nullable()->unsigned()
                 ->references('id')
                 ->on('animais');
             ;

@@ -66,6 +66,8 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Tipos</th>
+                                <th>Mãe</th>
+                                <th>Pai</th>
                                 <th style="width: 5%;">Ações</th>
                             </tr>
                         </thead>
@@ -77,6 +79,12 @@
                                     </td>
                                     <td>
                                         {{ $embriao->getTipo() }}
+                                    </td>
+                                    <td>
+                                        {{ $embriao->animal->nome ?? '' }}
+                                    </td>
+                                    <td>
+                                        {{ $embriao->animais->nome ?? '' }}
                                     </td>
                                     <td nowrap>
                                         <a href="{{ url('rebanho/embrioes/create') }}/{{ $embriao->id ?? null }}"

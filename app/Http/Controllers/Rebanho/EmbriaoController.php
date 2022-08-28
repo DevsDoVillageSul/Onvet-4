@@ -32,7 +32,7 @@ class EmbriaoController extends Controller
             return $this->indexExcel($embrioes);
         }
 
-        $embrioes = $embrioes->paginate(config('app.paginate'));
+        $embrioes = $embrioes->with('animal:id,nome','animais:id,nome')->paginate(config('app.paginate'));
 
 
         $dataView = compact('breadcrumbs', 'request', 'embrioes');

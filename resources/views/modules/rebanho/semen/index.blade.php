@@ -64,10 +64,11 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Nome</th>
-                                <th>Registro</th>
-                                <th>Central</th>
                                 <th>Raça</th>
+                                <th>Mãe</th>
+                                <th>Pai</th>
                                 <th>Tipos</th>
                                 <th style="width: 5%;">Ações</th>
                             </tr>
@@ -76,16 +77,19 @@
                             @foreach ($semens as $semen)
                                 <tr>
                                     <td>
+                                        {{ $semen->id }}
+                                    </td>
+                                    <td>
                                         {{ $semen->nome }}
                                     </td>
                                     <td>
-                                        {{ $semen->registro }}
-                                    </td>
-                                    <td>
-                                        {{ $semen->central }}
-                                    </td>
-                                    <td>
                                         {{ $semen->getRaca() }}
+                                    </td>
+                                    <td>
+                                        {{ $semen->animal->nome ?? '' }}
+                                    </td>
+                                    <td>
+                                        {{ $semen->animais->nome ?? '' }}
                                     </td>
                                     <td>
                                         {{ implode(', ', $semen->tipos ?? []) }}
