@@ -90,6 +90,6 @@ class UserController extends Controller
         $roles = Role::select('id', 'name')->orderBy('name')->get();
         $user = $this->model::findOrNew($id);
         $dataView = compact('breadcrumbs', 'user', 'permissions', 'roles');
-        return view('modules/security/user/create', $dataView);      
+        return view('modules/security/user/create', $dataView);      //
     }
 }
