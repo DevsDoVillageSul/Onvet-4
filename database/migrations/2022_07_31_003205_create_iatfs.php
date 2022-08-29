@@ -16,7 +16,7 @@ class CreateIatfs extends Migration
         Schema::create('iatfs', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('desc');
+            $table->longText('desc');
             $table->timestamps();
         });
     }
