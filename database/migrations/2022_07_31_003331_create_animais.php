@@ -38,6 +38,19 @@ class CreateAnimais extends Migration
             $table->integer('valor')->nullable();  
             $table->tinyInteger('desmame')->nullable();
 
+            //cria
+            $table->string('parida', 30)->nullable();
+            $table->integer('num_cria')->nullable(); 
+            $table->string('dt_parto', 20)->nullable();
+            $table->string('reg_parto', 50)->nullable();
+            $table->string('new_cria', 10)->nullable();
+            $table->integer('brinco_cria');
+            $table->string('nome_cria', 50);
+            $table->string('sexo_cria', 20);
+            $table->string('raca_cria', 50);
+
+
+
 
             $table->unsignedBigInteger('lote_id');
             $table->foreign('lote_id')

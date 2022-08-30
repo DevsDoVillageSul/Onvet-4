@@ -50,6 +50,18 @@ class AnimalController extends Controller
                 $animal->fornecedor_id = $request->fornecedor_id;
                 $animal->ativo = $request->ativo ?? 0;
                 $animal->desmame = $request->desmame ?? 0;
+
+                //crias
+                $animal->parida = $request->parida;
+                $animal->num_cria = $request->num_cria;
+                $animal->dt_parto = $request->dt_parto;
+                $animal->reg_parto = $request->reg_parto;
+                $animal->new_cria = $request->new_cria;
+                $animal->brinco_cria = $request->brinco_cria;
+                $animal->nome_cria = $request->nome_cria;
+                $animal->sexo_cria = $request->sexo_cria;
+                $animal->raca_cria = $request->raca_cria;
+
                 $animal->save();
     
                 if (isset($request->imagem)) {

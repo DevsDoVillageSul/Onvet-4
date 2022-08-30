@@ -300,57 +300,81 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">&nbsp;</div>
-                                    <div class="row" id="cria" style="display: none">
-                                        <div class="col-lg-12 col-12">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h3>Crias</h3>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="cria" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Crias</h3>
+                                </div>
+                                <div class="card-body">
                                     <div class="row">
-                                        <div class="col-6 md-12">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <div class="form-group">
-                                                                <label class="form-label">Status</label>
-                                                                <div class="custom-control-primary custom-switch">
-                                                                    <input type="checkbox" name="ativo"
-                                                                        class="custom-control-input" id="ativo"
-                                                                        value="1"
-                                                                        {{ !isset($animal->ativo) || (isset($animal->ativo) && $animal->ativo == 1) ? 'checked="checked"' : '' }}>
-                                                                    <label class="custom-control-label" for="ativo">
-                                                                        <span class="switch-icon-left">
-                                                                            <i data-feather="check"></i>
-                                                                        </span>
-                                                                        <span class="switch-icon-right">
-                                                                            <i data-feather="x"></i>
-                                                                        </span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">&nbsp;</div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-12">
-                                                            <button type="submit"
-                                                                class="btn btn-primary data-submit mr-1">Salvar</button>
-                                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="num_cria">Número de
+                                                    Crias</label>
+                                                <input type="text" name="num_cria" class="form-control"
+                                                    id="num_cria" value="{{ $animal->num_cria ?? '' }}" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="parida">Parida ?</label>
+                                                <select name="parida" id="parida" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getParidas() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->parida) && $animal->parida == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 md-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label">Status</label>
+                                                    <div class="custom-control-primary custom-switch">
+                                                        <input type="checkbox" name="ativo"
+                                                            class="custom-control-input" id="ativo" value="1"
+                                                            {{ !isset($animal->ativo) || (isset($animal->ativo) && $animal->ativo == 1) ? 'checked="checked"' : '' }}>
+                                                        <label class="custom-control-label" for="ativo">
+                                                            <span class="switch-icon-left">
+                                                                <i data-feather="check"></i>
+                                                            </span>
+                                                            <span class="switch-icon-right">
+                                                                <i data-feather="x"></i>
+                                                            </span>
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">&nbsp;</div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-12">
+                                                <button type="submit"
+                                                    class="btn btn-primary data-submit mr-1">Salvar</button>
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
     </form>
     <iframe id="uploadImagem" name="uploadImagem" style="display:none;"></iframe>
 @endsection
@@ -388,6 +412,11 @@ Você disse:@extends('layouts/contentLayoutMaster')
             blocks: [7],
         });
 
+        new Cleave('#num_cria', {
+            numericOnly: true,
+            blocks: [5],
+        });
+
         new Cleave('#valor', {
             numericOnly: true,
             blocks: [10],
@@ -403,29 +432,15 @@ Você disse:@extends('layouts/contentLayoutMaster')
 
         $("#sexo").change(function() {
             if ($("#sexo").val() === "FEMEA") {
-                $('#despesa_macho').hide();
                 $('#cria').show();
-                $('#despesa_femea').show();
-                $('#desmame').show();
             } else if ($("#sexo").val() === "MACHO") {
                 $('#cria').hide();
-                $('#despesa_femea').hide();
-                $('#despesa_macho').show();
-                $('#desmame').show();
             } else {
                 $('#cria').hide();
-                $('#despesa_macho').hide();
-                $('#despesa_femea').hide();
-                $('#desmame').hide();
             }
         });
-
         $("#origem").change(function() {
-            if ($("#origem").val() === "NASCIMENTO") {
-                $('#fornecedor').hide();
-                $('#dt_entrada').hide();
-                $('#peso_entrada').hide();
-            } else if ($("#origem").val() === "COMPRA") {
+            if ($("#origem").val() === "COMPRA") {
                 $('#fornecedor').show();
                 $('#dt_entrada').show();
                 $('#peso_entrada').show();
@@ -437,6 +452,33 @@ Você disse:@extends('layouts/contentLayoutMaster')
                 $('#fornecedor').hide();
                 $('#dt_entrada').hide();
                 $('#peso_entrada').hide();
+
+                $('#despesa_femea').hide();
+                $('#despesa_macho').hide();
+                $('#desmame').hide();
+            }
+        });
+        $("#sexo, #origem").change(function() {
+            if ($("#origem").val() === "COMPRA" && $("#sexo").val() === "FEMEA") {
+                $('#despesa_femea').show();
+                $('#despesa_macho').hide();
+                $('#desmame').show();
+            } else if ($("#origem").val() === "COMPRA" && $("#sexo").val() === "MACHO") {
+                $('#despesa_macho').show();
+                $('#despesa_femea').hide();
+                $('#desmame').hide();
+            } else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "MACHO") {
+                $('#despesa_macho').show();
+                $('#despesa_femea').hide();
+                $('#desmame').hide();
+            }else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "FEMEA") {
+                $('#despesa_femea').show();
+                $('#despesa_macho').hide();
+                $('#desmame').show();
+            } else if ($("#sexo").val() === "") {
+                $('#despesa_femea').hide();
+                $('#despesa_macho').hide();
+                $('#desmame').hide();
             }
         });
     </script>
