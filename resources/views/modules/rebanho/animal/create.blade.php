@@ -276,7 +276,7 @@ Você disse:@extends('layouts/contentLayoutMaster')
                             </div>
                         </div>
                     </div>
-                    <div class="row" id="desmame" style="display: none">
+                    <div class="row" id="desmamo" style="display: none">
                         <div class="col-6 md-12">
                             <div class="card">
                                 <div class="card-body">
@@ -414,42 +414,43 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6 md-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label class="form-label">Status</label>
-                                                    <div class="custom-control-primary custom-switch">
-                                                        <input type="checkbox" name="ativo"
-                                                            class="custom-control-input" id="ativo" value="1"
-                                                            {{ !isset($animal->ativo) || (isset($animal->ativo) && $animal->ativo == 1) ? 'checked="checked"' : '' }}>
-                                                        <label class="custom-control-label" for="ativo">
-                                                            <span class="switch-icon-left">
-                                                                <i data-feather="check"></i>
-                                                            </span>
-                                                            <span class="switch-icon-right">
-                                                                <i data-feather="x"></i>
-                                                            </span>
-                                                        </label>
-                                                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Status</label>
+                                                <div class="custom-control-primary custom-switch">
+                                                    <input type="checkbox" name="ativo" class="custom-control-input"
+                                                        id="ativo" value="1"
+                                                        {{ !isset($animal->ativo) || (isset($animal->ativo) && $animal->ativo == 1) ? 'checked="checked"' : '' }}>
+                                                    <label class="custom-control-label" for="ativo">
+                                                        <span class="switch-icon-left">
+                                                            <i data-feather="check"></i>
+                                                        </span>
+                                                        <span class="switch-icon-right">
+                                                            <i data-feather="x"></i>
+                                                        </span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">&nbsp;</div>
+                                    </div>
+                                    <div class="row">&nbsp;</div>
 
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
-                                                <button type="submit"
-                                                    class="btn btn-primary data-submit mr-1">Salvar</button>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <button type="submit"
+                                                class="btn btn-primary data-submit mr-1">Salvar</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
     </form>
     <iframe id="uploadImagem" name="uploadImagem" style="display:none;"></iframe>
 @endsection
@@ -593,30 +594,30 @@ Você disse:@extends('layouts/contentLayoutMaster')
 
                 $('#despesa_femea').hide();
                 $('#despesa_macho').hide();
-                $('#desmame').hide();
+                $('#desmamo').hide();
             }
         });
         $("#sexo, #origem").change(function() {
             if ($("#origem").val() === "COMPRA" && $("#sexo").val() === "FEMEA") {
                 $('#despesa_femea').show();
                 $('#despesa_macho').hide();
-                $('#desmame').show();
+                $('#desmamo').show();
             } else if ($("#origem").val() === "COMPRA" && $("#sexo").val() === "MACHO") {
                 $('#despesa_macho').show();
                 $('#despesa_femea').hide();
-                $('#desmame').hide();
+                $('#desmamo').hide();
             } else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "MACHO") {
                 $('#despesa_macho').show();
                 $('#despesa_femea').hide();
-                $('#desmame').hide();
+                $('#desmamo').hide();
             } else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "FEMEA") {
                 $('#despesa_femea').show();
                 $('#despesa_macho').hide();
-                $('#desmame').show();
+                $('#desmamo').show();
             } else if ($("#sexo").val() === "") {
                 $('#despesa_femea').hide();
                 $('#despesa_macho').hide();
-                $('#desmame').hide();
+                $('#desmamo').hide();
             }
         });
     </script>
