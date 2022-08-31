@@ -44,10 +44,10 @@ class CreateAnimais extends Migration
             $table->string('dt_parto', 20)->nullable();
             $table->string('reg_parto', 50)->nullable();
             $table->string('new_cria', 10)->nullable();
-            $table->integer('brinco_cria');
-            $table->string('nome_cria', 50);
-            $table->string('sexo_cria', 20);
-            $table->string('raca_cria', 50);
+            $table->integer('brinco_cria')->nullable();
+            $table->string('nome_cria', 50)->nullable();
+            $table->string('sexo_cria', 20)->nullable();
+            $table->string('raca_cria', 50)->nullable();
 
 
 

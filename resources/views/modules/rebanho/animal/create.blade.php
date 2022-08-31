@@ -335,6 +335,81 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="dt_parto" style="display: none">
+                                                <label class="form-label" for="dt_parto">Último Parto</label>
+                                                <input type="date" name="dt_parto" class="form-control"
+                                                    id="dt_parto" value="{{ $animal->dt_parto ?? '' }}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="registro" style="display: none">
+                                                <label class="form-label" for="reg_parto">Registro do Parto</label>
+                                                <select name="reg_parto" id="reg_parto" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getRegPartos() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->reg_parto) && $animal->reg_parto == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="cria_nova" style="display: none">
+                                                <label class="form-label" for="new_cria">Nova Cria ?</label>
+                                                <select name="new_cria" id="new_cria" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getNewCrias() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->new_cria) && $animal->new_cria == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="nome_cria" style="display: none">
+                                                <label class="form-label" for="nome_cria">Nome</label>
+                                                <input type="text" name="nome_cria" class="form-control"
+                                                    id="nome_cria" placeholder="Digite o Nome da Cria"
+                                                    value="{{ $animal->nome ?? '' }}" required />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="sexo_cria" style="display: none">
+                                                <label class="form-label" for="sexo_cria">Sexo da cria</label>
+                                                <select name="sexo_cria" id="sexo_cria" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getSexosCrias() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->sexo_cria) && $animal->sexo_cria == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="raca_cria" style="display: none">
+                                                <label class="form-label" for="raca_cria">Raça da cria</label>
+                                                <select name="raca_cria" id="raca_cria" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getRacasCrias() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->sexo_cria) && $animal->sexo_cria == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -439,6 +514,69 @@ Você disse:@extends('layouts/contentLayoutMaster')
                 $('#cria').hide();
             }
         });
+        $("#parida").change(function() {
+            if ($("#parida").val() === "SIM") {
+                $('#dt_parto').show();
+                $('#registro').show();
+            } else if ($("#parida").val() === "NAO") {
+                $('#dt_parto').hide();
+                $('#registro').hide();
+                $('#cria_nova').hide();
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            } else {
+                $('#registro').hide();
+                $('#dt_parto').hide();
+                $('#cria_nova').hide();
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            }
+        });
+        $("#reg_parto").change(function() {
+            if ($("#reg_parto").val() === "NORMAL") {
+                $('#cria_nova').show();
+            } else if ($("#reg_parto").val() === "MACHO DESCARTE") {
+                $('#cria_nova').hide();
+            } else if ($("#reg_parto").val() === "NATIMORTO/ABORTO") {
+                $('#cria_nova').hide();
+            } else {
+                $('#cria_nova').hide();
+            }
+        });
+        $("#new_cria").change(function() {
+            if ($("#new_cria").val() === "SIM") {
+                $('#nome_cria').show();
+                $('#sexo_cria').show();
+                $('#raca_cria').show();
+            } else if ($("#new_cria").val() === "NAO") {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            } else {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            }
+        });
+
+        $("#new_cria, #reg_parto").change(function() {
+            if ($("#new_cria").val() === "SIM" && $("#reg_parto").val() === "NORMAL") {
+                $('#nome_cria').show();
+                $('#sexo_cria').show();
+                $('#raca_cria').show();
+            } else if ($("#new_cria").val() === "NAO" && $("#reg_parto").val() === "NORMAL") {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            } else {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            }
+        });
+
         $("#origem").change(function() {
             if ($("#origem").val() === "COMPRA") {
                 $('#fornecedor').show();
@@ -471,7 +609,7 @@ Você disse:@extends('layouts/contentLayoutMaster')
                 $('#despesa_macho').show();
                 $('#despesa_femea').hide();
                 $('#desmame').hide();
-            }else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "FEMEA") {
+            } else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "FEMEA") {
                 $('#despesa_femea').show();
                 $('#despesa_macho').hide();
                 $('#desmame').show();
