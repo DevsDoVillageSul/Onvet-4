@@ -317,7 +317,7 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                                 <label class="form-label" for="num_cria">Número de
                                                     Crias</label>
                                                 <input type="text" name="num_cria" class="form-control"
-                                                    id="num_cria" value="{{ $animal->num_cria ?? '' }}" required />
+                                                    id="num_cria" value="{{ $animal->num_cria ?? '' }}" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
@@ -377,7 +377,7 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                                 <label class="form-label" for="nome_cria">Nome</label>
                                                 <input type="text" name="nome_cria" class="form-control"
                                                     id="nome_cria" placeholder="Digite o Nome da Cria"
-                                                    value="{{ $animal->nome ?? '' }}" required />
+                                                    value="{{ $animal->nome ?? '' }}" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
