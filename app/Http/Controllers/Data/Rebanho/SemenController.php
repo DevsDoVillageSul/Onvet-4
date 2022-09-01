@@ -21,7 +21,6 @@ class SemenController extends Controller
             'raca' => 'required|max:255',
             'nome' => 'required|max:255', 
             'registro' => 'required', 
-            'animal_id' => 'required',       
         ]);
 
         if ($validate->fails()) {
@@ -36,10 +35,10 @@ class SemenController extends Controller
             $semen->central = $request->central;
             $semen->tipos = $request->tipos;
 
-            // $semen->animal_id = $request->animal_id;
-            $semen->animais_id = $request->animais_id;
             $semen->raca_2 = $request->raca_2;
             $semen->sangue =  $request->sangue;
+            $semen->animal_id = $request->animal_id;
+            $semen->animais_id = $request->animais_id;
 
 
             $semen->save();

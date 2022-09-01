@@ -17,6 +17,18 @@ class CreateEmbrioes extends Migration
             $table->id();
             $table->string('nome', 50);
             $table->string('tipo', 20);
+            
+            $table->bigInteger('animal_id')->nullable()->unsigned();
+            $table->foreign('animal_id')->nullable()->unsigned()
+                ->references('id')
+                ->on('animais');
+            ;
+
+            $table->bigInteger('animais_id')->nullable()->unsigned();
+            $table->foreign('animais_id')->nullable()->unsigned()
+                ->references('id')
+                ->on('animais');
+            ;
             $table->timestamps();
         });
     }

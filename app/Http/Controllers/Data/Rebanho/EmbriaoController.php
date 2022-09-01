@@ -29,6 +29,9 @@ class EmbriaoController extends Controller
             $embriao = $this->model::findOrNew($request->id);
             $embriao->nome = $request->nome;
             $embriao->tipo = $request->tipo;
+            $embriao->animal_id = $request->animal_id;
+            $embriao->animais_id = $request->animais_id;
+
             $embriao->save();
             return $embriao;
         } catch (Exception $ex) {

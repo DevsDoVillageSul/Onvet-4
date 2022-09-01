@@ -32,7 +32,7 @@ class SemenController extends Controller
             return $this->indexExcel($semens);
         }
 
-        $semens = $semens->paginate(config('app.paginate'));
+        $semens = $semens->with('animal:id,nome','animais:id,nome')->paginate(config('app.paginate'));
 
 
         $dataView = compact('breadcrumbs', 'request', 'semens');

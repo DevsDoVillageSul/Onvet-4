@@ -201,7 +201,216 @@ Você disse:@extends('layouts/contentLayoutMaster')
                                 <div class="form-group" id="peso_entrada" style="display: none">
                                     <label class="form-label" for="peso_entrada">Peso na Entrada (KG)</label>
                                     <input type="text" name="peso_entrada" class="form-control" id="peso_entrada"
-                                        value="{{ $animal->peso_entrada ?? '' }}"/>
+                                        value="{{ $animal->peso_entrada ?? '' }}" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="despesa_macho" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Lançar Despesas</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cat_macho">Categoria</label>
+                                                <select name="cat_macho" id="cat_macho" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getCatMachos() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->cat_macho) && $animal->cat_macho == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="valor">Valor Pago/Cabeça (R$)</label>
+                                                <input type="text" name="valor" class="form-control" id="valor"
+                                                    value="{{ $animal->valor ?? '' }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="despesa_femea" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Lançar Despesas</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="cat_femea">Categoria</label>
+                                                <select name="cat_femea" id="cat_femea" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getCatFemeas() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->cat_femea) && $animal->cat_femea == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="valor">Valor Pago/Cabeça (R$)</label>
+                                                <input type="text" name="valor" class="form-control" id="valor"
+                                                    value="{{ $animal->valor ?? '' }}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="desmamo" style="display: none">
+                        <div class="col-6 md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Lançar desmame</label>
+                                                <div class="custom-control-primary custom-switch">
+                                                    <input type="checkbox" name="desmame" class="custom-control-input"
+                                                        id="desmame" value="1"
+                                                        {{ !isset($animal->desmame) || (isset($animal->desmame) && $animal->desmame == 1) ? 'checked="checked"' : '' }}>
+                                                    <label class="custom-control-label" for="desmame">
+                                                        <span class="switch-icon-left">
+                                                            <i data-feather="check"></i>
+                                                        </span>
+                                                        <span class="switch-icon-right">
+                                                            <i data-feather="x"></i>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="cria" style="display: none">
+                        <div class="col-lg-12 col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Crias</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="num_cria">Número de
+                                                    Crias</label>
+                                                <input type="text" name="num_cria" class="form-control"
+                                                    id="num_cria" value="{{ $animal->num_cria ?? '' }}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="parida">Parida ?</label>
+                                                <select name="parida" id="parida" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getParidas() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->parida) && $animal->parida == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="dt_parto" style="display: none">
+                                                <label class="form-label" for="dt_parto">Último Parto</label>
+                                                <input type="date" name="dt_parto" class="form-control"
+                                                    id="dt_parto" value="{{ $animal->dt_parto ?? '' }}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="registro" style="display: none">
+                                                <label class="form-label" for="reg_parto">Registro do Parto</label>
+                                                <select name="reg_parto" id="reg_parto" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getRegPartos() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->reg_parto) && $animal->reg_parto == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="cria_nova" style="display: none">
+                                                <label class="form-label" for="new_cria">Nova Cria ?</label>
+                                                <select name="new_cria" id="new_cria" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getNewCrias() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->new_cria) && $animal->new_cria == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="nome_cria" style="display: none">
+                                                <label class="form-label" for="nome_cria">Nome</label>
+                                                <input type="text" name="nome_cria" class="form-control"
+                                                    id="nome_cria" placeholder="Digite o Nome da Cria"
+                                                    value="{{ $animal->nome ?? '' }}" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="sexo_cria" style="display: none">
+                                                <label class="form-label" for="sexo_cria">Sexo da cria</label>
+                                                <select name="sexo_cria" id="sexo_cria" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getSexosCrias() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->sexo_cria) && $animal->sexo_cria == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group" id="raca_cria" style="display: none">
+                                                <label class="form-label" for="raca_cria">Raça da cria</label>
+                                                <select name="raca_cria" id="raca_cria" class="form-control">
+                                                    <option value=""></option>
+                                                    @foreach ($animal->getRacasCrias() as $value => $label)
+                                                        <option
+                                                            {{ isset($animal->sexo_cria) && $animal->sexo_cria == $value ? 'selected="selected"' : '' }}
+                                                            value="{{ $value }}">
+                                                            {{ $label }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -279,6 +488,16 @@ Você disse:@extends('layouts/contentLayoutMaster')
             blocks: [7],
         });
 
+        new Cleave('#num_cria', {
+            numericOnly: true,
+            blocks: [5],
+        });
+
+        new Cleave('#valor', {
+            numericOnly: true,
+            blocks: [10],
+        });
+
         var loadFile = function(event) {
             var output = document.getElementById('imagePreview');
             output.src = URL.createObjectURL(event.target.files[0]);
@@ -287,12 +506,80 @@ Você disse:@extends('layouts/contentLayoutMaster')
             }
         };
 
+        $("#sexo").change(function() {
+            if ($("#sexo").val() === "FEMEA") {
+                $('#cria').show();
+            } else if ($("#sexo").val() === "MACHO") {
+                $('#cria').hide();
+            } else {
+                $('#cria').hide();
+            }
+        });
+        $("#parida").change(function() {
+            if ($("#parida").val() === "SIM") {
+                $('#dt_parto').show();
+                $('#registro').show();
+            } else if ($("#parida").val() === "NAO") {
+                $('#dt_parto').hide();
+                $('#registro').hide();
+                $('#cria_nova').hide();
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            } else {
+                $('#registro').hide();
+                $('#dt_parto').hide();
+                $('#cria_nova').hide();
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            }
+        });
+        $("#reg_parto").change(function() {
+            if ($("#reg_parto").val() === "NORMAL") {
+                $('#cria_nova').show();
+            } else if ($("#reg_parto").val() === "MACHO DESCARTE") {
+                $('#cria_nova').hide();
+            } else if ($("#reg_parto").val() === "NATIMORTO/ABORTO") {
+                $('#cria_nova').hide();
+            } else {
+                $('#cria_nova').hide();
+            }
+        });
+        $("#new_cria").change(function() {
+            if ($("#new_cria").val() === "SIM") {
+                $('#nome_cria').show();
+                $('#sexo_cria').show();
+                $('#raca_cria').show();
+            } else if ($("#new_cria").val() === "NAO") {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            } else {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            }
+        });
+
+        $("#new_cria, #reg_parto").change(function() {
+            if ($("#new_cria").val() === "SIM" && $("#reg_parto").val() === "NORMAL") {
+                $('#nome_cria').show();
+                $('#sexo_cria').show();
+                $('#raca_cria').show();
+            } else if ($("#new_cria").val() === "NAO" && $("#reg_parto").val() === "NORMAL") {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            } else {
+                $('#nome_cria').hide();
+                $('#sexo_cria').hide();
+                $('#raca_cria').hide();
+            }
+        });
+
         $("#origem").change(function() {
-            if ($("#origem").val() === "NASCIMENTO") {
-                $('#fornecedor').hide();
-                $('#dt_entrada').hide();
-                $('#peso_entrada').hide();
-            } else if ($("#origem").val() === "COMPRA") {
+            if ($("#origem").val() === "COMPRA") {
                 $('#fornecedor').show();
                 $('#dt_entrada').show();
                 $('#peso_entrada').show();
@@ -304,6 +591,33 @@ Você disse:@extends('layouts/contentLayoutMaster')
                 $('#fornecedor').hide();
                 $('#dt_entrada').hide();
                 $('#peso_entrada').hide();
+
+                $('#despesa_femea').hide();
+                $('#despesa_macho').hide();
+                $('#desmamo').hide();
+            }
+        });
+        $("#sexo, #origem").change(function() {
+            if ($("#origem").val() === "COMPRA" && $("#sexo").val() === "FEMEA") {
+                $('#despesa_femea').show();
+                $('#despesa_macho').hide();
+                $('#desmamo').show();
+            } else if ($("#origem").val() === "COMPRA" && $("#sexo").val() === "MACHO") {
+                $('#despesa_macho').show();
+                $('#despesa_femea').hide();
+                $('#desmamo').hide();
+            } else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "MACHO") {
+                $('#despesa_macho').show();
+                $('#despesa_femea').hide();
+                $('#desmamo').hide();
+            } else if ($("#origem").val() === "OUTROS" && $("#sexo").val() === "FEMEA") {
+                $('#despesa_femea').show();
+                $('#despesa_macho').hide();
+                $('#desmamo').show();
+            } else if ($("#sexo").val() === "") {
+                $('#despesa_femea').hide();
+                $('#despesa_macho').hide();
+                $('#desmamo').hide();
             }
         });
     </script>
