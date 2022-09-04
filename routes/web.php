@@ -33,4 +33,4 @@ Route::middleware(['auth'])->group(function () {
     include('modules/data/endpoints.php');
 });
 
-//require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
