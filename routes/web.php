@@ -32,3 +32,5 @@ Route::middleware(['auth'])->group(function () {
     include('modules/protocolo/index.php');
     include('modules/data/endpoints.php');
 });
+
+//require __DIR__.'/auth.php';
