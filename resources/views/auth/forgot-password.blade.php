@@ -1,36 +1,75 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+   @php
+       $configData = Helper::applClasses();
+   @endphp
+   @extends('layouts/fullLayoutMaster')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
-        </div>
+   @section('title', 'Controle de Acesso')
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+   @section('page-style')
+       {{-- Page Css files --}}
+       <link rel="stylesheet" href="{{ asset(mix('css/base/plugins/forms/form-validation.css')) }}">
+       <link rel="stylesheet" href="{{ asset(mix('css/base/pages/page-auth.css')) }}">
+   @endsection
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+   @section('content')
+       <div class="auth-wrapper auth-v2">
+           <div class="auth-inner row m-0">
+               <!-- Brand logo-->
+               <a class="d-none d-lg-block d-md-none brand-logo" href="javascript:void(0);">
+                   <img src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}"
+                       title="{{ config('app.name') }}" />
+               </a>
+               <!-- /Brand logo-->
+               <!-- Left Text-->
+               <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
+                   <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
+                       <img class="img-fluid" src="{{ asset('img\vacaLeitera.png') }}" alt="" style="width: 40%;" />
+                   </div>
+               </div>
+               <!-- /Left Text-->
+               <!-- Login-->
+               <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
+                   <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                       <div class="col-12 text-center">
+                           <img class="img-fluid" src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}"
+                               title="{{ config('app.name') }}" />
+                           <br><br>
+                       </div>
+                       <h2 class="card-title font-weight-bold mb-1">Redefinir Senha</h2>
+                       <x-auth-card>
+                           <!-- Session Status -->
+                           <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
+                           <!-- Validation Errors -->
+                           <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                           <form method="POST" action="{{ route('password.email') }}">
+                               @csrf
+                               <div>
+                                   <x-label for="email" :value="__('Email')" />
 
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
+                                   <x-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                       :value="old('email')" required autofocus />
+                               </div>
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
+                               <div class="flex items-center justify-end mt-4">
+                                   <button>
+                                       {{ __('Enviar') }}
+                                   </button>
+                               </div>
+                           </form>
+                       </x-auth-card>
+                   </div>
+               </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+               <!-- /Login-->
+           </div>
+       </div>
+   @endsection
+
+   @section('vendor-script')
+       <script src="{{ asset(mix('vendors/js/forms/validation/jquery.validate.min.js')) }}"></script>
+   @endsection
+
+   @section('page-script')
+       <script src="{{ asset(mix('js/scripts/pages/page-auth-reset-password.js')) }}"></script>
+   @endsection

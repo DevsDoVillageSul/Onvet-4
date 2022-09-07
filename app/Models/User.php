@@ -49,13 +49,14 @@ class User extends Authenticatable implements Auditable
     public function checkPermission($permissions)
     {
         $user = session('user');
+        //dd($user);
         if ($user->role_id == 1) {
             return true;
         }
 
         foreach ($permissions as $permission) {
             if ($user->permissions->search($permission) !== false) {
-                return true;
+                return true;    
             }
         }
         return false;

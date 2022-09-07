@@ -18,7 +18,7 @@ class PermissionDadosDashboard extends Migration
                 'id' => '22',
                 'menu' => '1',
                 'position' => '0',
-                'permission_id' => 21,
+                'permission_id' => null,
                 'name' => 'menu.dados.dashboard',
                 'icon' => 'pie-chart',
                 'url' => 'dados/dashboard',
