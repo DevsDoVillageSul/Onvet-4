@@ -1,4 +1,4 @@
-Você disse:@extends('layouts/contentLayoutMaster')
+@extends('layouts/contentLayoutMaster')
 
 @section('title', 'ANIMAIS')
 

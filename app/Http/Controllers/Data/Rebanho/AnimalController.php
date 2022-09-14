@@ -1,100 +1,73 @@
 <?php
 
-namespace App\Http\Controllers\Data\Rebanho;
+namespace App\Http\Controllers\Data\Security;
 
 use App\Http\Controllers\Controller;
-use App\Models\Rebanho\Animal;
-use App\Models\Rebanho\Lote;
-use App\Models\Cadastro\Fornecedor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 
+use App\Models\User;
 use Exception;
 
-class AnimalController extends Controller
+class UserController extends Controller
 {
-    protected $model = Animal::class;
+    protected $model = User::class;
     public function save(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'nome' => 'required|max:255',
-            'lote_id' => 'required',
+            'name' => 'required|max:255',
+            'role_id' => 'required',
+            'home_id' => 'required',
+            'email' => 'required|max:255', 
+            
         ]);
-        if (!$validate->fails()) {
+
+        if ($validate->fails()) {
             try {
-                $animal = $this->model::findOrNew($request->id);
-                $animal->nome = $request->nome;
-                $animal->sexo = $request->sexo;
-                $animal->video = $request->video;
-                $animal->sangue =  $request->sangue;
-                $animal->origem =  $request->origem;
+            $user = $this->model::findOrNew($request->id);
+            $user->name = $request->name;
+            $user->jobtitle = $request->jobtitle;
+            $user->role_id  = $request->role_id;
+            $user->home_id  = $request->home_id;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->cellphone = $request->cellphone;
+            $user->active = $request->ativo ?? 0;
 
-                //itens hide, show
-                $animal->dt_nasc = $request->dt_nasc;
-                $animal->dt_entrada = $request->dt_entrada;
-                $animal->peso = $request->peso;
-                $animal->peso_entrada = $request->peso_entrada;
-                $animal->nome_reg = $request->nome_reg;
-                $animal->num_reg = $request->num_reg;
-                $animal->pelagem = $request->pelagem;
-                $animal->raca_2 = $request->raca_2;
-                $animal->cat_macho= $request->cat_macho;
-                $animal->cat_femea = $request->cat_femea;
-                $animal->valor = $request->valor;
+            
+            $user->save();
 
-
-                $animal->raca = $request->raca;
-                $animal->brinco = $request->brinco;
-                $animal->lote_id = $request->lote_id;
-                $animal->fornecedor_id = $request->fornecedor_id;
-                $animal->ativo = $request->ativo ?? 0;
-                $animal->desmame = $request->desmame ?? 0;
-
-                //crias
-                $animal->parida = $request->parida;
-                $animal->num_cria = $request->num_cria;
-                $animal->dt_parto = $request->dt_parto;
-                $animal->reg_parto = $request->reg_parto;
-                $animal->new_cria = $request->new_cria;
-                $animal->brinco_cria = $request->brinco_cria;
-                $animal->nome_cria = $request->nome_cria;
-                $animal->sexo_cria = $request->sexo_cria;
-                $animal->raca_cria = $request->raca_cria;
-
-                $animal->save();
-    
-                if (isset($request->imagem)) {
-                    $data = Carbon::now();
-                    $path = '/arquivos/rebanhos/';
-                    $arquivo = $animal->id
-                        . $data->format("_Y-m-d-H-i-s")
-                        . '.'
-                        . $request->imagem->getClientOriginalExtension()
-                    ;
-                    $request->imagem->move(public_path() . $path, $arquivo);
-                    $animal->imagem = "{$path}/{$arquivo}";
-                    $animal->save();
-                }
-
-                $notification = array(
-                    'title' => 'Parabéns!',
-                    'message' => 'Animal Salvo com Sucesso',
-                    'icon' => 'success',
-                    'returnUrl' => url('rebanho/animais')
-                );
-                return view('shared.notificationWindowTop', compact('notification'));
-    
-                return $animal;
-            } catch (Exception $ex) {
-                $notification = array(
-                    'title' => 'Oops!',
-                    'message' => "Ocorreu um Erro ao salvar o Animal! " . htmlentities($ex->getMessage()),
-                    'icon' => 'error'
-                );
-                return view('shared.notificationWindowTop', compact('notification'));
+            if (isset($request->imagem)) {
+                $data = Carbon::now();
+                $path = '/arquivos/users/';
+                $arquivo = $user->id
+                    . $data->format("_Y-m-d-H-i-s")
+                    . '.'
+                    . $request->imagem->getClientOriginalExtension()
+                ;
+                $request->imagem->move(public_path() . $path, $arquivo);
+                $user->imagem = "{$path}/{$arquivo}";
+                $user->save();
             }
 
+            $notification = array(
+                'title' => 'Parabéns!',
+                'message' => 'Usuário Salvo com Sucesso',
+                'icon' => 'success',
+                'returnUrl' => url('/security/users')
+            );
+            return view('shared.notificationWindowTop', compact('notification'));
+           
+            return $user;
+          }catch (Exception $ex) {
+            $notification = array(
+                'title' => 'Oops!',
+                'message' => "Ocorreu um Erro ao salvar o Animal! " . htmlentities($ex->getMessage()),
+                'icon' => 'error'
+            );
+              return view('shared.notificationWindowTop', compact('notification'));
+         }
         }else {
             $message = [];
             $errors = $validate->errors();
@@ -104,11 +77,11 @@ class AnimalController extends Controller
 
             $notification = array(
                 'title' => 'Oops!',
-                'message' => "Ocorreu um Erro ao salvar o Animal!<br> " . implode('<br>', $message),
+                'message' => "Ocorreu um Erro ao salvar o Usuário!<br> " . implode('<br>', $message),
                 'icon' => 'error'
             );
             return view('shared.notificationWindowTop', compact('notification'));
         }    
- 
+        //Precisa fazer a validação do e-mail  duplicado (já existente na tabela)
     }
 }

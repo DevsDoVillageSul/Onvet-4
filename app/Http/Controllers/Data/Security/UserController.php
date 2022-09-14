@@ -5,9 +5,8 @@ namespace App\Http\Controllers\Data\Security;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-use App\Models\User;
 use Exception;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -43,12 +42,35 @@ class UserController extends Controller
 
 
             $user->save();
+
+            if (isset($request->imagem)) {
+                $data = Carbon::now();
+                $path = '/arquivos/rebanhos/';
+                $arquivo = $animal->id
+                    . $data->format("_Y-m-d-H-i-s")
+                    . '.'
+                    . $request->imagem->getClientOriginalExtension()
+                ;
+                $request->imagem->move(public_path() . $path, $arquivo);
+                $animal->imagem = "{$path}/{$arquivo}";
+                $animal->save();
+            }
+            $notification = array(
+                'title' => 'Parabéns!',
+                'message' => 'Animal Salvo com Sucesso',
+                'icon' => 'success',
+                'returnUrl' => url('rebanho/animais')
+            );
+            return view('shared.notificationWindowTop', compact('notification'));
+
             return $user;
         } catch (Exception $ex) {
-            return response()->json([
-                'message' => 'Ocorreu um Erro ao salvar o Usuário',
-                'exception' => $ex->getMessage()
-            ], 404);
+             $notification = array(
+                    'title' => 'Oops!',
+                    'message' => "Ocorreu um Erro ao salvar o Usuário ! " . htmlentities($ex->getMessage()),
+                    'icon' => 'error'
+                );
+                return view('shared.notificationWindowTop', compact('notification'));
         }
     }
 }
