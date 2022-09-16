@@ -16,6 +16,7 @@ class AddUserAdmin extends Migration
 
         $user = new User();
         $user->role_id = $role->id;
+        $user->imagem = 'public\images\avatars\admin.jpg';
         $user->name = 'Administrador do Sistema';
         $user->email = 'suporte@wsbrasil.com';
         $user->password = bcrypt('suporte@wsbrasil.com');
