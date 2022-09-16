@@ -17,7 +17,7 @@ class AlterAnimais extends Migration
             $table->string('video')->nullable()->change();
             $table->dropColumn('imagem_id');
             $table->string('imagem')->nullable()->after('video');
-           
+         
         });
     }
 

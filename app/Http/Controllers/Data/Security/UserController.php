@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Data\Security;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Exception;
 use Carbon\Carbon;
+
+use App\Models\User;
+use Exception;
 
 class UserController extends Controller
 {
@@ -39,38 +41,38 @@ class UserController extends Controller
             if($request->password != "") {
                 $user->password = bcrypt($request->password);
             }
-
-
-            $user->save();
-
+   
             if (isset($request->imagem)) {
                 $data = Carbon::now();
-                $path = '/arquivos/rebanhos/';
-                $arquivo = $animal->id
+                $path = '/arquivos/users/';
+                $arquivo = $user->id
                     . $data->format("_Y-m-d-H-i-s")
                     . '.'
                     . $request->imagem->getClientOriginalExtension()
                 ;
                 $request->imagem->move(public_path() . $path, $arquivo);
-                $animal->imagem = "{$path}/{$arquivo}";
-                $animal->save();
+                $user->imagem = "{$path}/{$arquivo}";
+                $user->save();
             }
+
             $notification = array(
                 'title' => 'Parabéns!',
-                'message' => 'Animal Salvo com Sucesso',
+                'message' => 'Usuário Salvo com Sucesso',
                 'icon' => 'success',
-                'returnUrl' => url('rebanho/animais')
+                'returnUrl' => url('/security/users')
             );
             return view('shared.notificationWindowTop', compact('notification'));
 
+
+            $user->save();
             return $user;
         } catch (Exception $ex) {
-             $notification = array(
-                    'title' => 'Oops!',
-                    'message' => "Ocorreu um Erro ao salvar o Usuário ! " . htmlentities($ex->getMessage()),
-                    'icon' => 'error'
-                );
-                return view('shared.notificationWindowTop', compact('notification'));
-        }
+            $notification = array(
+                'title' => 'Oops!',
+                'message' => "Ocorreu um Erro ao salvar o Usuário! " . htmlentities($ex->getMessage()),
+                'icon' => 'error'
+            );
+              return view('shared.notificationWindowTop', compact('notification'));
+         }
     }
 }

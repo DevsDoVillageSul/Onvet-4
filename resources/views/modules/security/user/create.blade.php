@@ -153,6 +153,9 @@
                                 <button type="submit" class="btn btn-primary data-submit mr-1">Salvar</button>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
     </form>
     <iframe id="uploadImagem" name="uploadImagem" style="display:none;"></iframe>
 @endsection
@@ -169,6 +172,13 @@
                 }, 10000);
             });
         });
+        var loadFile = function(event) {
+            var output = document.getElementById('imagePreview');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+        };
         new Cleave('#phone', {
             numericOnly: true,
             blocks: [0, 2, 0, 4, 4],
@@ -180,12 +190,5 @@
             blocks: [0, 2, 5, 4],
             delimiters: ["(", ") ", "-"]
         });
-        var loadFile = function(event) {
-            var output = document.getElementById('imagePreview');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
-        };
     </script>
 @endsection

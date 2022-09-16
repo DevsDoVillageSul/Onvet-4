@@ -31,7 +31,7 @@
               <span class="user-status"></span>
             </div>
             <span class="avatar">
-              <img class="round" src="{{asset('images/portrait/small/avatar-s-11.jpg')}}" alt="{{ Auth::user()->name ?? '' }}" height="40" width="40">
+              <img class="round" src="{{ asset(Auth::user()->imagem) }}" class="img-fluid"  height="40" width="40">
               <span class="avatar-status-online"></span>
             </span>
           </a>
