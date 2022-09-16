@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
 
-        $resume = $this->model::filtros($request)
+       /*$resume = $this->model::filtros($request)
             ->select(
                 DB::raw('SUM(IF(active = 1, 1 ,0)) as actives'),
                 DB::raw('SUM(IF(active = 0, 1 ,0)) as inactives')
@@ -29,6 +29,7 @@ class DashboardController extends Controller
             ->where('id', '>', 1)
             ->first()
         ;
+        */
 
         $dataView = compact('breadcrumbs');
 
