@@ -30,16 +30,11 @@ $configData = Helper::applClasses();
             <!-- Login-->
             <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-                    <div class="col-12 text-center">
-                        <img class="img-fluid" src="{{ asset('images/logo/on_vet_transp_2.png') }}"
-                            alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
-                        <br>
-                    </div>
-                    <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                        <h2>
+                    
+                        <h2 style="text-align:center">
                             Redefinir Senha
                         </h2>
-                    </div>
+                    
                     <x-auth-card>
                         <!-- Validation Errors -->
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
@@ -52,7 +47,7 @@ $configData = Helper::applClasses();
 
                             <!-- Email Address -->
                             <div>
-                                <x-label for="email" :value="__('Email')" />
+                                <x-label for="email" :value="__('Email:')" />
 
                                 <x-input id="email" class="form-control" type="email" name="email" :value="old('email', $request->email)"
                                     required autofocus />
@@ -60,14 +55,14 @@ $configData = Helper::applClasses();
 
                             <!-- Password -->
                             <div class="mt-4">
-                                <x-label for="password" :value="__('Password')" />
+                                <x-label for="password" :value="__('Nova senha:')" />
 
                                 <x-input id="password" class="form-control" type="password" name="password" required />
                             </div>
 
                             <!-- Confirm Password -->
                             <div class="mt-4">
-                                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                                <x-label for="password_confirmation" :value="__('Confirme a nova senha:')" />
 
                                 <x-input id="password_confirmation" class="form-control" type="password"
                                     name="password_confirmation" required />

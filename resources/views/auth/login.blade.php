@@ -29,10 +29,7 @@ $configData = Helper::applClasses();
         <!-- Login-->
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
-                <div class="col-12 text-center"> 
-                    <img class="img-fluid" src="{{ asset('images/logo/on_vet_transp_2.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
-                    <br>
-                </div>
+                
                 <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
                 <h1>
                     Bem vindo 
