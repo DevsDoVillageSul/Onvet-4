@@ -15,6 +15,7 @@ Route::post('login', [LoginController::class, 'authenticate']);
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::any('primeiro-acesso/{id}', [LoginController::class, 'primeiroAcesso'])->name('primeiroAcesso');
 Route::post('redefinir-senha', [LoginController::class, 'redefinirSenha'])->name('redefinirSenha');
+Route::post('/contact/submit', [\App\Http\Controllers\ContactController::class, 'submit']);
 
 
 Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
