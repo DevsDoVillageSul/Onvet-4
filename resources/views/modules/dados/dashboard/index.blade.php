@@ -17,9 +17,6 @@
 
 @section('content')
 
-    <?php $json_data = include 'C:\wamp64\www\Onvet-4\app\Http\Graficos\TotalAnimaisPorRaca.php';
-    //echo $json_data;exit;
-    ?>
     <!-- Dashboard Ecommerce Starts -->
     <section id="dashboard-ecommerce">
         <div class="row match-height">
@@ -190,6 +187,7 @@
 
             <!--/ Revenue Report Card -->
     </section>
+
 
     <script>
         Highcharts.chart('container', {
