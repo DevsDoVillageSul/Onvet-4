@@ -32,10 +32,13 @@ class DashboardController extends Controller
 
     public function consultaAnimais()
     {
-        
-        $animais = Animal::all()->count();
-        
-        return response()->json($animais);
+        try {
+            $animais = Animal::all()->count();
+            return response()->json($animais , 200);
+
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
 } 
