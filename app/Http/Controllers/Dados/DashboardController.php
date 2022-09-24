@@ -30,14 +30,11 @@ class DashboardController extends Controller
         return view('modules/dados/dashboard/index', $dataView);
     }
 
-    public function consultaAnimais(Request $request)
+    public function consultaAnimais()
     {
-        $breadcrumbs = $this->breadcrumbs;
-        $animais = Animal::all();
-
-        //sizeof($animais); 
-
-
+        
+        $animais = Animal::all()->count();
+        
         return response()->json($animais);
     }
 
