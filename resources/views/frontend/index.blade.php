@@ -198,7 +198,7 @@
                     </div>
                 </div>
                 <div class="ud-about-image">
-                    <img src="images\about\newsidebar.png" alt="about-image" />
+                    <img src="images\about\printmenu.png" alt="about-image" />
                 </div>
             </div>
         </div>
@@ -546,7 +546,7 @@
 
                             @if (count($errors) > 0)
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <strong>Preencha os dados corretamente !</strong>
+                                    <strong>Preencha os dados corretamente!</strong>
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                             <li>{{ $error }}</li>
@@ -559,7 +559,7 @@
 
                             @if ($message = Session::get('sucess'))
                                 <div class="alert alert-sucess alert-dismissible fade show" role="alert">
-                                    <strong>Obrigado !</strong> {{ $message }}
+                                    <strong>Obrigado!</strong> {{ $message }}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"
                                         aria-label="Close"></button>
                                 </div>
