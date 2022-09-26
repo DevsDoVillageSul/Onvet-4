@@ -26,8 +26,8 @@
                         <b>{{ config('app.name') }}</b>
                     </td>
                     <td style="text-align:right">
-                        <a class="ml-25" href="http://brunes.com.br" target="_blank">
-                            Brunes Consultoria
+                        <a class="ml-25" href="https://ifgoiano.edu.br/home/index.php/urutai.html" target="_blank">
+                            Instituto Federal Goiano Campus Urutaí
                         </a>
                     </td>
                 </tr>

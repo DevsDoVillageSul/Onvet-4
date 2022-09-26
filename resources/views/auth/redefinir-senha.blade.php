@@ -65,9 +65,7 @@ $configData = Helper::applClasses();
                 </form>
             </div>
         </div>
-        <div class="col-12">
-            <small><a targe="_blank" href='https://br.freepik.com/vetores/abstrato'>Vetor criado por vectorjuice - br.freepik.com</a></small>
-        </div>
+       
         <!-- /Login-->
     </div>
 </div>

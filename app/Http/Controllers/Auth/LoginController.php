@@ -59,7 +59,9 @@ class LoginController extends Controller
             $request->session()->regenerate();
             $user = Auth::user();
             $permission = new Permission();
+           // dd($user->permissions);
             $user->permissions = $user->role->permissions->pluck('id');
+           // array_push($user->permissions, 22);
             $user->menu = $permission->makeMenu();
             $request->session()->put('user', $user);
             if ($user->redefinir_senha == 1) {

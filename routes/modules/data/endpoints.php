@@ -10,4 +10,7 @@ Route::group(['prefix' => 'data'], function () {
 
     include('security.php');
     include('cadastro.php');
+    include('duvida.php');
+    include('rebanho.php');
+    include('protocolo.php');
 });
