@@ -41,12 +41,12 @@ class ContactController extends Controller
 
     public function submit(Request $request)
     {
-       $request->validate([
-        'Nome completo' => 'required',
-        'Email' => 'required|email',
-        'Telefone' => 'required',
-        'Mensagem' => 'required'
-       ]);
+        $request->validate([
+            'fullName' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'message' => 'required'
+           ]);
 
     //AQUI É A DIFERENÇA DO HACKER
     $contato = new ContactForm($request);
