@@ -58,4 +58,24 @@ class DashboardController extends Controller
         }
     }
 
+    public function consultaAnimaisPeso()
+    {
+        try {
+
+            $peso = Animal::select('peso')
+            ->where('peso', '>', '0')
+            ->get();
+            
+            $soma = Animal::select('peso')
+            ->where('peso', '>', '0')
+            ->get()
+            ->sum('peso');
+                           
+            return response()->json($peso, 200);
+
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
 } 

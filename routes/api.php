@@ -18,8 +18,4 @@ use App\Http\Controllers\Dados\DashboardController as DadosDashboardController;
 
 Route::get('/getAnimaisRaca', [DadosDashboardController::class, 'consultaAnimais']);
 Route::get('/getAnimaisRaca/{raca}', [DadosDashboardController::class, 'consultaAnimaisRaca']);
-
-
-Route::get('/testeApi', function(){
-    return "teste";
-}); 
+Route::get('/getAnimaisPeso', [DadosDashboardController::class, 'consultaAnimaisPeso']);
