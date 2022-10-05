@@ -20,16 +20,6 @@
     <!-- Dashboard Ecommerce Starts -->
     <section id="dashboard-ecommerce">
         <div class="row match-height">
-            <!-- Medal Card -->
-
-
-
-
-            <!--/ Medal Card -->
-
-            <!-- Statistics Card -->
-
-            <!--/ Statistics Card -->
         </div>
 
         <div class="row match-height">
@@ -52,9 +42,9 @@
                                             </div>
                                             <div class="media-body my-auto">
                                                 <h4 class="font-weight-bolder mb-0">
-                                                    2
+                                                  {{ $resume_animal->ativos + $resume_animal->inativos}}
                                                 </h4>
-                                                <p class="card-text font-small-3 mb-0">Usuarios</p>
+                                                <p class="card-text font-small-3 mb-0">Animais</p>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +69,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">12</h4>
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_pastagem->ativos + $resume_fornecedor->inativos}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Pastagens</p>
                                             </div>
                                         </div>
@@ -92,7 +82,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">2</h4>
+                                                <h4 class="font-weight-bolder mb-0">  {{ $resume_area->ativos + $resume_area->inativos}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Áreas</p>
                                             </div>
                                         </div>
@@ -106,7 +96,9 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">5</h4>
+                                                <h4 class="font-weight-bolder mb-0">
+                                                  {{ $resume_cultura->ativos + $resume_cultura->inativos}}
+                                                </h4>
                                                 <p class="card-text font-small-3 mb-0">Culturas</p>
                                             </div>
                                         </div>
@@ -120,7 +112,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">10</h4>
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_tanque->ativos + $resume_tanque->inativos}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Tanques</p>
                                             </div>
                                         </div>
@@ -134,7 +126,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">10</h4>
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_fornecedor->ativos + $resume_fornecedor->inativos}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Fornecedores</p>
                                             </div>
                                         </div>
@@ -148,7 +140,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">2</h4>
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_lote->ativos + $resume_lote->inativos}}</h4>
                                                 <p class="card-text font-small-3 mb-0">Lotes</p>
                                             </div>
                                         </div>

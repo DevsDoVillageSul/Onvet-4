@@ -31,6 +31,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label">Status</label>
+                                <div class="custom-control-primary custom-switch">
+                                    <input type="checkbox" name="ativo" class="custom-control-input" id="ativo"
+                                        value="1"
+                                        {{ !isset($tanque->ativo) || (isset($tanque->ativo) && $tanque->ativo == 1) ? 'checked="checked"' : '' }}>
+                                    <label class="custom-control-label" for="ativo">
+                                        <span class="switch-icon-left">
+                                            <i data-feather="check"></i>
+                                        </span>
+                                        <span class="switch-icon-right">
+                                            <i data-feather="x"></i>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col-md-6 col-12">

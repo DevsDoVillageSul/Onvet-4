@@ -67,6 +67,30 @@
                                 </div>
                             </div>
                         </div>
+                                            <div class="row">
+                        <div class="col-6 md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Status</label>
+                                                <div class="custom-control-primary custom-switch">
+                                                    <input type="checkbox" name="ativo" class="custom-control-input"
+                                                        id="ativo" value="1"
+                                                        {{ !isset($lote->ativo) || (isset($lote->ativo) && $lote->ativo == 1) ? 'checked="checked"' : '' }}>
+                                                    <label class="custom-control-label" for="ativo">
+                                                        <span class="switch-icon-left">
+                                                            <i data-feather="check"></i>
+                                                        </span>
+                                                        <span class="switch-icon-right">
+                                                            <i data-feather="x"></i>
+                                                        </span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col-md-6 col-12">

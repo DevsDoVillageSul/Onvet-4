@@ -69,6 +69,7 @@
                                 <th>Abreviação</th>
                                 <th>Sexo</th>
                                 <th>Fase</th>
+                                <th style="width: 5%;">Status</th>
                                 <th style="width: 5%;">Ações</th>
                             </tr>
                         </thead>
@@ -89,6 +90,9 @@
                                     </td>
                                     <td>
                                         {{ $lote->getFase() }}
+                                    </td>
+                                    <td>
+                                        {!! Helper::getAtivoInativo($lote->ativo) !!}
                                     </td>
                                     <td nowrap>
                                         <a href="{{ url('rebanho/lotes/create') }}/{{ $lote->id ?? null }}"
