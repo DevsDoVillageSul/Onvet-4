@@ -102,48 +102,50 @@ class DashboardController extends Controller
     {
         try {
 
-            $animais = Animal::all()->count();
-
-            return response()->json($animais , 200);
-
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
-
-    public function consultaAnimaisRaca($raca)
-    {
-        try {
-
-            $animais = Animal::all()
-                            ->where('raca', $raca)
-                            ->count();
-                           
-            return response()->json($animais , 200);
-
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
-
-    public function consultaAnimaisPeso()
-    {
-        try {
-
-            $peso = Animal::select('peso')
-            ->where('peso', '>', '0')
+            $animais = Animal::selectRaw('raca, COUNT(id) as totalRaca')
+            ->groupByRaw('raca')
             ->get();
-            
-            $soma = Animal::select('peso')
-            ->where('peso', '>', '0')
-            ->get()
-            ->sum('peso');
-                           
-            return response()->json($peso, 200);
+
+            return response()->json($animais , 200);
 
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    // public function consultaAnimaisRaca($raca)
+    // {
+    //     try {
+
+    //         $animais = Animal::all()
+    //                         ->where('raca', $raca)
+    //                         ->count();
+                           
+    //         return response()->json($animais , 200);
+
+    //     } catch (Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
+
+    // public function consultaAnimaisPeso()
+    // {
+    //     try {
+
+    //         $peso = Animal::select('peso')
+    //         ->where('peso', '>', '0')
+    //         ->get();
+            
+    //         $soma = Animal::select('peso')
+    //         ->where('peso', '>', '0')
+    //         ->get()
+    //         ->sum('peso');
+                           
+    //         return response()->json($peso, 200);
+
+    //     } catch (Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
 
 } 
