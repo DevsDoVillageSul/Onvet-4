@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="media-body my-auto">
                                                 <h4 class="font-weight-bolder mb-0">
-                                                  {{ $resume_animal->ativos + $resume_animal->inativos}}
+                                                    {{ $resume_animal->ativos + $resume_animal->inativos }}
                                                 </h4>
                                                 <p class="card-text font-small-3 mb-0">Animais</p>
                                             </div>
@@ -68,7 +68,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">{{ $resume_pastagem->ativos + $resume_fornecedor->inativos}}</h4>
+                                                <h4 class="font-weight-bolder mb-0">
+                                                    {{ $resume_pastagem->ativos + $resume_fornecedor->inativos }}</h4>
                                                 <p class="card-text font-small-3 mb-0">Pastagens</p>
                                             </div>
                                         </div>
@@ -81,7 +82,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">  {{ $resume_area->ativos + $resume_area->inativos}}</h4>
+                                                <h4 class="font-weight-bolder mb-0">
+                                                    {{ $resume_area->ativos + $resume_area->inativos }}</h4>
                                                 <p class="card-text font-small-3 mb-0">Áreas</p>
                                             </div>
                                         </div>
@@ -96,7 +98,7 @@
                                             </div>
                                             <div class="media-body my-auto">
                                                 <h4 class="font-weight-bolder mb-0">
-                                                  {{ $resume_cultura->ativos + $resume_cultura->inativos}}
+                                                    {{ $resume_cultura->ativos + $resume_cultura->inativos }}
                                                 </h4>
                                                 <p class="card-text font-small-3 mb-0">Culturas</p>
                                             </div>
@@ -111,7 +113,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">{{ $resume_tanque->ativos + $resume_tanque->inativos}}</h4>
+                                                <h4 class="font-weight-bolder mb-0">
+                                                    {{ $resume_tanque->ativos + $resume_tanque->inativos }}</h4>
                                                 <p class="card-text font-small-3 mb-0">Tanques</p>
                                             </div>
                                         </div>
@@ -125,7 +128,8 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">{{ $resume_fornecedor->ativos + $resume_fornecedor->inativos}}</h4>
+                                                <h4 class="font-weight-bolder mb-0">
+                                                    {{ $resume_fornecedor->ativos + $resume_fornecedor->inativos }}</h4>
                                                 <p class="card-text font-small-3 mb-0">Fornecedores</p>
                                             </div>
                                         </div>
@@ -139,100 +143,77 @@
                                                 </div>
                                             </div>
                                             <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">{{ $resume_lote->ativos + $resume_lote->inativos}}</h4>
+                                                <h4 class="font-weight-bolder mb-0">
+                                                    {{ $resume_lote->ativos + $resume_lote->inativos }}</h4>
                                                 <p class="card-text font-small-3 mb-0">Lotes</p>
                                             </div>
                                         </div>
                                     </div>
 
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div> 
-            <!--/ Statistics Card -->
+
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <script type="text/javascript">
+                        google.charts.load('current', {
+                            'packages': ['corechart']
+                        });
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+
+                            // Exemplo de requisição GET
+                            var ajax = new XMLHttpRequest();
+                            //var raca1 = 'ANGUS';
+                            // Seta tipo de requisição e URL com os parâmetros
+                            ajax.open("GET", "http://127.0.0.1:8000/api/getAnimaisRaca/", true);
+
+                            // Envia a requisição
+                            ajax.send();
+
+                            // Cria um evento para receber o retorno.
+                            ajax.onreadystatechange = function() {
+
+                                // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
+                                if (ajax.readyState == 4 && ajax.status == 200) {
+
+                                    var data = ajax.responseText;
+
+                                    // Retorno do Ajax
+                                    //console.log(data);
+
+                                    var qtdRacas = data;
 
 
+                                    console.log(qtdRacas);
 
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-            <script type="text/javascript">
-                google.charts.load('current', {
-                    'packages': ['corechart']
-                });
-                google.charts.setOnLoadCallback(drawChart);
 
-                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Raças', 'Animais'],
 
-                    // Exemplo de requisição GET
-                    var ajax = new XMLHttpRequest();
-                    var raca1 = 'ANGUS';
-                    // Seta tipo de requisição e URL com os parâmetros
-                    ajax.open("GET", "http://127.0.0.1:8000/api/getAnimaisRaca/"+ raca1, true);
 
-                    // Envia a requisição
-                    ajax.send();
+                                        ['Anelorado', parseInt(qtdRacas)],
+                                        ['Angus', 1]
+                                    ]);
 
-                    // Cria um evento para receber o retorno.
-                    ajax.onreadystatechange = function() {
+                                    var options = {
+                                        title: 'Quantidade de animais por raça'
+                                    };
 
-                        // Caso o state seja 4 e o http.status for 200, é porque a requisiçõe deu certo.
-                        if (ajax.readyState == 4 && ajax.status == 200) {
+                                    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-                            var data = ajax.responseText;
-
-                            // Retorno do Ajax
-                            //console.log(data);
-
-                            var qtdRacas = data;
-
-                            //console.log(qtdRacas);
-
-                            var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                [raca1, parseInt(qtdRacas)],
-                                ['Anelorado', 1]
-                            ]);
-
-                            var options = {
-                                title: 'Quantidade de animais por raça'
-                            };
-
-                            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-                            chart.draw(data, options);
+                                    chart.draw(data, options);
+                                }
+                            }
                         }
-                    }
-                }
-            </script>
-            </head>
+                    </script>
+                    </head>
 
-            <body>
-                <div id="piechart" style="width: 900px; height: 500px;"></div>
-            </body>
-
-            <!-- Bar Chart - Orders -->
-
-            <!--/ Bar Chart - Orders -->
-
-        <!-- Line Chart - Profit -->
-        <div class="col-lg-6 col-md-3 col-6">
-          <div class="card card-tiny-line-stats">
-            <div class="card-body pb-50">
-              <h6>Profit</h6>
-              <h2 class="font-weight-bolder mb-1">6,24k</h2>
-              <div id="statistics-profit-chart"></div>
-            </div>
-          </div>
-        </div>
-        <!--/ Line Chart - Profit -->
-
-            <!-- Earnings Card -->
-
-            <!--/ Earnings Card -->
-
-
-            <!-- Revenue Report Card -->
-
-            <!--/ Revenue Report Card -->
+                    <body>
+                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    </body>
 
     </section>
     <!-- Dashboard Ecommerce ends -->
@@ -247,6 +228,6 @@
 
 @endsection
 @section('page-script')
-      {{-- Page js files --}}
-      <script src="{{ asset(mix('js/scripts/pages/dashboard-ecommerce.js')) }}"></script>
+    {{-- Page js files --}}
+    <script src="{{ asset(mix('js/scripts/pages/dashboard-ecommerce.js')) }}"></script>
 @endsection
