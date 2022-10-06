@@ -37,7 +37,7 @@ class DashboardController extends Controller
         )
         ->where('id', '>', 1)
         ->first()
-      ;
+       ;
 
        $resume_cultura = Cultura::filtros($request)
       ->select(
