@@ -29,6 +29,12 @@ class Fornecedor extends Model implements Auditable
             });
         }
 
+        if (isset($request->ativo) && $request->ativo != "") {
+            $query->where(function ($q) use ($request) {
+                $q->where('ativo', $request->ativo);
+            });
+        }
+
         return $query;
     }
 

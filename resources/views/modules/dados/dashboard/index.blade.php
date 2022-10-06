@@ -15,129 +15,135 @@
 @endsection
 
 @section('content')
+
     <!-- Dashboard Ecommerce Starts -->
     <section id="dashboard-ecommerce">
         <div class="row match-height">
-            <!-- Medal Card -->
+        </div>
 
-            <!--/ Medal Card -->
+        <div class="row match-height">
+            <div class="col-lg-30 col-12">
+                <div class="row match-height">
+                    <!-- Bar Chart - Orders -->
+                    <div class="col-xl-8 col-md-6 col-12">
+                        <div class="card card-statistics">
+                            <div class="card-header">
+                                <h4 class="card-title">Estatísticas</h4>
+                            </div>
+                            <div class="card-body statistics-body">
+                                <div class="row">
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="gitlab" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">
+                                                  {{ $resume_animal->ativos + $resume_animal->inativos}}
+                                                </h4>
+                                                <p class="card-text font-small-3 mb-0">Animais</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="disc" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">13222 Kg</h4>
+                                                <p class="card-text font-small-3 mb-0">Peso Médio do Rebanho</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="sunset" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_pastagem->ativos + $resume_fornecedor->inativos}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Pastagens</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-3 col-sm-6 col-12">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="slack" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">  {{ $resume_area->ativos + $resume_area->inativos}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Áreas</p>
+                                            </div>
+                                        </div>
+                                    </div>
 
-            <!-- Statistics Card -->
-            {{-- <div class="col-xl-8 col-md-6 col-12">
-                <div class="card card-statistics">
-                    <div class="card-header">
-                        <h4 class="card-title">Estatísticas</h4>
-                    </div>
-                    <div class="card-body statistics-body">
-                        <div class="row">
-                            <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="gitlab" class="avatar-icon"></i>
+                                    <div class="col-xl-3 col-sm-6 col-12">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="feather" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">
+                                                  {{ $resume_cultura->ativos + $resume_cultura->inativos}}
+                                                </h4>
+                                                <p class="card-text font-small-3 mb-0">Culturas</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">112</h4>
-                                        <p class="card-text font-small-3 mb-0">Total do Rebanho</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="disc" class="avatar-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">13222 Kg</h4>
-                                        <p class="card-text font-small-3 mb-0">Peso Médio do Rebanho</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="sunset" class="avatar-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">12</h4>
-                                        <p class="card-text font-small-3 mb-0">Pastagens</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="slack" class="avatar-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">2</h4>
-                                        <p class="card-text font-small-3 mb-0">Áreas</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="feather" class="avatar-icon"></i>
+                                    <div class="col-xl-3 col-sm-6 col-12">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="thermometer" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_tanque->ativos + $resume_tanque->inativos}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Tanques</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">5</h4>
-                                        <p class="card-text font-small-3 mb-0">Culturas</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="thermometer" class="avatar-icon"></i>
+                                    <div class="col-xl-3 col-sm-6 col-12">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="truck" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_fornecedor->ativos + $resume_fornecedor->inativos}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Fornecedores</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">10</h4>
-                                        <p class="card-text font-small-3 mb-0">Tanques</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="truck" class="avatar-icon"></i>
+                                    <div class="col-xl-3 col-sm-6 col-12">
+                                        <div class="media">
+                                            <div class="avatar bg-light-primary mr-2">
+                                                <div class="avatar-content">
+                                                    <i data-feather="grid" class="avatar-icon"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body my-auto">
+                                                <h4 class="font-weight-bolder mb-0">{{ $resume_lote->ativos + $resume_lote->inativos}}</h4>
+                                                <p class="card-text font-small-3 mb-0">Lotes</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">10</h4>
-                                        <p class="card-text font-small-3 mb-0">Fornecedores</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-sm-6 col-12">
-                                <div class="media">
-                                    <div class="avatar bg-light-primary mr-2">
-                                        <div class="avatar-content">
-                                            <i data-feather="grid" class="avatar-icon"></i>
-                                        </div>
-                                    </div>
-                                    <div class="media-body my-auto">
-                                        <h4 class="font-weight-bolder mb-0">2</h4>
-                                        <p class="card-text font-small-3 mb-0">Lotes</p>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
@@ -207,9 +213,17 @@
 
             <!--/ Bar Chart - Orders -->
 
-            <!-- Line Chart - Profit -->
-
-            <!--/ Line Chart - Profit -->
+        <!-- Line Chart - Profit -->
+        <div class="col-lg-6 col-md-3 col-6">
+          <div class="card card-tiny-line-stats">
+            <div class="card-body pb-50">
+              <h6>Profit</h6>
+              <h2 class="font-weight-bolder mb-1">6,24k</h2>
+              <div id="statistics-profit-chart"></div>
+            </div>
+          </div>
+        </div>
+        <!--/ Line Chart - Profit -->
 
             <!-- Earnings Card -->
 
@@ -233,6 +247,6 @@
 
 @endsection
 @section('page-script')
-    {{-- Page js files --}}
-    <script src="{{ asset(mix('js/scripts/pages/dashboard-ecommerce.js')) }}"></script>
+      {{-- Page js files --}}
+      <script src="{{ asset(mix('js/scripts/pages/dashboard-ecommerce.js')) }}"></script>
 @endsection

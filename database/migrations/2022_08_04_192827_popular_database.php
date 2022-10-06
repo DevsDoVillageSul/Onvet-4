@@ -66,6 +66,7 @@ class PopularDatabase extends Migration
                     'id' => 1,
                     'nome' => 'Tanque número 1',
                     'litros' => '255',
+                    'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
@@ -163,6 +164,7 @@ class PopularDatabase extends Migration
                     'abv' => 'Gir',
                     'sexo' => 'MISTO',
                     'fase' => 'RECRIA',
+                    'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]

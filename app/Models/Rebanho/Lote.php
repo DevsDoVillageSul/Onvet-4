@@ -23,11 +23,22 @@ class Lote extends Model implements Auditable
         'PRODUCAO' => 'Produção',
     ];
     
+    public function scopeActive($query)
+    {
+        return $query->where('ativo', 1);
+    }
+
     public function scopeFiltros($query, $request)
     {
         if (isset($request->search) && $request->search != "") {
             $query->where(function ($q) use ($request) {
                 $q->where('nome', 'like', "%{$request->search}%");
+            });
+        }
+
+        if (isset($request->ativo) && $request->ativo != "") {
+            $query->where(function ($q) use ($request) {
+                $q->where('ativo', $request->ativo);
             });
         }
         

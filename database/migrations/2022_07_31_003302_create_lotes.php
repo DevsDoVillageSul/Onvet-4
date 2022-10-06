@@ -20,6 +20,7 @@ class CreateLotes extends Migration
             $table->string('abv', 10);
             $table->string('sexo', 20);
             $table->string('fase', 20);
+            $table->tinyInteger('ativo');
             $table->timestamps();
         });
     }

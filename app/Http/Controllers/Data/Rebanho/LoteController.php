@@ -20,6 +20,7 @@ class LoteController extends Controller
             $lote->abv =  $request->abv;
             $lote->sexo = $request->sexo;
             $lote->fase = $request->fase;
+            $lote->ativo = $request->ativo ?? 0;
             $lote->save();
             return $lote;
         } catch (Exception $ex) {
