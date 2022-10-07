@@ -14,6 +14,8 @@ use App\Models\Cadastro\Cultura;
 use App\Models\Cadastro\Tanque;
 use App\Models\Cadastro\Area;
 use App\Models\Cadastro\Pastagem;
+use App\Models\Cadastro\Funcionario;
+use App\Models\User;
 
 use Illuminate\Support\Facades\DB;
 
@@ -93,8 +95,26 @@ class DashboardController extends Controller
       ->first()
       ;
 
+      $resume_user = User::filtros($request)
+      ->select(
+          DB::raw('SUM(IF(active = 1, 1 ,0)) as actives'),
+          DB::raw('SUM(IF(active = 0, 1 ,0)) as inactives')
+      )
+      ->where('id', '>', 1)
+      ->first()
+     ;
+
+     $resume_funcionario = Funcionario::filtros($request)
+    ->select(
+      DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+      DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+      )
+    ->where('id', '>', 1)
+    ->first()
+     ;
+
         $dataView = compact('breadcrumbs', 'request', 'resume_animal', 'resume_cultura','resume_tanque',
-        'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem');
+        'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem','resume_user','resume_funcionario');
         return view('modules/dados/dashboard/index', $dataView);
     }
 
