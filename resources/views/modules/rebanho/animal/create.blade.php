@@ -402,7 +402,7 @@
                                                     <option value=""></option>
                                                     @foreach ($animal->getRacasCrias() as $value => $label)
                                                         <option
-                                                            {{ isset($animal->sexo_cria) && $animal->sexo_cria == $value ? 'selected="selected"' : '' }}
+                                                            {{ isset($animal->raca_cria) && $animal->raca == $value ? 'selected="selected"' : '' }}
                                                             value="{{ $value }}">
                                                             {{ $label }}
                                                         </option>
