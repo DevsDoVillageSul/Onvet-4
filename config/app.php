@@ -15,7 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Rede América Prêmios'),
     'paginate' => env('APP_PAGINATE', 20),
-    'emailAdmin' => ['angelomrodrigues@gmail.com', 'redeamericapremios@gmail.com'],
+    'emailAdmin' => ['jvey102524@gmail.com', 'gabrieldias122@gmail.com'],
 
     /*
         A chave pública, ou Public Key, é utilizada para acessar
