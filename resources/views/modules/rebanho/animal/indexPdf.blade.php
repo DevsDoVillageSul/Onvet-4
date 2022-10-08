@@ -16,6 +16,7 @@
                 <th>Número de Registro</th>
                 <th>Raça 2</th>
                 <th>Pelagem</th>
+                <th>Lote</th>
                 <th style="width: 5%;">Status</th>
             </tr>
         </thead>
@@ -62,6 +63,10 @@
                     </td>
                     <td>
                         {{ $animal->pelagem }}
+                    </td>
+                    </td>
+                    <td>
+                        {{ $animal->lote->nome ?? null }}
                     </td>
                     <td>{!! Helper::getAtivoInativo($animal->ativo, true) !!}</td>
                 </tr>
@@ -117,6 +122,8 @@
                 <th>Parida ?</th>
                 <th>último Parto</th>
                 <th>Registro Parto</th>
+                <th>Nome</th>
+                <th>Sexo</th>
                 {{-- <th>Nova cria ?</th> --}}
             </tr>
         </thead>
@@ -130,11 +137,11 @@
                         {{ $animal->parida }}
                     </td>
                     <td>
-                        {{$animal->getRegParto() -> null}}
-                    </td>_
-                    {{-- <td>
-                        {{ $animal->getNewCria() ?? null }}
-                    </td> --}}
+                        {{ $animal->nome_cria }}
+                    </td>
+                    <td>
+                        {{ $animal->sexo_cria }}
+                    </td>
                 </tr>
             @endforeach
         </tbody>
