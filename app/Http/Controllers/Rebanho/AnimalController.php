@@ -67,11 +67,10 @@ class AnimalController extends Controller
         $animais = $animais->get();
         $view = 'modules/rebanho/animal/indexExcel';
         $arquivo = 'Animais.xlsx';
-        $dados = ['Animais' => $animais];
+        $dados = ['animais' => $animais];
 
         return Excel::download(new ExcelExport($view, $dados), $arquivo);
     }
-
     public function create($id)
     {
         $breadcrumbs = $this->breadcrumbs;
