@@ -188,6 +188,12 @@ class Animal extends Model implements Auditable
         
         return $query;
     }
+
+    // public function teste(){
+
+    //     return Animal::all()->count();
+        
+    // }
     
     //chaves estrangeiras 
     public function lote()

@@ -24,7 +24,9 @@
     "mercadopago/dx-php": "^2.3",
     "owen-it/laravel-auditing": "^12.0",
     "werneckbh/laravel-qr-code": "^0.1.3",
-    "yajra/laravel-datatables-oracle": "~9.0"
+    "yajra/laravel-datatables-oracle": "~9.0",
+    "orkhanahmadov/eloquent-repository": "^3.0",
+    "illuminate/container": "^9.32"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.5",

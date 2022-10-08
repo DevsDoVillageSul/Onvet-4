@@ -23,7 +23,7 @@
             <!--/ Medal Card -->
 
             <!-- Statistics Card -->
-            {{-- <div class="col-xl-8 col-md-6 col-12">
+            <div class="col-xl-8 col-md-6 col-12">
                 <div class="card card-statistics">
                     <div class="card-header">
                         <h4 class="card-title">Estatísticas</h4>
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!--/ Statistics Card -->
 
 
@@ -158,9 +158,9 @@
 
                     // Exemplo de requisição GET
                     var ajax = new XMLHttpRequest();
-                    var raca1 = 'ANGUS';
+                    //var raca1 = 'ANGUS';
                     // Seta tipo de requisição e URL com os parâmetros
-                    ajax.open("GET", "http://127.0.0.1:8000/api/getAnimaisRaca/"+ raca1, true);
+                    ajax.open("GET", "http://127.0.0.1:8000/api/getAnimaisRaca/", true);
 
                     // Envia a requisição
                     ajax.send();
@@ -178,12 +178,16 @@
 
                             var qtdRacas = data;
 
-                            //console.log(qtdRacas);
+
+                            console.log(qtdRacas);
+
 
                             var data = google.visualization.arrayToDataTable([
-                                ['Task', 'Hours per Day'],
-                                [raca1, parseInt(qtdRacas)],
-                                ['Anelorado', 1]
+                                ['Raças', 'Animais'],
+
+
+                                ['Anelorado', parseInt(qtdRacas)],
+                                ['Angus', 1]
                             ]);
 
                             var options = {
