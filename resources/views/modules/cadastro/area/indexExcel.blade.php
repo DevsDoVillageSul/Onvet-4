@@ -30,7 +30,7 @@
                 <td>
                     {{ $area->util }}
                 </td>
-              </tr>   
+            </tr>
         @endforeach
     </tbody>
 </table>

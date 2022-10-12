@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dados;
+namespace App\Http\Controllers\Informacao;
 
 use App\Exports\ExcelExport;
 use App\Http\Controllers\Controller;
@@ -25,7 +25,7 @@ class DashboardController extends Controller
     protected $model = Animal::class;
     protected $breadcrumbs = [
         ['name' => "Dashboard"],
-        ['link' => "/dados/dashboard", 'name' => "Dashboard"]
+        ['link' => "/informacao/dashboard", 'name' => "Dashboard"]
     ];
 
     public function index(Request $request)
@@ -115,7 +115,7 @@ class DashboardController extends Controller
 
         $dataView = compact('breadcrumbs', 'request', 'resume_animal', 'resume_cultura','resume_tanque',
         'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem','resume_user','resume_funcionario');
-        return view('modules/dados/dashboard/index', $dataView);
+        return view('modules/informacao/dashboard/index', $dataView);
     }
 
     public function consultaAnimais()

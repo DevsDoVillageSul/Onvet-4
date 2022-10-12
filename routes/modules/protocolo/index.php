@@ -24,17 +24,17 @@ Route::group(['prefix' => 'protocolos'], function () {
         // listagem
         Route::any('/', [TeController::class, 'index'])
             ->name('tes-index')
-            ->middleware('checkPermission:8')
+            ->middleware('checkPermission:10')
         ;
         // delete
         Route::get('/delete/{id}', [TeController::class, 'destroy'])
             ->name('tes-destroy')
-            ->middleware('checkPermission:8')   
+            ->middleware('checkPermission:10')   
         ;
         // create
         Route::get('/create/{id}', [TeController::class, 'create'])
             ->name('tes-create')
-            ->middleware('checkPermission:8')
+            ->middleware('checkPermission:10')
         ;
     });
 
