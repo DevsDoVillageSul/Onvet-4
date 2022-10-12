@@ -58,4 +58,22 @@ class AreaController extends Controller
         $dataView = compact('breadcrumbs', 'area');
         return view('modules/cadastro/area/create', $dataView);       
     }
+    private function indexPdf($areas)
+    {
+        $areas = $areas->get();
+        return \PDF::loadView('modules/cadastro/area/indexPdf', compact('areas'))
+            ->setPaper('a4')
+            ->download('Areas.pdf')
+        ;
+    }
+
+    private function indexExcel($areas)
+    {
+        $areas = $areas->get();
+        $view = 'modules/cadastro/area/indexExcel';
+        $arquivo = 'Areas.xlsx';
+        $dados = ['culturas' => $culturas];
+
+        return Excel::download(new ExcelExport($view, $dados), $arquivo);
+    }
 }
