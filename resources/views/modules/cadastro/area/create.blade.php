@@ -118,11 +118,10 @@
                 return false;
             });
         });
-        new Cleave('#ha', {
-            numericOnly: true,
-            blocks: [3, 3, 3, 3],
-            delimiters: [".", ".", ".", "."]
-        });
+            new Cleave('#ha', {
+                numericOnly: true,
+                blocks: [8],
+            });
         new Cleave('#util', {
             numericOnly: true,
             blocks: [3],

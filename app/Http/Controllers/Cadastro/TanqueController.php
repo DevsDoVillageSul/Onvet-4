@@ -60,4 +60,23 @@ class TanqueController extends Controller
         $dataView = compact('breadcrumbs', 'tanque');
         return view('modules/cadastro/tanque/create', $dataView);       
     }
+
+    private function indexPdf($tanques)
+    {
+        $tanques = $tanques->get();
+        return \PDF::loadView('modules/cadastro/tanque/indexPdf', compact('tanques'))
+            ->setPaper('a4')
+            ->download('Tanques.pdf')
+        ;
+    }
+
+    private function indexExcel($tanques)
+    {
+        $tanques = $tanques->get();
+        $view = 'modules/cadastro/tanque/indexExcel';
+        $arquivo = 'Tanques.xlsx';
+        $dados = ['tanques' => $tanques];
+
+        return Excel::download(new ExcelExport($view, $dados), $arquivo);
+    }
 }

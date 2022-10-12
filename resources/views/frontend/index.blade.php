@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="navbar-btn d-none d-sm-inline-block">
-                            <a href="/loginOnvet" onclick="/login" class="ud-main-btn ud-login-btn">
+                            <a href="/informacao/dashboard" onclick="/informacao/dashboard" class="ud-main-btn ud-login-btn">
                                 Ir para aplicação
                             </a>
                             <a href="#contact" class="ud-main-btn ud-white-btn">

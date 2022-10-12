@@ -33,7 +33,7 @@
                     <td>
                         {{ $area->util }}
                     </td>
-                    <td>{!! Helper::getAtivoInativo($area->active, true) !!}</td>
+                    <td>{!! Helper::getAtivoInativo($area->ativo, true) !!}</td>
                 </tr>
             @endforeach
         </tbody>
