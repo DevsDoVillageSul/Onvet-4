@@ -32,7 +32,7 @@
                         {{ $animal->nome }}
                     </td>
                     <td>
-                        {{ $animal->sexo }}
+                        {{ $animal->getSexo() }}
                     </td>
                     <td>
                         {{ $animal->sangue }}
@@ -44,7 +44,7 @@
                         {{ $animal->brinco }}
                     </td>
                     <td>
-                        {{ $animal->origem }}
+                        {{ $animal->getOrigem() }}
                     </td>
                     <td>
                         {{ $animal->dt_nasc }}
@@ -63,7 +63,6 @@
                     </td>
                     <td>
                         {{ $animal->pelagem }}
-                    </td>
                     </td>
                     <td>
                         {{ $animal->lote->nome ?? null }}
@@ -124,7 +123,9 @@
                 <th>Registro Parto</th>
                 <th>Nome</th>
                 <th>Sexo</th>
-                {{-- <th>Nova cria ?</th> --}}
+                <th>Raça</th>
+                <th>Brinco</th>
+                <th>Nova cria ?</th>
             </tr>
         </thead>
         <tbody>
@@ -137,10 +138,25 @@
                         {{ $animal->parida }}
                     </td>
                     <td>
+                        {{ $animal->dt_parto }}
+                    </td>
+                    <td>
+                        {{ $animal->reg_parto }}
+                    </td>
+                    <td>
                         {{ $animal->nome_cria }}
                     </td>
                     <td>
                         {{ $animal->sexo_cria }}
+                    </td>
+                    <td>
+                        {{ $animal->raca_cria }}
+                    </td>
+                    <td>
+                        {{ $animal->brinco_cria }}
+                    </td>
+                    <td>
+                        {{ $animal->new_cria }}
                     </td>
                 </tr>
             @endforeach
