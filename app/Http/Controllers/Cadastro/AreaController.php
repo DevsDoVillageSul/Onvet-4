@@ -72,7 +72,7 @@ class AreaController extends Controller
         $areas = $areas->get();
         $view = 'modules/cadastro/area/indexExcel';
         $arquivo = 'Areas.xlsx';
-        $dados = ['culturas' => $culturas];
+        $dados = ['areas' => $areas];
 
         return Excel::download(new ExcelExport($view, $dados), $arquivo);
     }
