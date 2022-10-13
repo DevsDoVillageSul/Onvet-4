@@ -30,6 +30,7 @@
             <th>Raça</th>
             <th>Brinco</th>
             <th>Nova cria ?</th>
+            <th style="width: 5%;">Status</th>
         </tr>
     </thead>
     <tbody>
@@ -119,6 +120,9 @@
                 </td>
                 <td>
                     {{ $animal->new_cria }}
+                </td>
+                <td>
+                    {!! Helper::getAtivoInativo($animal->ativo, true) !!}
                 </td>
             </tr>
         @endforeach

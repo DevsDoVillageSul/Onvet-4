@@ -64,40 +64,29 @@
                                         value="{{ $area->util ?? '' }}" />
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group">
-                                    <label class="form-label">Status</label>
-                                    <div class="custom-control-primary custom-switch">
-                                        <input type="checkbox" name="ativo" class="custom-control-input" id="ativo"
-                                            value="1"
-                                            {{ !isset($area->ativo) || (isset($area->ativo) && $area->ativo == 1) ? 'checked="checked"' : '' }}>
-                                        <label class="custom-control-label" for="ativo">
-                                            <span class="switch-icon-left">
-                                                <i data-feather="check"></i>
-                                            </span>
-                                            <span class="switch-icon-right">
-                                                <i data-feather="x"></i>
-                                            </span>
-                                        </label>
-                                    </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="form-group">
+                                <label class="form-label">Status</label>
+                                <div class="custom-control-primary custom-switch">
+                                    <input type="checkbox" name="ativo" class="custom-control-input" id="ativo"
+                                        value="1"
+                                        {{ !isset($area->ativo) || (isset($area->ativo) && $area->ativo == 1) ? 'checked="checked"' : '' }}>
+                                    <label class="custom-control-label" for="ativo">
+                                        <span class="switch-icon-left">
+                                            <i data-feather="check"></i>
+                                        </span>
+                                        <span class="switch-icon-right">
+                                            <i data-feather="x"></i>
+                                        </span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-12">
-                <div class="card">
-                    <div class="card-body">
                         <div class="row">&nbsp;</div>
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <button type="submit" class="btn btn-primary data-submit mr-1">
-                                    <i data-feather='save'></i>
-                                    Salvar
-                                </button>
+                                <button type="submit" class="btn btn-primary data-submit mr-1">Salvar</button>
                             </div>
                         </div>
                     </div>
@@ -118,10 +107,10 @@
                 return false;
             });
         });
-            new Cleave('#ha', {
-                numericOnly: true,
-                blocks: [8],
-            });
+        new Cleave('#ha', {
+            numericOnly: true,
+            blocks: [8],
+        });
         new Cleave('#util', {
             numericOnly: true,
             blocks: [3],

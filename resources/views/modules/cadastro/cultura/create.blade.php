@@ -91,21 +91,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">&nbsp;</div>
                         <div class="row">
-                            <div class="col-lg-12 col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row">&nbsp;</div>
-                                        <div class="row">
-                                            <div class="col-md-6 col-12">
-                                                <button type="submit" class="btn btn-primary data-submit mr-1">
-                                                    <i data-feather='save'></i>
-                                                    Salvar
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-md-6 col-12">
+                                <button type="submit" class="btn btn-primary data-submit mr-1">Salvar</button>
                             </div>
                         </div>
                     </div>

@@ -67,7 +67,9 @@
                     <td>
                         {{ $animal->lote->nome ?? null }}
                     </td>
-                    <td>{!! Helper::getAtivoInativo($animal->ativo, true) !!}</td>
+                    <td>
+                    {!! Helper::getAtivoInativo($animal->ativo, true) !!}
+                    </td>
                 </tr>
             @endforeach
         </tbody>

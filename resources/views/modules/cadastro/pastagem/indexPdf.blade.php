@@ -10,32 +10,36 @@
                 <th>Tipo</th>
                 <th>Custo</th>
                 <th>Total</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($pastagens as $pastagem)
                 <tr>
-                     <td>
-                    {{ $pastagem->nome }}
-                </td>
-                <td>
-                    {{ $pastagem->dt_ini }}
-                </td>
-                <td>
-                    {{ $pastagem->dt_fim }}
-                </td>
-                <td>
-                    {{ $pastagem->dt_ini }}
-                </td>
-                <td>
-                    {{ $pastagem->getTipo() }}
-                </td>
-                <td>
-                    {{ $pastagem->custo }}
-                </td>
-                <td>
-                    {{ $pastagem->total }}
-                </td>
+                    <td>
+                        {{ $pastagem->nome }}
+                    </td>
+                    <td>
+                        {{ $pastagem->dt_ini }}
+                    </td>
+                    <td>
+                        {{ $pastagem->dt_fim }}
+                    </td>
+                    <td>
+                        {{ $pastagem->dt_ini }}
+                    </td>
+                    <td>
+                        {{ $pastagem->getTipo() }}
+                    </td>
+                    <td>
+                        {{ $pastagem->custo }}
+                    </td>
+                    <td>
+                        {{ $pastagem->total }}
+                    </td>
+                    <td>
+                        {!! Helper::getAtivoInativo($pastagem->ativo, true) !!}
+                    </td>
                 </tr>
             @endforeach
         </tbody>

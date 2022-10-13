@@ -8,6 +8,7 @@
             <th>Tipo</th>
             <th>Custo</th>
             <th>Total</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -33,6 +34,9 @@
                 </td>
                 <td>
                     {{ $pastagem->total }}
+                </td>
+                <td>
+                    {!! Helper::getAtivoInativo($pastagem->ativo, true) !!}
                 </td>
             </tr>
         @endforeach

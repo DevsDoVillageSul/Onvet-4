@@ -99,7 +99,7 @@
                                 </a>
                                 <a href="javascript:void(0);" class="btn btn-icon btn-outline-warning waves-effect"
                                     alt="Apagar" title="Apagar"
-                                    onclick="deleteItem('{{ url('cadastros/fornecedor/delete') }}/{{ $fornecedor->id ?? null }}');">
+                                    onclick="deleteItem('{{ url('cadastros/fornecedores/delete') }}/{{ $fornecedor->id ?? null }}');">
                                     <i data-feather="trash"></i>
                                 </a>
                             </td>

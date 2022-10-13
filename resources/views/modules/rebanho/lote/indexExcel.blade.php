@@ -6,6 +6,7 @@
             <th>Abreviação</th>
             <th>Sexo</th>
             <th>Fase</th>
+            <th>Status</th>
         </tr>
     </thead>
     <tbody>
@@ -26,7 +27,10 @@
                 <td>
                     {{ $lote->getFase() }}
                 </td>
-              </tr>  
+                <td>
+                    {!! Helper::getAtivoInativo($lote->ativo, true) !!}
+                </td>
+            </tr>
         @endforeach
     </tbody>
 </table>

@@ -45,12 +45,12 @@ Route::group(['prefix' => 'protocolos'], function () {
             ->middleware('checkPermission:11')
         ;
         // delete
-        Route::get('/delete/{id}', [TeController::class, 'destroy'])
+        Route::get('/delete/{id}', [IatfController::class, 'destroy'])
             ->name('iatfs-destroy')
             ->middleware('checkPermission:11')   
         ;
         // create
-        Route::get('/create/{id}', [TeController::class, 'create'])
+        Route::get('/create/{id}', [IatfController::class, 'create'])
             ->name('iatfs-create')
             ->middleware('checkPermission:11')
         ;
