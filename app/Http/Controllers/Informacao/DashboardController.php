@@ -113,25 +113,38 @@ class DashboardController extends Controller
     ->first()
      ;
 
+     $data = DB::table('animais')
+       ->select(
+        DB::raw('raca as raca'),
+        DB::raw('count(*) as number'))
+       ->groupBy('raca')
+       ->get();
+     $array[] = ['Raca', 'Number'];
+     foreach($data as $key => $value)
+     {
+      $array[++$key] = [$value->raca, $value->number];
+     }
+
+
         $dataView = compact('breadcrumbs', 'request', 'resume_animal', 'resume_cultura','resume_tanque',
-        'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem','resume_user','resume_funcionario');
-        return view('modules/informacao/dashboard/index', $dataView);
+        'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem','resume_user','resume_funcionario','data');
+        return view('modules/informacao/dashboard/index', $dataView)->with('raca', json_encode($array));
     }
 
-    public function consultaAnimais()
-    {
-        try {
+    // public function consultaAnimais()
+    // {
+    //     try {
 
-            $animais = Animal::selectRaw('raca, COUNT(id) as totalRaca')
-            ->groupByRaw('raca')
-            ->get();
+    //         $animais = Animal::selectRaw('raca, COUNT(id) as totalRaca')
+    //         ->groupByRaw('raca')
+    //         ->get();
 
-            return response()->json($animais , 200);
+    //         return response()->json($animais , 200);
 
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
-        }
-    }
+    //     } catch (Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
 
     // public function consultaAnimaisRaca($raca)
     // {
