@@ -18,7 +18,6 @@
 
     <!-- Dashboard Ecommerce Starts -->
     <section id="dashboard-ecommerce">
-
         <div class="col-xl-8 col-md-6 col-12">
             <div class="card card-statistics">
                 <div class="card-header">
@@ -163,7 +162,7 @@
             </div>
         </div>
 
-        {{-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -221,14 +220,11 @@
 
         <body>
             <div id="piechart" style="width: 900px; height: 500px;"></div>
-        </body> --}}
+        </body>
 
     </section>
     <!-- Dashboard Ecommerce ends -->
 @endsection
-
-
-
 @section('vendor-script')
     {{-- vendor files --}}
     <script src="{{ asset(mix('vendors/js/charts/apexcharts.min.js')) }}"></script>
