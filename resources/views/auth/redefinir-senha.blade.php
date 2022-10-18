@@ -16,7 +16,7 @@ $configData = Helper::applClasses();
     <div class="auth-inner row m-0">
         <!-- Brand logo-->
         <a class="d-none d-lg-block d-md-none brand-logo" href="javascript:void(0);">
-            <img src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
+            <img src="{{ asset('images/logo/favicon.ico') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
         </a>
         <!-- /Brand logo-->
         <!-- Left Text-->
@@ -30,7 +30,7 @@ $configData = Helper::applClasses();
         <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
             <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                 <div class="col-12 text-center">
-                    <img class="img-fluid" src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
+                    <img class="img-fluid" src="{{ asset('images/logo/favicon.ico') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" />
                     <br><br>
                 </div>
                 <h2 class="card-title font-weight-bold mb-1">Redefinir Senha 🔒</h2>

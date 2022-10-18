@@ -5,7 +5,7 @@
       <li class="nav-item">
         <a class="navbar-brand" href="{{ isset(Auth::user()->name) ? url(Auth::user()->home->url) : url('/') }}">
             <span class="brand-logo">
-                <img src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" style="max-width: 90px;" />
+                <img src="{{ asset('images/logo/favicon.ico') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" style="max-width: 90px;" />
             </span>
         </a>
       </li>

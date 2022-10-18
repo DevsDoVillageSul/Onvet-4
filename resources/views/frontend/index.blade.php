@@ -10,7 +10,7 @@
     <meta name="description" content="Sytem 2.1">
 
     <!--====== Icone ======-->
-    <link rel="shortcut icon" href="images/favicon.svg" type="image/svg" />
+    <link rel="shortcut icon" href="images/logo/favicon.ico" type="image/svg" />
 
     <!-- Boostrap 5.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
