@@ -15,7 +15,7 @@ $configData = Helper::applClasses();
     <div class="auth-wrapper auth-v2">
         <div class="auth-inner row m-0">
             <!-- Brand logo-->
-            <a class="d-none d-lg-block d-md-none brand-logo" href="javascript:void(0);">
+            <a href="/" class="d-none d-lg-block d-md-none brand-logo" href="javascript:void(0);">
                 <img src="{{ asset('images/logo/on_vet_transp_2.png') }}" alt="{{ config('app.name') }}"
                     title="{{ config('app.name') }}" />
             </a>
