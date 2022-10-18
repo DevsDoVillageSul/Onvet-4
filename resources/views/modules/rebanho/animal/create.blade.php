@@ -470,7 +470,7 @@
 
         new Cleave('#num_reg', {
             numericOnly: true,
-            blocks: [4],
+            blocks: [6],
         });
 
         new Cleave('#peso_entrada', {
