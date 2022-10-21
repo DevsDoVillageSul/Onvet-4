@@ -4,7 +4,7 @@
         <table class="border-bottom">
             <tr>
                 <td style="width: 180px">
-                    <img class="logo" src="{{ asset('images/logo/favicon.ico') }}" style="max-width: 170px; max-height: 90px;">
+                    <img class="logo" src="{{ asset('images/logo/logo.png') }}" style="max-width: 170px; max-height: 90px;">
                 </td>
                 <td style="text-align:center">
                     <h1 style="margin-bottom: -4px">
