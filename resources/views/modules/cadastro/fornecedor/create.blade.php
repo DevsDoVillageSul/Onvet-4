@@ -28,21 +28,21 @@
                                         placeholder="Digite o CPF" value="{{ $fornecedor->cpf ?? '' }}" />
                                 </div>
                             </div>
-                                        <div class="col-md-6 col-12">
-                            <div class="form-group">
-                                <label class="form-label" for="tipo">Tipo fornecedor</label>
-                                <select name="tipo" id="tipo" class="form-control" required>
-                                    <option value=""></option>
-                                    @foreach($fornecedor->getTipos() as $value => $label)
-                                    <option 
-                                        {{ isset($fornecedor->tipo) && $fornecedor->tipo == $value ? 'selected="selected"' : '' }}
-                                        value="{{ $value }}">
-                                        {{ $label }}
-                                    </option>
-                                    @endforeach
-                                </select>
+                            <div class="col-md-6 col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="tipo">Tipo fornecedor</label>
+                                    <select name="tipo" id="tipo" class="form-control" required>
+                                        <option value=""></option>
+                                        @foreach ($fornecedor->getTipos() as $value => $label)
+                                            <option
+                                                {{ isset($fornecedor->tipo) && $fornecedor->tipo == $value ? 'selected="selected"' : '' }}
+                                                value="{{ $value }}">
+                                                {{ $label }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="nome">CNPJ</label>
@@ -125,24 +125,23 @@
                                     <label class="form-label" for="complemento">Complemento</label>
                                     <input name="complemento" type="text" id="complemento" class="form-control"
                                         placeholder="Bloco, andar, etc..." autocomplete="off"
-                                        aria-label="Bloco, andar, etc..."
-                                        value="{{ $fornecedor->complemento ?? '' }}" />
+                                        aria-label="Bloco, andar, etc..." value="{{ $fornecedor->complemento ?? '' }}" />
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="bairro">Bairro</label>
                                     <input name="bairro" type="text" id="bairro" placeholder="Digite o Bairro"
-                                        class="form-control" autocomplete="off"
-                                        value="{{ $fornecedor->bairro ?? '' }}" required />
+                                        class="form-control" autocomplete="off" value="{{ $fornecedor->bairro ?? '' }}"
+                                        required />
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="cidade">Cidade</label>
                                     <input name="cidade" type="text" id="cidade" placeholder="Digite a Cidade"
-                                        class="form-control" autocomplete="off"
-                                        value="{{ $fornecedor->cidade ?? '' }}" required />
+                                        class="form-control" autocomplete="off" value="{{ $fornecedor->cidade ?? '' }}"
+                                        required />
                                 </div>
                             </div>
                             <div class="col-md-2 col-12">
@@ -150,60 +149,60 @@
                                     <label class="form-label" for="uf">UF</label>
                                     <select name="uf" id="uf" class="form-control" required>
                                         <option value=""></option>
-                                        <option value="AC"
-                                            {{ $fornecedor->uf == 'AC' ? 'selected="selected"' : '' }}>AC</option>
-                                        <option value="AL"
-                                            {{ $fornecedor->uf == 'AL' ? 'selected="selected"' : '' }}>AL</option>
-                                        <option value="AP"
-                                            {{ $fornecedor->uf == 'AP' ? 'selected="selected"' : '' }}>AP</option>
-                                        <option value="AM"
-                                            {{ $fornecedor->uf == 'AM' ? 'selected="selected"' : '' }}>AM</option>
-                                        <option value="BA"
-                                            {{ $fornecedor->uf == 'BA' ? 'selected="selected"' : '' }}>BA</option>
-                                        <option value="CE"
-                                            {{ $fornecedor->uf == 'CE' ? 'selected="selected"' : '' }}>CE</option>
-                                        <option value="DF"
-                                            {{ $fornecedor->uf == 'DF' ? 'selected="selected"' : '' }}>DF</option>
-                                        <option value="ES"
-                                            {{ $fornecedor->uf == 'ES' ? 'selected="selected"' : '' }}>ES</option>
-                                        <option value="GO"
-                                            {{ $fornecedor->uf == 'GO' ? 'selected="selected"' : '' }}>GO</option>
-                                        <option value="MA"
-                                            {{ $fornecedor->uf == 'MA' ? 'selected="selected"' : '' }}>MA</option>
-                                        <option value="MT"
-                                            {{ $fornecedor->uf == 'MT' ? 'selected="selected"' : '' }}>MT</option>
-                                        <option value="MS"
-                                            {{ $fornecedor->uf == 'MS' ? 'selected="selected"' : '' }}>MS</option>
-                                        <option value="MG"
-                                            {{ $fornecedor->uf == 'RJ' ? 'selected="selected"' : '' }}>MG</option>
-                                        <option value="PA"
-                                            {{ $fornecedor->uf == 'RJ' ? 'selected="selected"' : '' }}>PA</option>
-                                        <option value="PB"
-                                            {{ $fornecedor->uf == 'PB' ? 'selected="selected"' : '' }}>PB</option>
-                                        <option value="PR"
-                                            {{ $fornecedor->uf == 'PR' ? 'selected="selected"' : '' }}>PR</option>
-                                        <option value="PE"
-                                            {{ $fornecedor->uf == 'PE' ? 'selected="selected"' : '' }}>PE</option>
-                                        <option value="PI"
-                                            {{ $fornecedor->uf == 'PI' ? 'selected="selected"' : '' }}>PI</option>
-                                        <option value="RJ"
-                                            {{ $fornecedor->uf == 'RJ' ? 'selected="selected"' : '' }}>RJ</option>
-                                        <option value="RN"
-                                            {{ $fornecedor->uf == 'RN' ? 'selected="selected"' : '' }}>RN</option>
-                                        <option value="RS"
-                                            {{ $fornecedor->uf == 'RS' ? 'selected="selected"' : '' }}>RS</option>
-                                        <option value="RO"
-                                            {{ $fornecedor->uf == 'RO' ? 'selected="selected"' : '' }}>RO</option>
-                                        <option value="RR"
-                                            {{ $fornecedor->uf == 'RR' ? 'selected="selected"' : '' }}>RR</option>
-                                        <option value="SC"
-                                            {{ $fornecedor->uf == 'SC' ? 'selected="selected"' : '' }}>SC</option>
-                                        <option value="SP"
-                                            {{ $fornecedor->uf == 'SP' ? 'selected="selected"' : '' }}>SP</option>
-                                        <option value="SE"
-                                            {{ $fornecedor->uf == 'SE' ? 'selected="selected"' : '' }}>SE</option>
-                                        <option value="TO"
-                                            {{ $fornecedor->uf == 'TO' ? 'selected="selected"' : '' }}>TO</option>
+                                        <option value="AC" {{ $fornecedor->uf == 'AC' ? 'selected="selected"' : '' }}>
+                                            AC</option>
+                                        <option value="AL" {{ $fornecedor->uf == 'AL' ? 'selected="selected"' : '' }}>
+                                            AL</option>
+                                        <option value="AP" {{ $fornecedor->uf == 'AP' ? 'selected="selected"' : '' }}>
+                                            AP</option>
+                                        <option value="AM" {{ $fornecedor->uf == 'AM' ? 'selected="selected"' : '' }}>
+                                            AM</option>
+                                        <option value="BA" {{ $fornecedor->uf == 'BA' ? 'selected="selected"' : '' }}>
+                                            BA</option>
+                                        <option value="CE" {{ $fornecedor->uf == 'CE' ? 'selected="selected"' : '' }}>
+                                            CE</option>
+                                        <option value="DF" {{ $fornecedor->uf == 'DF' ? 'selected="selected"' : '' }}>
+                                            DF</option>
+                                        <option value="ES" {{ $fornecedor->uf == 'ES' ? 'selected="selected"' : '' }}>
+                                            ES</option>
+                                        <option value="GO" {{ $fornecedor->uf == 'GO' ? 'selected="selected"' : '' }}>
+                                            GO</option>
+                                        <option value="MA" {{ $fornecedor->uf == 'MA' ? 'selected="selected"' : '' }}>
+                                            MA</option>
+                                        <option value="MT" {{ $fornecedor->uf == 'MT' ? 'selected="selected"' : '' }}>
+                                            MT</option>
+                                        <option value="MS" {{ $fornecedor->uf == 'MS' ? 'selected="selected"' : '' }}>
+                                            MS</option>
+                                        <option value="MG" {{ $fornecedor->uf == 'RJ' ? 'selected="selected"' : '' }}>
+                                            MG</option>
+                                        <option value="PA" {{ $fornecedor->uf == 'RJ' ? 'selected="selected"' : '' }}>
+                                            PA</option>
+                                        <option value="PB" {{ $fornecedor->uf == 'PB' ? 'selected="selected"' : '' }}>
+                                            PB</option>
+                                        <option value="PR" {{ $fornecedor->uf == 'PR' ? 'selected="selected"' : '' }}>
+                                            PR</option>
+                                        <option value="PE" {{ $fornecedor->uf == 'PE' ? 'selected="selected"' : '' }}>
+                                            PE</option>
+                                        <option value="PI" {{ $fornecedor->uf == 'PI' ? 'selected="selected"' : '' }}>
+                                            PI</option>
+                                        <option value="RJ" {{ $fornecedor->uf == 'RJ' ? 'selected="selected"' : '' }}>
+                                            RJ</option>
+                                        <option value="RN" {{ $fornecedor->uf == 'RN' ? 'selected="selected"' : '' }}>
+                                            RN</option>
+                                        <option value="RS" {{ $fornecedor->uf == 'RS' ? 'selected="selected"' : '' }}>
+                                            RS</option>
+                                        <option value="RO" {{ $fornecedor->uf == 'RO' ? 'selected="selected"' : '' }}>
+                                            RO</option>
+                                        <option value="RR" {{ $fornecedor->uf == 'RR' ? 'selected="selected"' : '' }}>
+                                            RR</option>
+                                        <option value="SC" {{ $fornecedor->uf == 'SC' ? 'selected="selected"' : '' }}>
+                                            SC</option>
+                                        <option value="SP" {{ $fornecedor->uf == 'SP' ? 'selected="selected"' : '' }}>
+                                            SP</option>
+                                        <option value="SE" {{ $fornecedor->uf == 'SE' ? 'selected="selected"' : '' }}>
+                                            SE</option>
+                                        <option value="TO" {{ $fornecedor->uf == 'TO' ? 'selected="selected"' : '' }}>
+                                            TO</option>
                                     </select>
                                 </div>
                             </div>
@@ -329,9 +328,9 @@
             });
             new Cleave('#numero', {
                 numericOnly: true,
-                 blocks: [5],
+                blocks: [5],
             });
-            
+
             new Cleave('#cep', {
                 numericOnly: true,
                 blocks: [5, 3],
@@ -353,7 +352,7 @@
             new Cleave('#cnpj', {
                 numericOnly: true,
                 blocks: [2, 3, 3, 4, 2],
-                delimiters: [".", ".","/", "-"]
+                delimiters: [".", ".", "/", "-"]
             });
 
             var qtd = 1;
