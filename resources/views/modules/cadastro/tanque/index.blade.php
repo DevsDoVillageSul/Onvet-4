@@ -66,6 +66,7 @@
                             <tr>
                                 <th>Nome</th>
                                 <th>Capacidade (L)</th>
+                                <th>Observação</th>
                                 <th style="width: 5%;">Status</th>
                                 <th style="width: 5%;">Ações</th>
                             </tr>
@@ -78,6 +79,9 @@
                                     </td>
                                     <td>
                                         {!! nl2br($tanque->litros) !!}
+                                    </td>
+                                    <td>
+                                        {{ $tanque->observacao }}
                                     </td>
                                     <td>
                                         {!! Helper::getAtivoInativo($tanque->ativo) !!}

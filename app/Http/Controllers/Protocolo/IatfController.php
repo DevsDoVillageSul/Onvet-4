@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Protocolo\Iatf;
+use App\Models\Rebanho\Animal;
 use Maatwebsite\Excel\Facades\Excel;
+
 
 class IatfController extends Controller
 {
@@ -33,7 +35,7 @@ class IatfController extends Controller
             return $this->indexExcel($iatfs);
         }
 
-        $iatfs = $iatfs->paginate(config('app.paginate'));
+        $iatfs = $iatfs->with('animal:id,nome','animais:id,nome')->paginate(config('app.paginate'));
 
         //caminho para salvar o objeto no banco
         //errar aqui, gera um 404 !
@@ -76,7 +78,9 @@ class IatfController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $iatf = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'iatf');
+        $animais = Animal::select('id', 'nome')->where('sexo', '=', 'MACHO')->orderBy('nome')->get();
+        $animais2 = Animal::select('id', 'nome')->where('sexo', '=', 'FEMEA')->orderBy('nome')->get();
+        $dataView = compact('breadcrumbs', 'iatf','animais','animais2');
         return view('modules/protocolo/iatf/create', $dataView);       
     }
 }

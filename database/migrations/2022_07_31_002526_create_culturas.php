@@ -22,6 +22,7 @@ class CreateCulturas extends Migration
             $table->integer('ha');
             $table->integer('custo');
             $table->integer('total');
+            $table->text('observacao')->nullable();
             $table->tinyInteger('ativo');
             $table->timestamps();
         });

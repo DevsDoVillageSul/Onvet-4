@@ -22,6 +22,7 @@ class PastagemController extends Controller
             $pastagem->area = $request->area;
             $pastagem->custo = $request->custo;
             $pastagem->total = $request->total;
+            $pastagem->observacao = $request->observacao;
             $pastagem->ativo = $request->ativo ?? 0;
             $pastagem->save();
             return $pastagem;

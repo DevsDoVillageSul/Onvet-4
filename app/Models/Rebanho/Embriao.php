@@ -16,6 +16,17 @@ class Embriao extends Model implements Auditable
         'VITRO' => 'In Vitro',
         'VIVO' => 'In Vivo',
     ];
+
+    protected $congelamentos = [
+        'VITRIFICACAO' => 'Vitrificação',
+        'TD' => 'TD',
+    ];
+
+    protected $graus = [
+        'MO' => 'MO',
+        'BL' => 'BL',
+        'BX' => 'BX',
+    ];
     
     public function scopeFiltros($query, $request)
     {
@@ -48,6 +59,26 @@ class Embriao extends Model implements Auditable
     public function getTipos()
     {
         return $this->tipos;
+    }
+
+    public function getCongelamento()
+    {
+        return $this->congelamentos[$this->congelamento];
+    }
+
+    public function getCongelamentos()
+    {
+        return $this->congelamentos;
+    }
+
+    public function getGrau()
+    {
+        return $this->graus[$this->grau];
+    }
+
+    public function getGraus()
+    {
+        return $this->graus;
     }
 
 }

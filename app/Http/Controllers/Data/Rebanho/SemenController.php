@@ -40,7 +40,11 @@ class SemenController extends Controller
             $semen->animal_id = $request->animal_id;
             $semen->animais_id = $request->animais_id;
 
+            $semen->tec = $request->tec;
+            $semen->partida = $request->partida;
 
+            $semen->observacao = $request->observacao;
+            
             $semen->save();
             return $semen;
         } catch (Exception $ex) {

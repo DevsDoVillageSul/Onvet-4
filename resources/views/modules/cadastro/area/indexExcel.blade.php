@@ -7,6 +7,7 @@
             <th>Área</th>
             <th>Tipo</th>
             <th>Vida útil</th>
+            <th>Observação</th>
         </tr>
     </thead>
     <tbody>
@@ -29,6 +30,9 @@
                 </td>
                 <td>
                     {{ $area->util }}
+                </td>
+                <td>
+                    {{ $area->observacao }}
                 </td>
             </tr>
         @endforeach

@@ -66,6 +66,13 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="observacao">Observação</label>
+                                    <textarea class="form-control" name="observacao" id="observacao" rows="5"
+                                        placeholder="Digite uma observação sobre o lote" required>{{ $lote->observacao ?? '' }}</textarea>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6 col-12">
                             <div class="form-group">

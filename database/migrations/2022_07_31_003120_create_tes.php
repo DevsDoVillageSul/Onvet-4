@@ -17,6 +17,19 @@ class CreateTes extends Migration
             $table->id();
             $table->string('nome');
             $table->longText('desc');
+
+            $table->bigInteger('animal_id')->nullable()->unsigned();
+            $table->foreign('animal_id')->nullable()->unsigned()
+                ->references('id')
+                ->on('animais');
+            ;
+
+            $table->bigInteger('animais_id')->nullable()->unsigned();
+            $table->foreign('animais_id')->nullable()->unsigned()
+                ->references('id')
+                ->on('animais');
+            ;
+            
             $table->timestamps();
         });
     }

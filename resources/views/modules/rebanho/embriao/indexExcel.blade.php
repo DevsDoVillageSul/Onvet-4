@@ -5,6 +5,9 @@
             <th>Tipos</th>
             <th>Pai</th>
             <th>Mãe</th>
+            <th>Módulo de Congelamento</th>
+            <th>Grau de Desenvolvimento</th>
+            <th>Observação</th>
         </tr>
     </thead>
     <tbody>
@@ -22,7 +25,16 @@
                 <td>
                     {{ $embriao->animal->nome }}
                 </td>
-              </tr>  
+                <td>
+                    {{ $embriao->getCongelamentos() }}
+                </td>
+                <td>
+                    {{ $embriao->getGraus() }}
+                </td>
+                <td>
+                    {{ $embriao->observacao }}
+                </td>
+            </tr>
         @endforeach
     </tbody>
 </table>

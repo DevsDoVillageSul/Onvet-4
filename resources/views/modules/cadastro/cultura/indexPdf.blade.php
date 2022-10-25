@@ -10,34 +10,38 @@
                 <th>Tipo</th>
                 <th>Custo de Formação(R$/ha)</th>
                 <th>Custo de Formação Total</th>
+                <th>Observação</th>
             </tr>
         </thead>
         <tbody>
-           @foreach ($culturas as $cultura)
-            <tr>
-                <td>
-                    {{ $cultura->nome }}
-                </td>
-                <td>
-                    {{ $cultura->dt_ini }}
-                </td>
-                <td>
-                    {{ $cultura->dt_fim }}
-                </td>
-                <td>
-                    {{ $cultura->ha }}
-                </td>
-                <td>
-                    {{ $cultura->getTipo() }}
-                </td>
-                 <td>
-                    {{ $cultura->custo }}
-                </td>
-                  <td>
-                    {{ $cultura->total }}
-                </td>
-              </tr>   
-        @endforeach
+            @foreach ($culturas as $cultura)
+                <tr>
+                    <td>
+                        {{ $cultura->nome }}
+                    </td>
+                    <td>
+                        {{ $cultura->dt_ini }}
+                    </td>
+                    <td>
+                        {{ $cultura->dt_fim }}
+                    </td>
+                    <td>
+                        {{ $cultura->ha }}
+                    </td>
+                    <td>
+                        {{ $cultura->getTipo() }}
+                    </td>
+                    <td>
+                        {{ $cultura->custo }}
+                    </td>
+                    <td>
+                        {{ $cultura->total }}
+                    </td>
+                    <td>
+                        {{ $cultura->observacao }}
+                    </td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 @endsection

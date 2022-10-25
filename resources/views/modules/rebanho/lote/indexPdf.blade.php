@@ -8,6 +8,7 @@
                 <th>Abreviação</th>
                 <th>Sexo</th>
                 <th>Fase</th>
+                <th>Observação</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -28,6 +29,9 @@
                     </td>
                     <td>
                         {{ $lote->getFase() }}
+                    </td>
+                    <td>
+                        {{ $lote->observacao }}
                     </td>
                     <td>
                         {!! Helper::getAtivoInativo($lote->ativo, true) !!}

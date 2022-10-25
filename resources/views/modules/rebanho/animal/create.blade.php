@@ -469,8 +469,7 @@
         });
 
         new Cleave('#num_reg', {
-            numericOnly: true,
-            blocks: [6],
+            blocks: [10]
         });
 
         new Cleave('#peso_entrada', {
@@ -489,8 +488,7 @@
         });
 
         new Cleave('#num_cria', {
-            numericOnly: true,
-            blocks: [5],
+            blocks: [10],
         });
 
         new Cleave('#valor', {

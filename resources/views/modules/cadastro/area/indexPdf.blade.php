@@ -9,6 +9,7 @@
                 <th>Área</th>
                 <th>Tipo</th>
                 <th>Vida útil</th>
+                <th>Observação</th>
                 <th style="width: 5%;">Status</th>
             </tr>
         </thead>
@@ -32,6 +33,9 @@
                     </td>
                     <td>
                         {{ $area->util }}
+                    </td>
+                    <td>
+                        {{ $area->observacao }}
                     </td>
                     <td>{!! Helper::getAtivoInativo($area->ativo, true) !!}</td>
                 </tr>

@@ -116,11 +116,10 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                             <div class="col-md-6 col-12">
+                                            <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="animais_id">Pai</label>
-                                                    <select name="animais_id" id="animais_id" class="form-control"
-                                                        required>
+                                                    <select name="animais_id" id="animais_id" class="form-control" required>
                                                         <option value="">Selecione:</option>
                                                         @foreach ($animais as $animal)
                                                             <option value="{{ $animal->id }}"
@@ -142,6 +141,29 @@
                                                                 {{ $animal->nome }} </option>
                                                         @endforeach
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="tec">Técnico</label>
+                                                    <input type="text" name="tec" class="form-control"
+                                                        id="tec" placeholder="Digite o nome do técnico responsável"
+                                                        value="{{ $semen->tec ?? '' }}" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="partida">Partida</label>
+                                                    <input type="text" name="partida" class="form-control"
+                                                        id="partida" placeholder="Digite a partida"
+                                                        value="{{ $semen->partida ?? '' }}" />
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacao">Observação</label>
+                                                    <textarea class="form-control" name="observacao" id="observacao" rows="5"
+                                                        placeholder="Digite uma observação sobre o sêmen" required>{{ $semen->observacao ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                         </div>

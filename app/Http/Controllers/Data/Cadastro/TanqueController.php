@@ -17,6 +17,7 @@ class TanqueController extends Controller
             $tanque = $this->model::findOrNew($request->id);
             $tanque->nome = $request->nome;
             $tanque->litros = $request->litros;
+            $tanque->observacao = $request->observacao;
             $tanque->ativo = $request->ativo ?? 0;
             $tanque->save();
             return $tanque;

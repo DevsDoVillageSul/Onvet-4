@@ -17,6 +17,9 @@ class InducaoController extends Controller
             $inducao = $this->model::findOrNew($request->id);
             $inducao->nome = $request->nome;
             $inducao->desc = $request->desc;
+            $inducao->animal_id = $request->animal_id;
+            $inducao->dt_prt = $request->dt_prt;
+            $inducao->dias_lactacao = $request->dias_lactacao;
             $inducao->save();
             return $inducao;
         } catch (Exception $ex) {

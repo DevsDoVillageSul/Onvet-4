@@ -17,6 +17,8 @@ class IatfController extends Controller
             $iatf = $this->model::findOrNew($request->id);
             $iatf->nome = $request->nome;
             $iatf->desc = $request->desc;
+            $iatf->animal_id = $request->animal_id;
+            $iatf->animais_id = $request->animais_id;
             $iatf->save();
             return $iatf;
         } catch (Exception $ex) {

@@ -66,6 +66,7 @@
                                 <th>Tipo</th>
                                 <th>Inicio</th>
                                 <th>Finalizada</th>
+                                <th>Observação</th>
                                 <th style="width: 5%;">Status</th>
                                 <th style="width: 5%;">Ações</th>
                             </tr>
@@ -84,6 +85,9 @@
                                     </td>
                                     <td>
                                         {{ $pastagem->dt_fim }}
+                                    </td>
+                                    <td>
+                                        {{ $pastagem->pastagem }}
                                     </td>
                                     <td>
                                         {!! Helper::getAtivoInativo($pastagem->ativo) !!}

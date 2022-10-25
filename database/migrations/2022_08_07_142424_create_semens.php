@@ -35,6 +35,9 @@ class CreateSemens extends Migration
             
             $table->string('sangue', 20);
             $table->string('raca_2', 50);
+            $table->string('partida', 50);
+            $table->string('tec', 50);
+            $table->text('observacao')->nullable();
 
             $table->timestamps();
         });

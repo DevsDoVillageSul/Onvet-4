@@ -17,6 +17,8 @@ class TeController extends Controller
             $te = $this->model::findOrNew($request->id);
             $te->nome = $request->nome;
             $te->desc = $request->desc;
+            $te->animal_id = $request->animal_id;
+            $te->animais_id = $request->animais_id;
             $te->save();
             return $te;
         } catch (Exception $ex) {

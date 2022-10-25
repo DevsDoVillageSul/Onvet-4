@@ -3,6 +3,7 @@
         <tr>
             <th>Nome</th>
             <th>Capacidade (L)</th>
+            <th>Observação</th>
         </tr>
     </thead>
     <tbody>
@@ -13,6 +14,9 @@
                 </td>
                 <td>
                     {{ $tanque->litros }}
+                </td>
+                <td>
+                    {{ $tanque->observacao }}
                 </td>
         @endforeach
     </tbody>

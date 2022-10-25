@@ -68,6 +68,9 @@
                                 <th>Tipos</th>
                                 <th>Mãe</th>
                                 <th>Pai</th>
+                                <th>Módulo de Congelamento</th>
+                                <th>Grau de Desenvolvimento</th>
+                                <th>Observação</th>
                                 <th style="width: 5%;">Ações</th>
                             </tr>
                         </thead>
@@ -85,6 +88,15 @@
                                     </td>
                                     <td>
                                         {{ $embriao->animais->nome ?? '' }}
+                                    </td>
+                                    <td>
+                                        {{ $embriao->getCongelamentos() }}
+                                    </td>
+                                    <td>
+                                        {{ $embriao->getGraus() }}
+                                    </td>
+                                    <td>
+                                        {{ $embriao->observacao }}
                                     </td>
                                     <td nowrap>
                                         <a href="{{ url('rebanho/embrioes/create') }}/{{ $embriao->id ?? null }}"

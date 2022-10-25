@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Protocolo\Te;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Rebanho\Animal;
 
 class TeController extends Controller
 {
@@ -33,7 +34,7 @@ class TeController extends Controller
             return $this->indexExcel($tes);
         }
 
-        $tes = $tes->paginate(config('app.paginate'));
+        $tes = $tes->with('animal:id,nome','animais:id,nome')->paginate(config('app.paginate'));
 
         //caminho para salvar o objeto no banco
         //errar aqui, gera um 404 !
@@ -76,7 +77,9 @@ class TeController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $te = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'te');
+        $animais = Animal::select('id', 'nome')->where('sexo', '=', 'MACHO')->orderBy('nome')->get();
+        $animais2 = Animal::select('id', 'nome')->where('sexo', '=', 'FEMEA')->orderBy('nome')->get();
+        $dataView = compact('breadcrumbs', 'te','animais','animais2');
         return view('modules/protocolo/te/create', $dataView);       
     }
 }

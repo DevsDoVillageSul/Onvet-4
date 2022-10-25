@@ -17,6 +17,7 @@ class CreateTanques extends Migration
             $table->id();
             $table->string('nome');
             $table->integer('litros');
+            $table->text('observacao')->nullable();
             $table->tinyInteger('ativo');
             $table->timestamps();
         });

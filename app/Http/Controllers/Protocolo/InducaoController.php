@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Protocolo\Inducao;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Rebanho\Animal;
 
 class InducaoController extends Controller
 {
@@ -33,7 +34,7 @@ class InducaoController extends Controller
             return $this->indexExcel($inducoes);
         }
 
-        $inducoes = $inducoes->paginate(config('app.paginate'));
+        $inducoes = $inducoes->with('animal:id,nome')->paginate(config('app.paginate'));
 
         //caminho para salvar o objeto no banco
         //errar aqui, gera um 404 !
@@ -76,7 +77,8 @@ class InducaoController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $inducao = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'inducao');
+        $animais = Animal::select('id', 'nome')->orderBy('nome')->get();
+        $dataView = compact('breadcrumbs', 'inducao','animais');
         return view('modules/protocolo/inducao/create', $dataView);       
     }
 }

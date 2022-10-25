@@ -5,6 +5,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Capacidade (L)</th>
+                <th>Observação</th>
                 <th style="width: 5%;">Status</th>
 
             </tr>
@@ -18,7 +19,10 @@
                     <td>
                         {{ $tanque->litros }}
                     </td>
-                     <td>{!! Helper::getAtivoInativo($tanque->ativo, true) !!}</td>
+                    <td>
+                        {{ $tanque->observacao }}
+                    </td>
+                    <td>{!! Helper::getAtivoInativo($tanque->ativo, true) !!}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -21,6 +21,7 @@ class AreaController extends Controller
             $area->dt_fim = $request->dt_fim;
             $area->ha = $request->ha;
             $area->util = $request->util;
+            $area->observacao = $request->observacao;
             $area->ativo = $request->ativo ?? 0;
             $area->save();
             return $area;

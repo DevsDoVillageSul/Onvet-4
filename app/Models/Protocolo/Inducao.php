@@ -5,11 +5,12 @@ namespace App\Models\Protocolo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Models\Rebanho\Animal;
 
 class Inducao extends Model implements Auditable
 {
     use HasFactory, \OwenIt\Auditing\Auditable;
-    
+
     protected $table = 'inducoes';
 
     public function scopeFiltros($query, $request)
@@ -21,5 +22,11 @@ class Inducao extends Model implements Auditable
         }
 
         return $query;
-    } 
+    }
+
+    //chaves estrangeiras
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class, 'animal_id');
+    }
 }

@@ -22,6 +22,7 @@ class CulturaController extends Controller
             $cultura->ha = $request->ha;
             $cultura->custo = $request->custo;
             $cultura->total = $request->total;
+            $cultura->observacao = $request->observacao;
             $cultura->ativo = $request->ativo ?? 0;
             $cultura->save();
             return $cultura;

@@ -8,6 +8,7 @@
             <th>Tipo</th>
             <th>Custo de Formação(R$/ha)</th>
             <th>Custo de Formação Total</th>
+            <th>Observação</th>
         </tr>
     </thead>
     <tbody>
@@ -28,13 +29,16 @@
                 <td>
                     {{ $cultura->getTipo() }}
                 </td>
-                 <td>
+                <td>
                     {{ $cultura->custo }}
                 </td>
-                  <td>
+                <td>
                     {{ $cultura->total }}
                 </td>
-              </tr>   
+                <td>
+                    {{ $cultura->observacao }}
+                </td>
+            </tr>
         @endforeach
     </tbody>
 </table>

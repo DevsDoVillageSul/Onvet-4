@@ -10,6 +10,7 @@
                 <th>Tipo</th>
                 <th>Custo</th>
                 <th>Total</th>
+                <th>Observação</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -36,6 +37,9 @@
                     </td>
                     <td>
                         {{ $pastagem->total }}
+                    </td>
+                    <td>
+                        {{ $pastagem->dt_fim }}
                     </td>
                     <td>
                         {!! Helper::getAtivoInativo($pastagem->ativo, true) !!}

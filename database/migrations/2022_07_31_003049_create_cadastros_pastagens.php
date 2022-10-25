@@ -22,6 +22,7 @@ class CreateCadastrosPastagens extends Migration
             $table->string('tipo', 50);
             $table->string('custo', 50);
             $table->string('total', 50);
+            $table->text('observacao')->nullable();
             $table->tinyInteger('ativo');
             $table->timestamps();
         });

@@ -21,6 +21,7 @@ class CreateAreas extends Migration
             $table->string('tipo', 20);
             $table->integer('ha');
             $table->integer('util');
+            $table->text('observacao')->nullable();
             $table->tinyInteger('ativo');
             $table->timestamps();
         });

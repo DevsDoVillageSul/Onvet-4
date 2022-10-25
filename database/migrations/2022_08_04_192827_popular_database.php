@@ -133,17 +133,17 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
-        DB::table('inducoes')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Primeiro protocolo indução a lactação',
-                    'desc' => 'Populando a base de dados para testes',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('inducoes')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Primeiro protocolo indução a lactação',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         DB::table('iatfs')->insert(
             [
                 [

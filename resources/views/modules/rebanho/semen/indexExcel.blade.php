@@ -10,6 +10,9 @@
             <th>Raça 2</th>
             <th>Pai</th>
             <th>Mãe</th>
+            <th>Técnico</th>
+            <th>Parida</th>
+            <th>Observação</th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +44,15 @@
                 </td>
                 <td>
                     {{ $semen->animal->nome }}
+                </td>
+                <td>
+                    {{ $semen->parida }}
+                </td>
+                <td>
+                    {{ $semen->tec }}
+                </td>
+                <td>
+                    {{ $semen->observacao }}
                 </td>
             </tr>
         @endforeach
