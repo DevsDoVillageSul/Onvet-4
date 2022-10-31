@@ -76,7 +76,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="observacao">Observação</label>
                                     <textarea class="form-control" name="observacao" id="observacao" rows="5"
-                                        placeholder="Digite uma observação sobre o tanque" required>{{ $tanque->observacao ?? '' }}</textarea>
+                                        placeholder="Digite uma observação sobre a cultura" required>{{ $tanque->observacao ?? '' }}</textarea>
                                 </div>
                             </div>
                         </div>
