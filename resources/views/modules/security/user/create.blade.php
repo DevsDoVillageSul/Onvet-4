@@ -96,7 +96,7 @@
                                         <div class="form-group">
                                             <label class="form-label" for="nome">Senha</label>
                                             <input type="password" name="password" class="form-control" id="password"
-                                                placeholder="Digite a Senha" />
+                                                placeholder="Digite a Senha" minlength="8"/>
                                             <small class="form-text text-muted">Será utilizado para acesso ao Sistema</small>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="nome">Senha</label>
                                         <input type="password" name="password" class="form-control" id="password"
-                                            placeholder="Digite a Senha" />
+                                            placeholder="Digite a Senha" minlength="8" required />
                                         <small class="form-text text-muted">Será utilizado para acesso ao Sistema</small>
                                     </div>
                                 </div>
