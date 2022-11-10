@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-md-6 col-12">
                                 <div class="form-group">
-                                    <label class="form-label" for="tipo">Tipos</label>
+                                    <label class="form-label" for="tipo">Tipo</label>
                                     <select name="tipo" id="tipo" class="form-control" required>
                                         <option value=""></option>
                                         @foreach ($embriao->getTipos() as $value => $label)

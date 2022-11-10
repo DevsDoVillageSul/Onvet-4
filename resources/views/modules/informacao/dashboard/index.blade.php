@@ -17,19 +17,14 @@
 @endsection
 
 @section('content')
-
     <!-- Dashboard Ecommerce Starts -->
-
-
-
-
     <section id="dashboard-ecommerce">
         <div class="col-xl-8 col-md-6 col-12">
             <div class="card card-statistics">
                 <div class="card-header">
                     <h4 class="card-title">Estatísticas</h4>
                 </div>
-                <div class="card-body statistics-body " >
+                <div class="card-body statistics-body ">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
                             <div class="media">
@@ -168,51 +163,133 @@
             </div>
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
+            <script type="text/javascript">
+                var analytics = <?php echo $raca; ?>
 
-        <script type="text/javascript">
-            var analytics = <?php echo $raca; ?>
+                google.charts.load('current', {
+                    'packages': ['corechart']
+                });
 
-            google.charts.load('current', {
-                'packages': ['corechart']
-            });
+                google.charts.setOnLoadCallback(drawChart);
 
-            google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(analytics);
+                    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+                    chart.draw(data);
+                }
+            </script>
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable(analytics);
-                var options = {
-                    title: 'Total de animais por raça'
-                };
-                var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
-                chart.draw(data, options);
-            }
-        </script>
-        </head>
+            {{-- Grafico de pastagens por tipo --}}
+            <script type="text/javascript">
+                var analytics_pastagem = <?php echo $tipo; ?>
 
-        <body>
-            <br />
-            <div class="card card-statistics" >
+                google.charts.load('current', {
+                    'packages': ['corechart']
+                });
 
+                google.charts.setOnLoadCallback(drawChart);
 
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(analytics_pastagem);
+                    var chart = new google.visualization.PieChart(document.getElementById('pie_chart_pastagem'));
+                    chart.draw(data);
+                }
+            </script>
+
+            </script>
+
+            {{-- Grafico de embriões por grau --}}
+            <script type="text/javascript">
+                var analytics_embrioes = <?php echo $grau; ?>
+
+                google.charts.load('current', {
+                    'packages': ['corechart']
+                });
+
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(analytics_embrioes);
+                    var chart = new google.visualization.PieChart(document.getElementById('pie_chart_embrioes'));
+                    chart.draw(data);
+                }
+            </script>
+
+            {{-- Grafico de lotes por fase --}}
+            <script type="text/javascript">
+                var analytics_lotes = <?php echo $fase; ?>
+
+                google.charts.load('current', {
+                    'packages': ['corechart']
+                });
+
+                google.charts.setOnLoadCallback(drawChart);
+
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable(analytics_lotes);
+                    var chart = new google.visualization.PieChart(document.getElementById('pie_chart_lotes'));
+                    chart.draw(data);
+                }
+            </script>
+
+            <div class="card card-statistics">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        
                     </div>
                     <div class="panel-body" align="center">
+                        <div class="card-header">
+                            <h4 class="card-title">Total de animais por raça</h4>
+                        </div>
                         <div id="pie_chart" style="width:750px; height:450px;">
-
                         </div>
                     </div>
                 </div>
-
             </div>
-        </body>
 
-        </div>
+            <div class="card card-statistics">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body" align="center">
+                        <div class="card-header">
+                            <h4 class="card-title">Total de pastagens por tipo</h4>
+                        </div>
+                        <div id="pie_chart_pastagem" style="width:750px; height:450px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        
+            <div class="card card-statistics">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body" align="center">
+                        <div class="card-header">
+                            <h4 class="card-title">Total de embriões por grau de desenvolvimento</h4>
+                        </div>
+                        <div id="pie_chart_embrioes" style="width:750px; height:450px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-statistics">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                    </div>
+                    <div class="panel-body" align="center">
+                        <div class="card-header">
+                            <h4 class="card-title">Total de lotes por fase</h4>
+                        </div>
+                        <div id="pie_chart_lotes" style="width:750px; height:450px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
     </section>
     <!-- Dashboard Ecommerce ends -->
 @endsection

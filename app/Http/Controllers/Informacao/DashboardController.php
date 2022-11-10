@@ -37,7 +37,7 @@ class DashboardController extends Controller
             DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
             DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
         )
-        ->where('id', '>', 1)
+        ->where('id', '>', 0)
         ->first()
        ;
 
@@ -46,7 +46,7 @@ class DashboardController extends Controller
         DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
         DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-      ->where('id', '>', 1)
+      ->where('id', '>', 0)
       ->first()
       ;
 
@@ -55,7 +55,7 @@ class DashboardController extends Controller
         DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
         DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-      ->where('id', '>', 1)
+      ->where('id', '>', 0)
       ->first()
       ;
 
@@ -64,7 +64,7 @@ class DashboardController extends Controller
         DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
         DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-      ->where('id', '>', 1)
+      ->where('id', '>', 0)
       ->first()
       ;
 
@@ -73,7 +73,7 @@ class DashboardController extends Controller
         DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
         DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-      ->where('id', '>', 1)
+      ->where('id', '>', 0)
       ->first()
       ;
 
@@ -82,7 +82,7 @@ class DashboardController extends Controller
         DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
         DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-      ->where('id', '>', 1)
+      ->where('id', '>', 0)
       ->first()
       ;
 
@@ -91,7 +91,7 @@ class DashboardController extends Controller
         DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
         DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-      ->where('id', '>', 1)
+      ->where('id', '>', 0)
       ->first()
       ;
 
@@ -109,10 +109,11 @@ class DashboardController extends Controller
       DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
       DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
       )
-    ->where('id', '>', 1)
+    ->where('id', '>', 0)
     ->first()
      ;
 
+    //  função para o gráfico de animais
      $data = DB::table('animais')
        ->select(
         DB::raw('raca as raca'),
@@ -125,10 +126,51 @@ class DashboardController extends Controller
       $array[++$key] = [$value->raca, $value->number];
      }
 
+    //  função para o gráfico de pastagens
+     $data_pastagens = DB::table('pastagem')
+       ->select(
+          DB::raw('tipo as tipo'),
+          DB::raw('count(*) as number'))
+         ->groupBy('tipo')
+         ->get();
+       $array_pastagens[] = ['Tipo', 'Number'];
+       foreach($data_pastagens as $key => $value)
+      {
+       $array_pastagens[++$key] = [$value->tipo, $value->number];
+      }
+
+    //  função para o gráfico de embriões
+     $data_embrioes = DB::table('embrioes')
+     ->select(
+        DB::raw('grau as grau'),
+        DB::raw('count(*) as number'))
+       ->groupBy('grau')
+       ->get();
+     $array_embrioes[] = ['Grau', 'Number'];
+     foreach($data_embrioes as $key => $value)
+    {
+     $array_embrioes[++$key] = [$value->grau, $value->number];
+    }
+
+    //  função para o gráfico de lotes
+    $data_lotes = DB::table('lotes')
+    ->select(
+       DB::raw('fase as fase'),
+       DB::raw('count(*) as number'))
+      ->groupBy('fase')
+      ->get();
+     $array_lotes[] = ['Fase', 'Number'];
+     foreach($data_lotes as $key => $value)
+    {
+     $array_lotes[++$key] = [$value->fase, $value->number];
+    }
 
         $dataView = compact('breadcrumbs', 'request', 'resume_animal', 'resume_cultura','resume_tanque',
-        'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem','resume_user','resume_funcionario','data');
-        return view('modules/informacao/dashboard/index', $dataView)->with('raca', json_encode($array));
+        'resume_fornecedor', 'resume_area','resume_lote','resume_pastagem','resume_user','resume_funcionario','data',
+        'data_pastagens','data_embrioes','data_lotes');
+        return view('modules/informacao/dashboard/index', $dataView)->with('raca', json_encode($array))
+        ->with('tipo', json_encode($array_pastagens))->with('grau', json_encode($array_embrioes))
+        ->with('fase', json_encode($array_lotes));
     }
 
     // public function consultaAnimais()
