@@ -99,7 +99,7 @@
     <!-- ====== Hero End ====== -->
 
     <!-- ====== Features Start ====== -->
-    <section id="features" class="ud-features">
+    <section id="about" class="ud-features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -174,7 +174,7 @@
     <!-- ====== Features End ====== -->
 
     <!-- ====== About Start ====== -->
-    <section id="about" class="ud-about">
+    <section id="feactures" class="ud-about">
         <div class="container">
             <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
                 <div class="ud-about-content-wrapper">
