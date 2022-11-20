@@ -105,7 +105,7 @@
                 <div class="col-lg-12">
                     <div class="ud-section-title">
                         <span>Sobre</span>
-                        <h1>OnVet é um sistema completo para gestão de gado leiteiro e de corte</h1>
+                        <h1>OnVet é um sistema completo para gestão de gado leiteiro</h1>
                     </div>
                 </div>
             </div>
