@@ -19,7 +19,7 @@
 @section('content')
     <!-- Dashboard Ecommerce Starts -->
     <section id="dashboard-ecommerce">
-        <div class="col-xl-8 col-md-6 col-12">
+        <div class="col-xl-12 col-md-6 col-12">
             <div class="card card-statistics">
                 <div class="card-header">
                     <h4 class="card-title">Estatísticas</h4>
@@ -233,75 +233,86 @@
                     chart.draw(data);
                 }
             </script>
-
-            <div class="card card-statistics">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    </div>
-                    <div class="panel-body" align="center">
-                        <div class="card-header">
-                            <h4 class="card-title">Total de animais por raça</h4>
-                        </div>
-                        <div id="pie_chart" style="width:750px; height:450px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card card-statistics">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    </div>
-                    <div class="panel-body" align="center">
-                        <div class="card-header">
-                            <h4 class="card-title">Total de pastagens por tipo</h4>
-                        </div>
-                        <div id="pie_chart_pastagem" style="width:750px; height:450px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card card-statistics">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    </div>
-                    <div class="panel-body" align="center">
-                        <div class="card-header">
-                            <h4 class="card-title">Total de embriões por grau de desenvolvimento</h4>
-                        </div>
-                        <div id="pie_chart_embrioes" style="width:750px; height:450px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card card-statistics">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                    </div>
-                    <div class="panel-body" align="center">
-                        <div class="card-header">
-                            <h4 class="card-title">Total de lotes por fase</h4>
-                        </div>
-                        <div id="pie_chart_lotes" style="width:750px; height:450px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
     </section>
-    <!-- Dashboard Ecommerce ends -->
-@endsection
-@section('vendor-script')
-    {{-- vendor files --}}
-    <script src="{{ asset(mix('vendors/js/charts/apexcharts.min.js')) }}"></script>
-    <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="card card-statistics">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body" align="center">
+                            <div class="card-header">
+                                <h4 class="card-title">Total de animais por raça</h4>
+                            </div>
+                            <div id="pie_chart">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card card-statistics">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        </div>
+                        <div class="panel-body" align="center">
+                            <div class="card-header">
+                                <h4 class="card-title">Total de pastagens por tipo</h4>
+                            </div>
+                            <div id="pie_chart_pastagem">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card card-statistics">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body" align="center">
+                                <div class="card-header">
+                                    <h4 class="card-title">Total de embriões por grau de desenvolvimento</h4>
+                                </div>
+                                <div id="pie_chart_embrioes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card card-statistics">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                            </div>
+                            <div class="panel-body" align="center">
+                                <div class="card-header">
+                                    <h4 class="card-title">Total de lotes por fase</h4>
+                                </div>
+                                <div id="pie_chart_lotes">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Dashboard Ecommerce ends -->
+    @endsection
+    @section('vendor-script')
+        {{-- vendor files --}}
+        <script src="{{ asset(mix('vendors/js/charts/apexcharts.min.js')) }}"></script>
+        <script src="{{ asset(mix('vendors/js/extensions/toastr.min.js')) }}"></script>
 
-@endsection
-@section('page-script')
-    {{-- Page js files --}}
-    <script src="{{ asset(mix('js/scripts/pages/dashboard-ecommerce.js')) }}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-@endsection
+    @endsection
+    @section('page-script')
+        {{-- Page js files --}}
+        <script src="{{ asset(mix('js/scripts/pages/dashboard-ecommerce.js')) }}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    @endsection
