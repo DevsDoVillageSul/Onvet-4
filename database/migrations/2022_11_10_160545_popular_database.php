@@ -37,6 +37,32 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
+
+        DB::table('fornecedor')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Agroforte',
+                    'cpf' => 'null',
+                    'cnpj' => '05.333.963/0001-20',
+                    'razao' => 'AGROFORTE NUTRICAO ANIMAL LTDA',
+                    'tipo' => 'Fornecedor externo',
+                    'email' => 'agroforte@gmail.com',
+                    'telefone' => '(99)99999-9999',
+                    'cep' => '75780-000',
+                    'endereco' => 'Rua VS 7',
+                    'numero' => '1',
+                    'complemento' => 'Quadra 10, Lote 5',
+                    'bairro' => 'Centro',
+                    'cidade' => 'Ipameri',
+                    'uf' => 'GO',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('funcionario')->insert(
             [
                 [
@@ -170,63 +196,215 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
-        // DB::table('animais')->insert(
-        //     [
-        //         [
-        //             'id' => 1,
-        //             'video' => 'https://www.youtube.com/watch?v=ibw_sUAqyeQ&ab_channel=CentraldeFilmeseS%C3%A9ries',
-        //             'imagem_id' => 1,
-        //             'nome' => 'Brabo',
-        //             'sexo' => 'MACHO',
-        //             'sangue' => '1/2',
-        //             'raca' => 'ANGUS',
-        //             'brinco' => 12,
-        //             'origem' => 'COMPRA',
-        //             'dt_nasc' => '19-08-2017',
-        //             'peso' => '1235',
-        //             'nome_reg' => 'Baseado',
-        //             'num_reg' => '1',
-        //             'raca_2' => 'GIR',
-        //             'pelagem' => 'Clara',
-        //             'dt_entrada' => '21-08-22',
-        //             'peso_entrada' => '1250',
-        //             'lote_id' => '1',
-        //             'fornecedor_id' => '1',
-        //             'ativo' => '1',
-        //             'created_at' => '2022-08-03 16:55:45',
-        //             'updated_at' => '2022-08-03 16:55:45'
-        //         ]
-        //     ]
-        // );
+        DB::table('animais')->insert(
+            [
+                [
+                    'id' => 1,
+                    'video' => '',
+                    'imagem' => 1,
+                    'nome' => 'MARRUCO',
+                    'sexo' => 'MACHO',
+                    'sangue' => '1/2',
+                    'raca' => 'ANGUS',
+                    'brinco' => 16,
+                    'origem' => 'COMPRA',
+                    'dt_nasc' => '19-08-2017',
+                    'peso' => '1235',
+                    'nome_reg' => 'Baseado',
+                    'num_reg' => '1',
+                    'raca_2' => 'GIR',
+                    'pelagem' => 'Clara',
+                    'dt_entrada' => '21-08-22',
+                    'peso_entrada' => '1250',
+                    'cat_macho' => 'MACHOS 12 - 24 MESES',
+                    'cat_femea' => '',
+                    'valor' => '6000',
+                    'desmame' => '1',
+                    'parida' => '',
+                    'num_cria' => 16,
+                    'dt_parto' => '',
+                    'reg_parto' => '',
+                    'new_cria' => '',
+                    'brinco_cria' => 16,
+                    'nome_cria' => '',
+                    'sexo_cria' => '',
+                    'raca_cria' => '',
+                    'lote_id' => '1',
+                    'fornecedor_id' => '1',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
 
-        // DB::table('animais')->insert(
-        //     [
-        //         [
-        //             'id' => 2,
-        //             'video' => 'https://www.youtube.com/watch?v=ibw_sUAqyeQ&ab_channel=CentraldeFilmeseS%C3%A9ries',
-        //             'imagem_id' => 2,
-        //             'nome' => 'Braba',
-        //             'sexo' => 'FEMEA',
-        //             'sangue' => '1/4',
-        //             'raca' => 'ANELORADO',
-        //             'brinco' => 22,
-        //             'origem' => 'COMPRA',
-        //             'dt_nasc' => '09-01-2018',
-        //             'peso' => '1120',
-        //             'nome_reg' => 'Mimosa',
-        //             'num_reg' => '2',
-        //             'raca_2' => 'GIR LEITEIRO',
-        //             'pelagem' => 'Escura',
-        //             'dt_entrada' => '21-08-22',
-        //             'peso_entrada' => '1176',
-        //             'lote_id' => '1',
-        //             'fornecedor_id' => '1',
-        //             'ativo' => '1',
-        //             'created_at' => '2022-08-03 16:55:45',
-        //             'updated_at' => '2022-08-03 16:55:45'
-        //         ]
-        //     ]
-        // );
+        DB::table('animais')->insert(
+            [
+                [
+                    'id' => 4,
+                    'video' => '',
+                    'imagem' => 4,
+                    'nome' => 'BRABO',
+                    'sexo' => 'MACHO',
+                    'sangue' => '1/2',
+                    'raca' => 'GIR',
+                    'brinco' => 15,
+                    'origem' => 'COMPRA',
+                    'dt_nasc' => '19-08-2017',
+                    'peso' => '1235',
+                    'nome_reg' => 'BRABO',
+                    'num_reg' => '1',
+                    'raca_2' => 'GIR',
+                    'pelagem' => 'Clara',
+                    'dt_entrada' => '21-08-22',
+                    'peso_entrada' => '1250',
+                    'cat_macho' => 'MACHOS 12 - 24 MESES',
+                    'cat_femea' => '',
+                    'valor' => '6000',
+                    'desmame' => '1',
+                    'parida' => '',
+                    'num_cria' => 15,
+                    'dt_parto' => '',
+                    'reg_parto' => '',
+                    'new_cria' => '',
+                    'brinco_cria' => 15,
+                    'nome_cria' => '',
+                    'sexo_cria' => '',
+                    'raca_cria' => '',
+                    'lote_id' => '1',
+                    'fornecedor_id' => '1',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('animais')->insert(
+            [
+                [
+                    'id' => 5,
+                    'video' => '',
+                    'imagem' => 5,
+                    'nome' => 'BRUTÃO',
+                    'sexo' => 'MACHO',
+                    'sangue' => '1/2',
+                    'raca' => 'ANELORADO',
+                    'brinco' => 14,
+                    'origem' => 'COMPRA',
+                    'dt_nasc' => '19-08-2017',
+                    'peso' => '1235',
+                    'nome_reg' => 'Baseado',
+                    'num_reg' => '1',
+                    'raca_2' => 'GIR',
+                    'pelagem' => 'Clara',
+                    'dt_entrada' => '21-08-22',
+                    'peso_entrada' => '1250',
+                    'cat_macho' => 'MACHOS 12 - 24 MESES',
+                    'cat_femea' => '',
+                    'valor' => '6000',
+                    'desmame' => '1',
+                    'parida' => '',
+                    'num_cria' => 14,
+                    'dt_parto' => '',
+                    'reg_parto' => '',
+                    'new_cria' => '',
+                    'brinco_cria' => 14,
+                    'nome_cria' => '',
+                    'sexo_cria' => '',
+                    'raca_cria' => '',
+                    'lote_id' => '1',
+                    'fornecedor_id' => '1',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('animais')->insert(
+            [
+                [
+                    'id' => 2,
+                    'video' => '',
+                    'imagem' => 2,
+                    'nome' => 'MIMOSA',
+                    'sexo' => 'FEMEA',
+                    'sangue' => '1/4',
+                    'raca' => 'ANELORADO',
+                    'brinco' => 22,
+                    'origem' => 'COMPRA',
+                    'dt_nasc' => '09-01-2018',
+                    'peso' => '1120',
+                    'nome_reg' => 'Mimosa',
+                    'num_reg' => '2',
+                    'raca_2' => 'GIR LEITEIRO',
+                    'pelagem' => 'Escura',
+                    'dt_entrada' => '21-08-22',
+                    'peso_entrada' => '1176',
+                    'cat_macho' => '',
+                    'cat_femea' => 'FEMEAS ACIMA DE 24 MESES',
+                    'valor' => '5000',
+                    'desmame' => '1',
+                    'parida' => 'SIM',
+                    'num_cria' => '2',
+                    'dt_parto' => '2023-01-01',
+                    'reg_parto' => 'NORMAL',
+                    'new_cria' => 'SIM',
+                    'brinco_cria' => '5',
+                    'nome_cria' => 'BRABINHO',
+                    'sexo_cria' => 'MACHO',
+                    'raca_cria' => 'PARDO SUICO',
+                    'lote_id' => '1',
+                    'fornecedor_id' => '1',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('animais')->insert(
+            [
+                [
+                    'id' =>3,
+                    'video' => '',
+                    'imagem' => 3,
+                    'nome' => 'JOANA',
+                    'sexo' => 'FEMEA',
+                    'sangue' => '1/4',
+                    'raca' => 'ANELORADO',
+                    'brinco' => 34,
+                    'origem' => 'COMPRA',
+                    'dt_nasc' => '09-01-2018',
+                    'peso' => '2000',
+                    'nome_reg' => 'Joana',
+                    'num_reg' => '3',
+                    'raca_2' => 'GIR LEITEIRO',
+                    'pelagem' => 'Escura',
+                    'dt_entrada' => '21-08-22',
+                    'peso_entrada' => '999',
+                    'cat_macho' => '',
+                    'cat_femea' => 'FEMEAS ACIMA DE 24 MESES',
+                    'valor' => '5000',
+                    'desmame' => '1',
+                    'parida' => 'SIM',
+                    'num_cria' => '2',
+                    'dt_parto' => '2023-01-01',
+                    'reg_parto' => 'NORMAL',
+                    'new_cria' => 'SIM',
+                    'brinco_cria' => '5',
+                    'nome_cria' => 'JOANINHO',
+                    'sexo_cria' => 'MACHO',
+                    'raca_cria' => 'PARDO SUICO',
+                    'lote_id' => '1',
+                    'fornecedor_id' => '1',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
     }
 
     /**
