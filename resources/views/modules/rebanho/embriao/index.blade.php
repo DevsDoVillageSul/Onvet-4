@@ -70,7 +70,7 @@
                                 <th>Pai</th>
                                 <th>Módulo de Congelamento</th>
                                 <th>Grau de Desenvolvimento</th>
-                                <th>Observação</th>
+                                <th>Observação</th> 
                                 <th style="width: 5%;">Ações</th>
                             </tr>
                         </thead>
@@ -90,10 +90,10 @@
                                         {{ $embriao->animais->nome ?? '' }}
                                     </td>
                                     <td>
-                                        {{ $embriao->getCongelamentos() }}
+                                        {{ $embriao->getCongelamento() }}
                                     </td>
                                     <td>
-                                        {{ $embriao->getGraus() }}
+                                        {{ $embriao->getGrau() }}
                                     </td>
                                     <td>
                                         {{ $embriao->observacao }}
