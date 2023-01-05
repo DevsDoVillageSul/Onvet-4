@@ -148,6 +148,80 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
+
+        DB::table('pastagem')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Pastagem natural',
+                    'dt_ini' => '22-02-2021',
+                    'dt_fim' => '05-12-2021',
+                    'area' => '55',
+                    'tipo' => 'NATURAL',
+                    'custo' => '15000',
+                    'total' => '825000',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('pastagem')->insert(
+            [
+                [
+                    'id' =>3,
+                    'nome' => 'Pastagem inicial',
+                    'dt_ini' => '22-02-2021',
+                    'dt_fim' => '05-12-2021',
+                    'area' => '33',
+                    'tipo' => 'ANUAL',
+                    'custo' => '9000',
+                    'total' => '297000',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('pastagem')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Pastagem inicial',
+                    'dt_ini' => '22-02-2021',
+                    'dt_fim' => '05-12-2021',
+                    'area' => '33',
+                    'tipo' => 'ANUAL',
+                    'custo' => '9000',
+                    'total' => '297000',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('pastagem')->insert(
+            [
+                [
+                    'id' => 5,
+                    'nome' => 'Pastagem inicial',
+                    'dt_ini' => '22-02-2021',
+                    'dt_fim' => '05-12-2021',
+                    'area' => '33',
+                    'tipo' => 'ANUAL',
+                    'custo' => '9000',
+                    'total' => '297000',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+
         DB::table('tes')->insert(
             [
                 [
@@ -159,17 +233,19 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
-        // DB::table('inducoes')->insert(
-        //     [
-        //         [
-        //             'id' => 1,
-        //             'nome' => 'Primeiro protocolo indução a lactação',
-        //             'desc' => 'Populando a base de dados para testes',
-        //             'created_at' => '2022-08-03 16:55:45',
-        //             'updated_at' => '2022-08-03 16:55:45'
-        //         ]
-        //     ]
-        // );
+        DB::table('inducoes')->insert(
+            [
+                [
+                    'id' => 1,
+                    'nome' => 'Primeiro protocolo indução a lactação',
+                    'desc' => 'Populando a base de dados para testes',
+                    'dt_prt' => '2023-01-01',
+                    'dias_lactacao' => '4',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
         DB::table('iatfs')->insert(
             [
                 [
@@ -188,7 +264,7 @@ class PopularDatabase extends Migration
                     'nome' => 'Lote girolando',
                     'desc' => 'Populando a base de dados para testes',
                     'abv' => 'Gir',
-                    'sexo' => 'MISTO',
+                    'sexo' => 'MACHO',
                     'fase' => 'RECRIA',
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
@@ -196,6 +272,39 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
+
+        DB::table('lotes')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Lote anelorado',
+                    'desc' => 'Populando a base de dados para testes',
+                    'abv' => 'Nelore',
+                    'sexo' => 'MISTO',
+                    'fase' => 'CRIA',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('lotes')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Lote angus',
+                    'desc' => 'Populando a base de dados para testes',
+                    'abv' => 'Angus',
+                    'sexo' => 'MISTO',
+                    'fase' => 'PRODUCAO',
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('animais')->insert(
             [
                 [
@@ -405,6 +514,91 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
+
+        DB::table('embrioes')->insert(
+            [
+                [
+                    'id' => 1,
+                    'nome' => 'AB',
+                    'tipo' => 'VITRO',
+                    'congelamento' => 'VITRIFICACAO',
+                    'grau' => 'MO',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('embrioes')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'AD',
+                    'tipo' => 'VITRO',
+                    'congelamento' => 'VITRIFICACAO',
+                    'grau' => 'MO',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('embrioes')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'AC',
+                    'tipo' => 'VIVO',
+                    'congelamento' => 'VITRIFICACAO',
+                    'grau' => 'BX',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('semens')->insert(
+            [
+                [
+                    'id' => 1,
+                    'registro' => '9983',
+                    'nome' => 'ABC',
+                    'raca' => 'BRAFORD',
+                    'central' => 'Central de Teste',
+                    'tipos' => '["Convencional","Sexado Macho"]',
+                    'sangue' => '3/4',
+                    'raca_2' => 'GIR',
+                    'partida' => '9',
+                    'tec' => 'João',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('semens')->insert(
+            [
+                [
+                    'id' => 2,
+                    'registro' => '998',
+                    'nome' => 'XYZ',
+                    'raca' => 'BRAFORD',
+                    'central' => 'Central de Teste',
+                    'tipos' => '["Sexado F\u00eamea"]',
+                    'sangue' => '3/4',
+                    'raca_2' => 'GIR',
+                    'partida' => '9',
+                    'tec' => 'João',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
     }
 
     /**
@@ -447,5 +641,11 @@ class PopularDatabase extends Migration
         Schema::table('animais', function (Blueprint $table) {
             //
         });
+        Schema::table('semens', function (Blueprint $table) {
+            //
+        });
+        Schema::table('embrioes', function (Blueprint $table) {
+            //
+        });
     }
-} 
+}

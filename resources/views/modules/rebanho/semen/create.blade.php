@@ -147,7 +147,7 @@
                                                 <div class="form-group">
                                                     <label class="form-label" for="tec">Técnico</label>
                                                     <input type="text" name="tec" class="form-control"
-                                                        id="tec" placeholder="Digite o nome do técnico responsável"
+                                                        id="tec" placeholder="Digite o nome do técnico responsável" required
                                                         value="{{ $semen->tec ?? '' }}" />
                                                 </div>
                                             </div>
@@ -156,14 +156,14 @@
                                                     <label class="form-label" for="partida">Partida</label>
                                                     <input type="text" name="partida" class="form-control"
                                                         id="partida" placeholder="Digite a partida"
-                                                        value="{{ $semen->partida ?? '' }}" />
+                                                        required value="{{ $semen->partida ?? '' }}" />
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label class="form-label" for="observacao">Observação</label>
                                                     <textarea class="form-control" name="observacao" id="observacao" rows="5"
-                                                        placeholder="Digite uma observação sobre o sêmen" required>{{ $semen->observacao ?? '' }}</textarea>
+                                                        placeholder="Digite uma observação sobre o sêmen">{{ $semen->observacao ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                         </div>

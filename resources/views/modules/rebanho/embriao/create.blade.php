@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <label class="form-label" for="observacao">Observação</label>
                                     <textarea class="form-control" name="observacao" id="observacao" rows="5"
-                                        placeholder="Digite uma observação sobre o embrião" required>{{ $embriao->observacao ?? '' }}</textarea>
+                                        placeholder="Digite uma observação sobre o embrião">{{ $embriao->observacao ?? '' }}</textarea>
                                 </div>
                             </div>
                         </div>
