@@ -18,7 +18,7 @@ class PopularDatabase extends Migration
                 [
                     'id' => 1,
                     'nome' => 'Novo Mundo',
-                    'cpf' => 'null',
+                    'cpf' => '',
                     'cnpj' => '01.534.080/0001-28',
                     'razao' => 'Novo Mundo Moveis e Utilidades Ltda',
                     'tipo' => 'externo',
@@ -43,7 +43,7 @@ class PopularDatabase extends Migration
                 [
                     'id' => 2,
                     'nome' => 'Agroforte',
-                    'cpf' => 'null',
+                    'cpf' => '',
                     'cnpj' => '05.333.963/0001-20',
                     'razao' => 'AGROFORTE NUTRICAO ANIMAL LTDA',
                     'tipo' => 'externo',
