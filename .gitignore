@@ -1,6 +1,5 @@
 /node_modules
 /storage/*.key
-/vendor
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
@@ -12,3 +11,5 @@ supervisord.pid
 docker-compose.yml
 Dockerfile
 db_data/
+/vendor
+.env
