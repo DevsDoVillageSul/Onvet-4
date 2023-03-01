@@ -1,14 +1,14 @@
 @extends('layouts/contentLayoutMaster')
 
-@section('title', 'Animais')
+@section('title', 'Fazendas')
 
 @section('content')
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Listagem de Animais</h4>
+                <h4 class="card-title">Listagem de Fazendas</h4>
                 <div style="float: right;">
-                    <a href="{{ url('rebanho/animais/create/0') }}" class="btn btn-outline-primary waves-effect">
+                    <a href="{{ url('cadastros/fazendas/create/0') }}" class="btn btn-outline-primary waves-effect">
                         <i data-feather="plus-circle" class="mr-50"></i>
                         <span>Novo</span>
                     </a>
@@ -64,41 +64,47 @@
                             <th>#</th>
                             <th style="width: 140px;">Imagem</th>
                             <th>Nome</th>
-                            <th>Video</th>
-                            <th>Lote</th>
+                            <th>Cidade</th>
+                            <th>UF</th>
+                            <th>Endereço</th>
                             <th style="width: 5%;">Status</th>
                             <th style="width: 5%;">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($animais as $animal)
+                        @foreach ($fazendas as $fazenda)
                             <tr>
                                 <td>
-                                    {{ $animal->id }}
+                                    {{ $fazenda->id }}
                                 </td>
                                 <td>
-                                    @if (isset($animal->imagem))
-                                        <img src="{{ asset($animal->imagem) }}" class="img-fluid" />
+                                    @if (isset($fazenda->imagem))
+                                        <img src="{{ asset($fazenda->imagem) }}" class="img-fluid" />
                                     @endif
                                 </td>
                                 <td>
-                                    {{ $animal->nome }}
+                                    {{ $fazenda->nome }}
                                 </td>
                                 <td>
-                                    {!! nl2br($animal->video) !!}
+                                    {{ $fazenda->cidade }}
                                 </td>
-                                <td>{{ $animal->lote->nome }}</td>
                                 <td>
-                                    {!! Helper::getAtivoInativo($animal->ativo) !!}
+                                    {{ $fazenda->uf }}
+                                </td>
+                                <td>
+                                    {{ $fazenda->endereco }}
+                                </td>
+                                <td>
+                                    {!! Helper::getAtivoInativo($fazenda->ativo) !!}
                                 </td>
                                 <td nowrap>
-                                    <a href="{{ url('rebanho/animais/create') }}/{{ $animal->id ?? null }}"
+                                    <a href="{{ url('cadastros/fazendas/create') }}/{{ $fazenda->id ?? null }}"
                                         class="btn btn-icon btn-outline-primary waves-effect" title="Editar">
                                         <i data-feather="edit-2"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-icon btn-outline-warning waves-effect"
                                         alt="Apagar" title="Apagar"
-                                        onclick="deleteItem('{{ url('rebanho/animais/delete') }}/{{ $animal->id ?? null }}');">
+                                        onclick="deleteItem('{{ url('rebanho/animais/delete') }}/{{ $fazenda->id ?? null }}');">
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>

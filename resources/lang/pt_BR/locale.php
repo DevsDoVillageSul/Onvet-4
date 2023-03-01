@@ -191,6 +191,7 @@ return [
     "menu.cadastros.fornecedores" => "Fornecedores",
     "menu.cadastros.areas" => "Áreas",
     "menu.cadastros.culturas" => "Culturas",
+    "menu.cadastros.fazendas" => "Fazendas",
     "menu.duvida" => "Dúvidas Gerais",
     "menu.duvida.faqs" => "Faqs",
     "menu.protocolos" => "Protocolos",
