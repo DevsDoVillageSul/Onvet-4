@@ -173,12 +173,14 @@
             });
         });
         var loadFile = function(event) {
-            var output = document.getElementById('imagePreview');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
-        };
+        var output = document.getElementById('imagePreview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src)
+         }
+       output.style.display = "block"; // Exibe a imagem
+     };
+
         new Cleave('#phone', {
             numericOnly: true,
             blocks: [0, 2, 0, 4, 4],
