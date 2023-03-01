@@ -695,7 +695,7 @@
             $subList.hide().slideDown(200, function () {
               $(this).css('display', '');
             });
-            $listItem.addClass('open').removeClass('menu-collapsed-open'); // $.app.menu.changeLogo('expand');
+            $listItem.addClass('open').removeClass('menu-collapsed-open');
           }
         }
       }

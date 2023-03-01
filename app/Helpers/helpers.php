@@ -228,6 +228,33 @@ EOT;
         return $result;
     }
 
+    public static function getMameDesmame($status, $textOnly = false)
+    {
+        if ($textOnly) {
+            return $status == 1 ? 'Mamando' : 'Desmame';
+        }
+        $resultStatus = [
+            0 => [
+                'icon' => 'square',
+                'class' => 'secondary',
+                'text' => 'Inativo'
+            ],
+            1 => [
+                'icon' => 'check-square',
+                'class' => 'primary',
+                'text' => 'Desmame'
+            ]
+        ];
+        
+        $result = '
+            <span class="d-block badge badge-light-' . $resultStatus[$status]['class'] . ' mr-1 p-50">
+                <i data-feather="' . $resultStatus[$status]['icon'] . '"></i>
+                ' . $resultStatus[$status]['text'] . '
+            </span>
+        ';
+        return $result;
+    }
+
     public static function getStatus($status, $textOnly = false)
     {
         if ($textOnly) {

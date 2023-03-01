@@ -10,11 +10,14 @@
     <meta name="description" content="Sytem 2.1">
 
     <!--====== Icone ======-->
-    <link rel="shortcut icon" href="images/favicon.svg" type="image/svg" />
+    <link rel="shortcut icon" href="images/logo/favicon.png" type="image/svg" />
 
     <!-- Boostrap 5.1 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
 
     <!-- Swiper's CSS -->
     <link href="{{ asset('css/swiper.css') }}" rel="stylesheet">
@@ -57,7 +60,7 @@
                                     <a class="ud-menu-scroll" href="#team">Time</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="ud-menu-scroll" href="#contact">FAQ</a>
+                                    <a class="ud-menu-scroll" href="#faq">FAQ</a>
                                 </li>
                             </ul>
                             </li>
@@ -65,11 +68,11 @@
                         </div>
 
                         <div class="navbar-btn d-none d-sm-inline-block">
-                            <a href="/loginOnvet" class="ud-main-btn ud-login-btn">
+                            <a href="/informacao/dashboard" onclick="/informacao/dashboard" class="ud-main-btn ud-login-btn">
                                 Ir para aplicação
                             </a>
-                            <a href="/cadastre-se" class="ud-main-btn ud-white-btn">
-                               Contato
+                            <a href="#contact" class="ud-main-btn ud-white-btn">
+                                Contato
                             </a>
                         </div>
                     </nav>
@@ -96,18 +99,18 @@
     <!-- ====== Hero End ====== -->
 
     <!-- ====== Features Start ====== -->
-    <section id="features" class="ud-features">
+    <section id="about" class="ud-features">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ud-section-title">
                         <span>Sobre</span>
-                        <h1>OnVet é um sistema completo para gestão de gado leiteiro e de corte</h1>
+                        <h1>OnVet é um sistema completo para gestão de gado leiteiro</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="ud-single-feature wow fadeInUp" data-wow-delay=".1s">
                         <div class="ud-feature-icon">
                             <i class="lni lni-gift"></i>
@@ -123,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="ud-single-feature wow fadeInUp" data-wow-delay=".2s">
                         <div class="ud-feature-icon">
                             <i class="lni lni-layout"></i>
@@ -138,21 +141,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-3 col-sm-6">
-                    <div class="ud-single-feature wow fadeInUp" data-wow-delay=".25s">
-                        <div class="ud-feature-icon">
-                            <i class="lni lni-layers"></i>
-                        </div>
-                        <div class="ud-feature-content">
-                            <h3 class="ud-feature-title">Gestão Estoque</h3>
-                            <p class="ud-feature-desc">
-                                Registramos e controlamos seu estoque.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="ud-single-feature wow fadeInUp" data-wow-delay=".15s">
                         <div class="ud-feature-icon">
                             <i class="lni lni-move"></i>
@@ -171,7 +160,7 @@
     <!-- ====== Features End ====== -->
 
     <!-- ====== About Start ====== -->
-    <section id="about" class="ud-about">
+    <section id="feactures" class="ud-about">
         <div class="container">
             <div class="ud-about-wrapper wow fadeInUp" data-wow-delay=".2s">
                 <div class="ud-about-content-wrapper">
@@ -195,7 +184,7 @@
                     </div>
                 </div>
                 <div class="ud-about-image">
-                    <img src="images\about\newsidebar.png" alt="about-image" />
+                    <img src="images\about\printmenu.png" alt="about-image" />
                 </div>
             </div>
         </div>
@@ -214,9 +203,8 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
                         <div class="ud-team-image-wrapper">
                             <div class="ud-team-image">
@@ -254,7 +242,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="ud-single-team wow fadeInUp" data-wow-delay=".15s">
                         <div class="ud-team-image-wrapper">
                             <div class="ud-team-image">
@@ -291,7 +279,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6">
+                <div class="col-xl-4 col-lg-4 col-sm-6">
                     <div class="ud-single-team wow fadeInUp" data-wow-delay=".2s">
                         <div class="ud-team-image-wrapper">
                             <div class="ud-team-image">
@@ -328,54 +316,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-sm-6">
-                    <div class="ud-single-team wow fadeInUp" data-wow-delay=".1s">
-                        <div class="ud-team-image-wrapper">
-                            <div class="ud-team-image">
-                                <img src="images/team/team-02.png" alt="team" />
-                            </div>
-
-                            <img src="images/team/dotted-shape.svg" alt="shape" class="shape shape-1" />
-                            <img src="images/team/shape-2.svg" alt="shape" class="shape shape-2" />
-                        </div>
-                        <div class="ud-team-info">
-                            <h5>Bruno Almeida</h5>
-                            <h6>GP</h6>
-                        </div>
-                        <ul class="ud-team-socials">
-                            <li>
-                                <a href="www.facebook.com/bruno.almeida.564813" target="_blank">
-                                    <i class="lni lni-facebook-filled"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/bruno-silva-de-almeida-4bb35551/"
-                                    target="_blank">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                        fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-                                        <path
-                                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-                                    </svg>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/always_bno/" target="_blank">
-                                    <i class="lni lni-instagram-filled"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
     <!-- ====== Team End ====== -->
 
     <!-- ====== FAQ Start ====== -->
     <section id="faq" class="ud-faq">
-        <div class="shape">
+        {{-- <div class="shape">
             <img src="images/faq/shape.svg" alt="shape" />
-        </div>
+        </div> --}}
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -383,7 +331,8 @@
                         <span>FAQ</span>
                         <h2>Alguma pergunta?</h2>
                         <p>
-                            Existem muitas dúvidas em comum, acesse nosso FAQ para enviar algumas de suas duvidas! Abaixo você pode consultar algumas questões já respondidas.
+                            Existem muitas dúvidas em comum, acesse nosso FAQ para enviar algumas de suas duvidas!
+                            Abaixo você pode consultar algumas questões já respondidas.
                         </p>
                     </div>
                 </div>
@@ -402,7 +351,8 @@
                             </button>
                             <div id="collapseOne" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Não se preocupe! Oferecemos treinamento e suporte completo para novos (e velhos, se for necessário) usuários!
+                                    Não se preocupe! Oferecemos treinamento e suporte completo para novos (e velhos, se
+                                    for necessário) usuários!
                                 </div>
                             </div>
                         </div>
@@ -434,7 +384,8 @@
                             </button>
                             <div id="collapseThree" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Sim! Oferecemos as opções de arquivos "PDF" e "EXCEL", basta selecionar o que prefere.
+                                    Sim! Oferecemos as opções de arquivos "PDF" e "EXCEL", basta selecionar o que
+                                    prefere.
                                 </div>
                             </div>
                         </div>
@@ -468,7 +419,8 @@
                             </button>
                             <div id="collapseFive" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Com toda certeza. Cumprimos os requisistos de segurança da informação e utilizamos servidor de alta qualidade.
+                                    Com toda certeza. Cumprimos os requisistos de segurança da informação e utilizamos
+                                    servidor de alta qualidade.
                                 </div>
                             </div>
                         </div>
@@ -484,7 +436,8 @@
                             </button>
                             <div id="collapseSix" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Basta ter seus documentos em mãos, entrar em contato conosco e contratar o plano que desejar!
+                                    Basta ter seus documentos em mãos, entrar em contato conosco e contratar o plano que
+                                    desejar!
                                 </div>
                             </div>
                         </div>
@@ -533,7 +486,38 @@
                 <div class="col-xl-4 col-lg-5">
                     <div class="ud-contact-form-wrapper wow fadeInUp" data-wow-delay=".2s">
                         <h3 class="ud-contact-form-title">Envie-nos uma Mensagem</h3>
-                        <form class="ud-contact-form">
+                        <form action={{ url('/contact/submit') }} method="POST">
+                            {{ csrf_field() }}
+
+                            @if (count($errors) > 0)
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Preencha os dados corretamente!</strong>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if ($message = Session::get('sucess'))
+                                <div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                                    <strong>Obrigado!</strong> {{ $message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>OOOPPPSSS!</strong> {{ $message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+
                             <div class="ud-form-group">
                                 <label for="fullName">Nome Completo*</label>
                                 <input type="text" name="fullName" placeholder="João Victor" />
@@ -548,11 +532,12 @@
                             </div>
                             <div class="ud-form-group">
                                 <label for="message">Sua menssagem*</label>
-                                <textarea name="message" rows="1" placeholder="Desejo ter acesso ao sistema"></textarea>
+                                <textarea name="message" class="form-control" cols="10" rows="5"
+                                    placeholder="Desejo ter acesso ao sistema"></textarea>
                             </div>
                             <div class="ud-form-group mb-0">
                                 <button type="submit" class="ud-main-btn">
-                                    Enviar
+                                        Enviar
                                 </button>
                             </div>
                         </form>
@@ -564,66 +549,68 @@
     <!-- ====== Contact End ====== -->
 
     <!-- ====== Footer Start ====== -->
-    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s">
+    <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s"
+        style="
+    background-color: #505df0;>
 
         <div class="ud-footer-widgets">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6">
-                        <div class="ud-widget">
-                            <a href="index.html" class="ud-footer-logo">
-                                <img src="images/logo/logo.svg" alt="logo" />
-                            </a>
-                            <p class="ud-widget-desc">
-                                Criamos experiências digitais para marcar empresas usando tecnologia.
-                            </p>
-                            <ul class="ud-widget-socials">
-                                <li>
-                                    <a href="#">
-                                        <i class="lni lni-facebook-filled"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="lni lni-twitter-filled"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="lni lni-instagram-filled"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="lni lni-linkedin-original"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 col-md-6">
+                    <div class="ud-widget">
+                        <a href="index.html" class="ud-footer-logo">
+                            <img src="images/logo/on_vet_transp_2.png" alt="logo" />
+                        </a>
+                        <p class="ud-widget-desc">
+                            Criamos experiências digitais para marcar empresas usando tecnologia.
+                        </p>
+                        <ul class="ud-widget-socials">
+                            <li>
+                                <a href="#">
+                                    <i class="lni lni-facebook-filled"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="lni lni-twitter-filled"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="lni lni-instagram-filled"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="lni lni-linkedin-original"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6" style="align-items: flex-end">
-                        <div class="ud-widget">
-                            <ul class="ud-widget-links">
-                                <li>
-                                    <a href="#home">Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="#about">Sobre</a>
-                                </li>
-                                <li>
-                                    <a href="#team">Time</a>
-                                </li>
-                                <li>
-                                    <a href="#contact">Contato</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-
                 </div>
+
+                <div class="col-xl-2 col-lg-2 col-md-6 col-sm-6" style="align-items: flex-end">
+                    <div class="ud-widget">
+                        <ul class="ud-widget-links">
+                            <li>
+                                <a href="#home">Inicio</a>
+                            </li>
+                            <li>
+                                <a href="#about">Sobre</a>
+                            </li>
+                            <li>
+                                <a href="#team">Time</a>
+                            </li>
+                            <li>
+                                <a href="#contact">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
             </div>
+        </div>
         </div>
         <div class="ud-footer-bottom">
             <div class="container">
@@ -641,7 +628,8 @@
                     <div class="col-md-4">
                         <p class="ud-footer-bottom-right">
                             ©OnVet 2022. Todos os Direitos Reservados.
-                            <a href="#" rel="nofollow">Projeto-Vet</a>
+                            <a href="https://github.com/DevsDoVillageSul/Onvet-4" rel="nofollow"
+                                style="color:#000;">Projeto-Vet</a>
                         </p>
                     </div>
                 </div>
@@ -651,7 +639,7 @@
     <!-- ====== Footer End ====== -->
 
     <!-- ====== Back To Top Start ====== -->
-    <a href="javascript:void(0)" class="back-to-top">
+    <a href="/" class="back-to-top">
         <i class="lni lni-chevron-up"> </i>
     </a>
     <!-- ====== Back To Top End ====== -->

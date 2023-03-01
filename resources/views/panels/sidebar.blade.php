@@ -6,9 +6,9 @@ $configData = Helper::applClasses();
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
-                <a class="navbar-brand" href="{{ isset(Auth::user()->name) ? url(Auth::user()->home->url ?? '/') : url('/') }}">
+                <a href="/"class="navbar-brand" href="{{ isset(Auth::user()->name) ? url(Auth::user()->home->url ?? '/') : url('/') }}">
                     <span class="brand-logo">
-                        <img src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" style="max-width: 180px;" />
+                        <img src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" style="max-width: 90px;" />
                     </span>
                 </a>
             </li>
@@ -21,6 +21,7 @@ $configData = Helper::applClasses();
             </li>
         </ul>
     </div>
+    <hr>
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
@@ -64,6 +65,20 @@ $configData = Helper::applClasses();
             @endif
             {{-- Foreach menu item ends --}}
         </ul>
+    </div>
+    <div class="shadow-bottom" >
+        </ul>
+        <ul class="justify-content-center nav nav-pills" id="main-menu-navigation" data-menu="menu-navigation">
+            <li class="nav-item">
+            
+                <a class="dropdown-item nav-link" href="{{ url('logout') }}">
+                
+                    <i class="mr-60" data-feather="log-out"></i>Sair 
+                </a>
+                
+            </li>
+        </ul>
+
     </div>
 </div>
 <!-- END: Main Menu-->
