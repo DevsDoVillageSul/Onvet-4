@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cadastro\Funcionario;
 use App\Models\Cadastro\FuncionarioContato;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Exception;
 
@@ -17,6 +18,12 @@ class FuncionarioController extends Controller
         try {
             $funcionario = $this->model::findOrNew($request->id);
             $funcionario->nome = $request->nome;
+            
+            $funcionario->fill($request->all());
+            $funcionario->setAttribute('user_id', Auth::user()->id);
+            $funcionario->fazenda_id = $request->fazenda_id;
+            
+
             $funcionario->sexo = $request->sexo;
             $funcionario->funcao = $request->funcao;
             $funcionario->cpf = $request->cpf;

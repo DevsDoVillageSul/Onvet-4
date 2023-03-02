@@ -62,30 +62,7 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
-
-        DB::table('funcionario')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Gabriel',
-                    'cpf' => '999.999.999-99',
-                    'dt_nasc' => '04-03-1998',
-                    'sexo' => 'M',
-                    'funcao' => 'Desenvolvedor',
-                    'telefone' => '(99)99999-9999',
-                    'cep' => '75780-000',
-                    'endereco' => 'Rua VS 9',
-                    'numero' => '12',
-                    'complemento' => 'Quadra 9, Lote 5',
-                    'bairro' => 'Centro',
-                    'cidade' => 'Ipameri',
-                    'uf' => 'GO',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        
         DB::table('tanques')->insert(
             [
                 [
@@ -609,9 +586,6 @@ class PopularDatabase extends Migration
     public function down()
     {
         Schema::table('fornecedor', function (Blueprint $table) {
-            //
-        });
-        Schema::table('funcionario', function (Blueprint $table) {
             //
         });
         Schema::table('tanques', function (Blueprint $table) {

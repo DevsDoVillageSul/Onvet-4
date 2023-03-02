@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Cadastro\Funcionario;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use Illuminate\Support\Facades\Auth;
 
 class FuncionarioController extends Controller
 { 
@@ -20,13 +23,15 @@ class FuncionarioController extends Controller
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $funcionarios = Funcionario::filtros($request)
         ->withCount([
             'contatos as contato' => function ($query) {
                 $query->where('nome',"Ale");            
             }
         ])
-            ->orderBy('nome', 'ASC')
+        ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
+        ->orderBy('nome', 'ASC')
         ;
 
         if (isset($request->export) && $request->export == 'PDF') {
@@ -79,7 +84,9 @@ class FuncionarioController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $funcionario = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'funcionario');
+        $users = User::select('id', 'name')->orderBy('name')->get();
+        $fazendas = Fazenda::select('id', 'nome')->orderBy('nome')->get();
+        $dataView = compact('breadcrumbs', 'funcionario','users','fazendas');
         return view('modules/cadastro/funcionario/create', $dataView);
     
     }

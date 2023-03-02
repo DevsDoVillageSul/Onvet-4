@@ -5,11 +5,15 @@ namespace App\Models\Cadastro;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
 class Funcionario extends Model implements Auditable
 {
     use HasFactory, \OwenIt\Auditing\Auditable;
 
+    protected $fillable = [
+        'user_id',
+    ];
     protected $table = "funcionario";
     protected $sexos = [
         'M' => 'Masculino',
@@ -44,6 +48,14 @@ class Funcionario extends Model implements Auditable
         return $query->where('ativo', 1);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function fazenda()
+    {
+        return $this->belongsTo(Fazenda::class, 'fazenda_id');
+    }
     public function getSexo()
     {
         return $this->sexos[$this->sexo];
