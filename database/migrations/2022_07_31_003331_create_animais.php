@@ -15,8 +15,8 @@ class CreateAnimais extends Migration
     {
         Schema::create('animais', function (Blueprint $table) {
             $table->id();
-            $table->integer('imagem_id')->default(0); 
-            $table->string('video')->nullable();    
+            $table->integer('imagem_id')->default(0);
+            $table->string('video')->nullable();
             $table->string('nome', 50);
             $table->string('sexo', 20);
             $table->string('sangue', 20);
@@ -24,23 +24,23 @@ class CreateAnimais extends Migration
             $table->integer('brinco');
             $table->string('origem', 20);
             $table->string('dt_nasc', 20);
-            $table->integer('peso');  
+            $table->integer('peso');
             $table->string('nome_reg', 50);
-            $table->integer('num_reg'); 
+            $table->integer('num_reg');
             $table->string('raca_2', 50);
             $table->string('pelagem', 50);
 
             //campos hidden show         
             $table->string('dt_entrada', 20)->nullable();
-            $table->integer('peso_entrada')->nullable(); 
+            $table->integer('peso_entrada')->nullable();
             $table->string('cat_macho', 50)->nullable();
             $table->string('cat_femea', 50)->nullable();
-            $table->integer('valor')->nullable();  
+            $table->integer('valor')->nullable();
             $table->tinyInteger('desmame')->nullable();
 
             //cria
             $table->string('parida', 30)->nullable();
-            $table->integer('num_cria')->nullable(); 
+            $table->integer('num_cria')->nullable();
             $table->string('dt_parto', 20)->nullable();
             $table->string('reg_parto', 50)->nullable();
             $table->string('new_cria', 10)->nullable();
@@ -62,6 +62,18 @@ class CreateAnimais extends Migration
             $table->foreign('fornecedor_id')->nullable()->unsigned()
                 ->references('id')
                 ->on('fornecedor');
+            ;
+
+            $table->bigInteger('fazenda_id')->nullable()->unsigned();
+            $table->foreign('fazenda_id')->nullable()->unsigned()
+                ->references('id')
+                ->on('fazenda');
+            ;
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
             ;
 
             $table->tinyInteger('ativo');

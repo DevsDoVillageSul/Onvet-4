@@ -20,9 +20,9 @@
                                         placeholder="Digite o Nome do Funcionário" value="{{ $fazenda->nome ?? '' }}"
                                         required />
                                 </div>
-
+{{-- 
                                 {{ Auth::user()->id }}
-                                {{ Auth::check() }}
+                                {{ Auth::check() }} --}}
 
                             </div>
                         </div>

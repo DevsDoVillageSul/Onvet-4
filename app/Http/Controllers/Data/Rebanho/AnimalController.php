@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Data\Rebanho;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Animal;
-use App\Models\Rebanho\Lote;
-use App\Models\Cadastro\Fornecedor;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
@@ -25,6 +24,8 @@ class AnimalController extends Controller
             try {
                 $animal = $this->model::findOrNew($request->id);
                 $animal->nome = $request->nome;
+                $animal->fill($request->all());
+                $animal->setAttribute('user_id', Auth::user()->id);
                 $animal->sexo = $request->sexo;
                 $animal->video = $request->video;
                 $animal->sangue =  $request->sangue;
@@ -48,6 +49,7 @@ class AnimalController extends Controller
                 $animal->brinco = $request->brinco;
                 $animal->lote_id = $request->lote_id;
                 $animal->fornecedor_id = $request->fornecedor_id;
+                $animal->fazenda_id = $request->fazenda_id;
                 $animal->ativo = $request->ativo ?? 0;
                 $animal->desmame = $request->desmame ?? 0;
 

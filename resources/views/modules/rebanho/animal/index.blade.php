@@ -65,6 +65,7 @@
                             <th style="width: 140px;">Imagem</th>
                             <th>Nome</th>
                             <th>Video</th>
+                            <th>Fazenda</th>
                             <th>Lote</th>
                             <th style="width: 5%;">Status</th>
                             <th style="width: 5%;">Ações</th>
@@ -87,6 +88,7 @@
                                 <td>
                                     {!! nl2br($animal->video) !!}
                                 </td>
+                                <td>{{ $animal->fazenda->nome }}</td>
                                 <td>{{ $animal->lote->nome }}</td>
                                 <td>
                                     {!! Helper::getAtivoInativo($animal->ativo) !!}

@@ -7,9 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Animal;
 use App\Models\Rebanho\Lote;
 use App\Models\Cadastro\Fornecedor;
+use App\Models\Cadastro\Fazenda;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class AnimalController extends Controller
 {
@@ -22,8 +25,10 @@ class AnimalController extends Controller
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $animais = Animal::filtros($request)
-            ->orderBy('nome', 'ASC')
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+            ->orderBy('fazenda_id')    
         ;
 
         if (isset($request->export) && $request->export == 'PDF') {
@@ -76,8 +81,10 @@ class AnimalController extends Controller
         $breadcrumbs = $this->breadcrumbs;
         $lotes = Lote::select('id', 'nome')->orderBy('nome')->get();
         $fornecedores = Fornecedor::select('id', 'nome')->orderBy('nome')->get();
+        $fazendas = Fazenda::select('id', 'nome')->orderBy('nome')->get();
+        $users = User::select('id', 'name')->orderBy('name')->get();
         $animal = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'animal', 'lotes', 'fornecedores');
+        $dataView = compact('breadcrumbs', 'animal', 'lotes', 'fornecedores','users','fazendas');
         return view('modules/rebanho/animal/create', $dataView);
     }
 

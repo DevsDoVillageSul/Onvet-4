@@ -107,7 +107,7 @@
                     </tbody>
                 </table>
             </div>
-            @include('shared.paginate', ['form' => 'formSearch', 'itens' => $animais ?? null])
+            @include('shared.paginate', ['form' => 'formSearch', 'itens' => $fazendas ?? null])
         </div>
     </div>
     </div>
