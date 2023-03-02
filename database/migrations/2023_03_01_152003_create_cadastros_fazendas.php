@@ -28,12 +28,6 @@ class CreateCadastrosFazendas extends Migration
                 ->references('id')
                 ->on('users')
             ;
- 
-            $table->bigInteger('fazenda_id')->nullable()->unsigned();
-            $table->foreign('fazenda_id')->nullable()->unsigned()
-                ->references('id')
-                ->on('fazenda');
-            ;
             
             $table->timestamps();
         });
