@@ -28,6 +28,16 @@ class FazendaController extends Controller
             ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
             ->orderBy('nome', 'ASC');
 
+                // Se o ID do usuário autenticado for 1, obter todas as fazendas
+    if ($user_id == 1) {
+        $fazendas = Fazenda::filtros($request)
+            ->orderBy('nome', 'ASC');
+    } else {
+        $fazendas = Fazenda::filtros($request)
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+            ->orderBy('nome', 'ASC');
+    }
+
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($fazendas);
         }
