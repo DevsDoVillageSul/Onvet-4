@@ -85,8 +85,8 @@ class FazendaController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $users = User::select('id', 'name')->orderBy('name')->get();
-        $fazendas = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'fazendas', 'users');
+        $fazenda = $this->model::findOrNew($id);
+        $dataView = compact('breadcrumbs', 'fazenda', 'users');
         return view('modules/cadastro/fazenda/create', $dataView);
 
     }
