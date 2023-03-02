@@ -26,8 +26,10 @@
                                         <i data-feather='upload'></i>
                                         Escolher Foto
                                     </button>
+                                    <br>
+                                    <p>OBS: Imagem obrigatória</p>
                                     <input type="file" id="imagem" name="imagem" style="display: none;"
-                                        accept="image/*" onchange="loadFile(event)" />
+                                        accept="image/*" onchange="loadFile(event)" required/>
                                 </div>
                             </div>
                         </div>

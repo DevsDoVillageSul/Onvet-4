@@ -21,35 +21,35 @@ class FazendaController extends Controller
     ];
 
     public function index(Request $request)
-{
-    $breadcrumbs = $this->breadcrumbs;
-    $user_id = Auth::id(); // Obter o ID do usuário autenticado
-    $fazendas = Fazenda::filtros($request)
-        ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
-        ->orderBy('nome', 'ASC');
+    {
+        $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
+        $fazendas = Fazenda::filtros($request)
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+            ->orderBy('nome', 'ASC');
 
-    if (isset($request->export) && $request->export == 'PDF') {
-        return $this->indexPdf($fazendas);
+        if (isset($request->export) && $request->export == 'PDF') {
+            return $this->indexPdf($fazendas);
+        }
+
+        if (isset($request->export) && $request->export == 'XLS') {
+            return $this->indexExcel($fazendas);
+        }
+        $fazendas = $fazendas
+            ->with('user:id,name')
+            ->paginate(config('app.paginate'));
+
+        $resume = $this->model::filtros($request)
+            ->select(
+                DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+                DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+            )
+            ->where('id', '>', 1)
+            ->first();
+
+        $dataView = compact('breadcrumbs', 'request', 'fazendas', 'resume');
+        return view('modules/cadastro/fazenda/index', $dataView);
     }
-
-    if (isset($request->export) && $request->export == 'XLS') {
-        return $this->indexExcel($fazendas);
-    }
-    $fazendas = $fazendas
-        ->with('user:id,name')
-        ->paginate(config('app.paginate'));
-
-    $resume = $this->model::filtros($request)
-        ->select(
-            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
-            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
-        )
-        ->where('id', '>', 1)
-        ->first();
-
-    $dataView = compact('breadcrumbs', 'request', 'fazendas', 'resume');
-    return view('modules/cadastro/fazenda/index', $dataView);
-   }
     private function indexPdf($fazendas)
     {
         $fazendas = $fazendas->get();

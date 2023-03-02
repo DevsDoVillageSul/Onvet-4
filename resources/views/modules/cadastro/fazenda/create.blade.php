@@ -20,6 +20,10 @@
                                         placeholder="Digite o Nome do Funcionário" value="{{ $fazenda->nome ?? '' }}"
                                         required />
                                 </div>
+
+                                {{ Auth::user()->id }}
+                                {{ Auth::check() }}
+
                             </div>
                         </div>
                     </div>
@@ -37,10 +41,9 @@
                             <div class="col-md-3 col-12">
                                 <label class="form-label col-12" for="btnCep">&nbsp;</label>
                                 <div class="input-group mb-2">
-                                    <input type="text" id="cep" name="cep"
-                                        value="{{ $fazenda->cep ?? '' }}" class="form-control"
-                                        placeholder="Digite o CEP..." aria-label="Digite o CEP..." aria-describedby="btnCep"
-                                        required>
+                                    <input type="text" id="cep" name="cep" value="{{ $fazenda->cep ?? '' }}"
+                                        class="form-control" placeholder="Digite o CEP..." aria-label="Digite o CEP..."
+                                        aria-describedby="btnCep" required>
                                     <div class="input-group-append">
                                         <span class="input-group-text" id="btnCep" onclick="searchPostalCode();">
                                             <i data-feather="search"></i>
@@ -55,8 +58,7 @@
                                     <label class="form-label" for="endereco">Endereço</label>
                                     <input name="endereco" type="text" id="endereco" class="form-control"
                                         placeholder="Digite o nome da Rua" autocomplete="off"
-                                        aria-label="Digite o nome da Rua" value="{{ $fazenda->endereco ?? '' }}"
-                                        required />
+                                        aria-label="Digite o nome da Rua" value="{{ $fazenda->endereco ?? '' }}" required />
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
@@ -186,11 +188,34 @@
                 postData('formFazendaData', '{{ url('cadastros/fazendas') }}');
                 return false;
             });
-            new Cleave('#numero', {
-                numericOnly: true,
-                blocks: [5],
-            });
-            
         });
+
+        new Cleave('#cep', {
+            numericOnly: true,
+            blocks: [5, 3],
+            delimiters: ["-"]
+        });
+
+        var loadFile = function(event) {
+            var output = document.getElementById('imagePreview');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+        };
+
+        function searchPostalCode() {
+            $.getJSON('https://api.postmon.com.br/v1/cep/' + $('#cep').val().replace('-', '')).done(function(data2) {
+                if (!data2) {
+                    notify('error', 'CEP não encontrado!');
+                } else {
+                    $('#endereco').val(data2.logradouro);
+                    $('#bairro').val(data2.bairro);
+                    $('#cidade').val(data2.cidade);
+                    $('#uf').val(data2.estado);
+                    $("#uf").select2();
+                }
+            });
+        }
     </script>
 @endsection

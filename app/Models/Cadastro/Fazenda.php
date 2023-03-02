@@ -11,6 +11,16 @@ class Fazenda extends Model implements Auditable
 {
     use HasFactory, \OwenIt\Auditing\Auditable;
 
+    protected $fillable = [
+        'nome',
+        'cep',
+        'endereco',
+        'cidade',
+        'uf',
+        'ativo',
+        'user_id',
+    ];
+
     protected $table = "fazendas";
     public function scopeFiltros($query, $request)
     {

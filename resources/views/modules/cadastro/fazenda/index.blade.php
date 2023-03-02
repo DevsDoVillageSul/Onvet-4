@@ -62,7 +62,6 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th style="width: 140px;">Imagem</th>
                             <th>Nome</th>
                             <th>Cidade</th>
                             <th>UF</th>
@@ -76,11 +75,6 @@
                             <tr>
                                 <td>
                                     {{ $fazenda->id }}
-                                </td>
-                                <td>
-                                    @if (isset($fazenda->imagem))
-                                        <img src="{{ asset($fazenda->imagem) }}" class="img-fluid" />
-                                    @endif
                                 </td>
                                 <td>
                                     {{ $fazenda->nome }}
@@ -104,7 +98,7 @@
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-icon btn-outline-warning waves-effect"
                                         alt="Apagar" title="Apagar"
-                                        onclick="deleteItem('{{ url('rebanho/animais/delete') }}/{{ $fazenda->id ?? null }}');">
+                                        onclick="deleteItem('{{ url('cadastros/fazendas/delete') }}/{{ $fazenda->id ?? null }}');">
                                         <i data-feather="trash"></i>
                                     </a>
                                 </td>
