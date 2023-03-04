@@ -61,7 +61,6 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Nome</th>
                             <th>Cidade</th>
                             <th>UF</th>
@@ -73,9 +72,6 @@
                     <tbody>
                         @foreach ($fazendas as $fazenda)
                             <tr>
-                                <td>
-                                    {{ $fazenda->id }}
-                                </td>
                                 <td>
                                     {{ $fazenda->nome }}
                                 </td>

@@ -64,7 +64,6 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Nome</th>
                                 <th>Raça</th>
                                 <th>Mãe</th>
@@ -76,9 +75,6 @@
                         <tbody>
                             @foreach ($semens as $semen)
                                 <tr>
-                                    <td>
-                                        {{ $semen->id }}
-                                    </td>
                                     <td>
                                         {{ $semen->nome }}
                                     </td>

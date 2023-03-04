@@ -61,7 +61,6 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th style="width: 140px;">Imagem</th>
                             <th>Nome</th>
                             <th>Video</th>
@@ -74,9 +73,6 @@
                     <tbody>
                         @foreach ($animais as $animal)
                             <tr>
-                                <td>
-                                    {{ $animal->id }}
-                                </td>
                                 <td>
                                     @if (isset($animal->imagem))
                                         <img src="{{ asset($animal->imagem) }}" class="img-fluid" />
