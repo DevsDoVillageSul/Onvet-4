@@ -24,31 +24,29 @@ class FazendaController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $user_id = Auth::id(); // Obter o ID do usuário autenticado
-        $fazendas = Fazenda::filtros($request)
-            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
-            ->orderBy('nome', 'ASC');
-
-                // Se o ID do usuário autenticado for 1, obter todas as fazendas
-    if ($user_id == 1) {
-        $fazendas = Fazenda::filtros($request)
-            ->orderBy('nome', 'ASC');
-    } else {
-        $fazendas = Fazenda::filtros($request)
-            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
-            ->orderBy('nome', 'ASC');
-    }
-
+    
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $fazendas = Fazenda::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $fazendas = Fazenda::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
+    
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($fazendas);
         }
-
+    
         if (isset($request->export) && $request->export == 'XLS') {
             return $this->indexExcel($fazendas);
         }
+    
         $fazendas = $fazendas
             ->with('user:id,name')
             ->paginate(config('app.paginate'));
-
+    
         $resume = $this->model::filtros($request)
             ->select(
                 DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
@@ -56,7 +54,7 @@ class FazendaController extends Controller
             )
             ->where('id', '>', 1)
             ->first();
-
+    
         $dataView = compact('breadcrumbs', 'request', 'fazendas', 'resume');
         return view('modules/cadastro/fazenda/index', $dataView);
     }
