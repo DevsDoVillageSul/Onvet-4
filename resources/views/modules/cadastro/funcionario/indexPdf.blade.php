@@ -30,7 +30,7 @@
                         {{ $funcionario->funcao }}
                     </td>
                     <td>
-                        {{ $animal->fazenda->nome ?? null }}
+                        {{ $funcionario->fazenda->nome ?? null }}
                     </td>
                     <td>
                         {{ $funcionario->telefone }}
