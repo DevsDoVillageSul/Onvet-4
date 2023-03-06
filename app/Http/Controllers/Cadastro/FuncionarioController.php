@@ -12,27 +12,37 @@ use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
 
 class FuncionarioController extends Controller
-{ 
+{
     protected $model = Funcionario::class;
-    
+
     protected $breadcrumbs = [
         ['name' => "Cadastros"],
         ['link' => "/cadastros/funcionarios", 'name' => "Funcionários"]
     ];
-        
+
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
         $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $funcionarios = Funcionario::filtros($request)
-        ->withCount([
-            'contatos as contato' => function ($query) {
-                $query->where('nome',"Ale");            
-            }
-        ])
-        ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
-        ->orderBy('nome', 'ASC')
+            ->withCount([
+                'contatos as contato' => function ($query) {
+                    $query->where('nome', "Ale");
+                }
+            ])
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
+            ->orderBy('nome', 'ASC')
         ;
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $funcionarios = Funcionario::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $funcionarios = Funcionario::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($funcionarios);
@@ -42,11 +52,13 @@ class FuncionarioController extends Controller
             return $this->indexExcel($funcionarios);
         }
 
-        $funcionarios = $funcionarios->paginate(config('app.paginate'));
+        $funcionarios = $funcionarios 
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
 
         $dataView = compact('breadcrumbs', 'request', 'funcionarios');
-        return view('modules/cadastro/funcionario/index', $dataView);       
+        return view('modules/cadastro/funcionario/index', $dataView);
 
     }
     private function indexPdf($funcionarios)
@@ -86,8 +98,8 @@ class FuncionarioController extends Controller
         $funcionario = $this->model::findOrNew($id);
         $users = User::select('id', 'name')->orderBy('name')->get();
         $fazendas = Fazenda::select('id', 'nome')->orderBy('nome')->get();
-        $dataView = compact('breadcrumbs', 'funcionario','users','fazendas');
+        $dataView = compact('breadcrumbs', 'funcionario', 'users', 'fazendas');
         return view('modules/cadastro/funcionario/create', $dataView);
-    
+
     }
 }
