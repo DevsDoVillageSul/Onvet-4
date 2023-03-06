@@ -97,9 +97,20 @@ class FuncionarioController extends Controller
         $breadcrumbs = $this->breadcrumbs;
         $funcionario = $this->model::findOrNew($id);
         $users = User::select('id', 'name')->orderBy('name')->get();
-        $fazendas = Fazenda::select('id', 'nome')->orderBy('nome')->get();
-        $dataView = compact('breadcrumbs', 'funcionario', 'users', 'fazendas');
+    
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+        } else {
+            // Se não, mostre apenas as fazendas do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+        }
+    
+        $dataView = compact('breadcrumbs', 'funcionario','users','fazendas');
         return view('modules/cadastro/funcionario/create', $dataView);
-
     }
 }
