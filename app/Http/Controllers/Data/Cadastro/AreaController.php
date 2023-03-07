@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Data\Cadastro;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cadastro\Area;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class AreaController extends Controller
 {
@@ -22,6 +22,11 @@ class AreaController extends Controller
             $area->ha = $request->ha;
             $area->util = $request->util;
             $area->observacao = $request->observacao;
+
+            $area->fill($request->all());
+            $area->setAttribute('user_id', Auth::user()->id);
+            $area->fazenda_id = $request->fazenda_id;
+
             $area->ativo = $request->ativo ?? 0;
             $area->save();
             return $area;

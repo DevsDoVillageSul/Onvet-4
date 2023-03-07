@@ -63,6 +63,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
+                                <th>Fazenda</th>
                                 <th>Tipo</th>
                                 <th>Inicio</th>
                                 <th>Finalizada</th>
@@ -79,6 +80,7 @@
                                     <td>
                                         {{ $area->nome }}
                                     </td>
+                                    <td>{{ $area->fazenda->nome }}</td>
                                     <td>
                                         {{ $area->getTipo() }}
                                     </td>

@@ -75,22 +75,22 @@ class PopularDatabase extends Migration
         //         ]
         //     ]
         // );
-        DB::table('areas')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Área norte',
-                    'dt_ini' => '22-03-2021',
-                    'dt_fim' => '04-05-2022',
-                    'tipo' => 'ARRENDADA',
-                    'ha' => '12',
-                    'util' => '2',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('areas')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Área norte',
+        //             'dt_ini' => '22-03-2021',
+        //             'dt_fim' => '04-05-2022',
+        //             'tipo' => 'ARRENDADA',
+        //             'ha' => '12',
+        //             'util' => '2',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         DB::table('culturas')->insert(
             [
                 [
@@ -591,9 +591,9 @@ class PopularDatabase extends Migration
         // Schema::table('tanques', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('areas', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('areas', function (Blueprint $table) {
+        //     //
+        // });
         Schema::table('culturas', function (Blueprint $table) {
             //
         });
