@@ -6,12 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Rebanho\Animal;
+use App\Http\Traits\HasUserAccess; // importando a trait
 
 class Te extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
-    
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
+
     protected $table = 'tes';
+
+    protected $fillable = [
+        'user_id',
+    ];
 
     public function scopeFiltros($query, $request)
     {
@@ -22,15 +27,21 @@ class Te extends Model implements Auditable
         }
 
         return $query;
-    } 
-        //chaves estrangeiras 
-        public function animal()
-        {
-            return $this->belongsTo(Animal::class, 'animal_id');
-        }
-    
-        public function animais()
-        {
-            return $this->belongsTo(Animal::class, 'animais_id');
-        }
+    }
+    //chaves estrangeiras 
+    public function animal()
+    {
+        return $this->belongsTo(Animal::class, 'animal_id');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function animais()
+    {
+        return $this->belongsTo(Animal::class, 'animais_id');
+    }
 }
