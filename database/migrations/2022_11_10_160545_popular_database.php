@@ -108,95 +108,95 @@ class PopularDatabase extends Migration
         //         ]
         //     ]
         // );
-        DB::table('pastagem')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Pastagem inicial',
-                    'dt_ini' => '22-02-2021',
-                    'dt_fim' => '05-12-2021',
-                    'area' => '33',
-                    'tipo' => 'ANUAL',
-                    'custo' => '9000',
-                    'total' => '297000',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('pastagem')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Pastagem inicial',
+        //             'dt_ini' => '22-02-2021',
+        //             'dt_fim' => '05-12-2021',
+        //             'area' => '33',
+        //             'tipo' => 'ANUAL',
+        //             'custo' => '9000',
+        //             'total' => '297000',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('pastagem')->insert(
-            [
-                [
-                    'id' => 2,
-                    'nome' => 'Pastagem natural',
-                    'dt_ini' => '22-02-2021',
-                    'dt_fim' => '05-12-2021',
-                    'area' => '55',
-                    'tipo' => 'NATURAL',
-                    'custo' => '15000',
-                    'total' => '825000',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('pastagem')->insert(
+        //     [
+        //         [
+        //             'id' => 2,
+        //             'nome' => 'Pastagem natural',
+        //             'dt_ini' => '22-02-2021',
+        //             'dt_fim' => '05-12-2021',
+        //             'area' => '55',
+        //             'tipo' => 'NATURAL',
+        //             'custo' => '15000',
+        //             'total' => '825000',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('pastagem')->insert(
-            [
-                [
-                    'id' =>3,
-                    'nome' => 'Pastagem inicial',
-                    'dt_ini' => '22-02-2021',
-                    'dt_fim' => '05-12-2021',
-                    'area' => '33',
-                    'tipo' => 'ANUAL',
-                    'custo' => '9000',
-                    'total' => '297000',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('pastagem')->insert(
+        //     [
+        //         [
+        //             'id' =>3,
+        //             'nome' => 'Pastagem inicial',
+        //             'dt_ini' => '22-02-2021',
+        //             'dt_fim' => '05-12-2021',
+        //             'area' => '33',
+        //             'tipo' => 'ANUAL',
+        //             'custo' => '9000',
+        //             'total' => '297000',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('pastagem')->insert(
-            [
-                [
-                    'id' => 4,
-                    'nome' => 'Pastagem inicial',
-                    'dt_ini' => '22-02-2021',
-                    'dt_fim' => '05-12-2021',
-                    'area' => '33',
-                    'tipo' => 'ANUAL',
-                    'custo' => '9000',
-                    'total' => '297000',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('pastagem')->insert(
+        //     [
+        //         [
+        //             'id' => 4,
+        //             'nome' => 'Pastagem inicial',
+        //             'dt_ini' => '22-02-2021',
+        //             'dt_fim' => '05-12-2021',
+        //             'area' => '33',
+        //             'tipo' => 'ANUAL',
+        //             'custo' => '9000',
+        //             'total' => '297000',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('pastagem')->insert(
-            [
-                [
-                    'id' => 5,
-                    'nome' => 'Pastagem inicial',
-                    'dt_ini' => '22-02-2021',
-                    'dt_fim' => '05-12-2021',
-                    'area' => '33',
-                    'tipo' => 'ANUAL',
-                    'custo' => '9000',
-                    'total' => '297000',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('pastagem')->insert(
+        //     [
+        //         [
+        //             'id' => 5,
+        //             'nome' => 'Pastagem inicial',
+        //             'dt_ini' => '22-02-2021',
+        //             'dt_fim' => '05-12-2021',
+        //             'area' => '33',
+        //             'tipo' => 'ANUAL',
+        //             'custo' => '9000',
+        //             'total' => '297000',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
 
         DB::table('tes')->insert(
@@ -597,9 +597,9 @@ class PopularDatabase extends Migration
         // Schema::table('culturas', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('pastagem', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('pastagem', function (Blueprint $table) {
+        //     //
+        // });
         Schema::table('tes', function (Blueprint $table) {
             //
         });

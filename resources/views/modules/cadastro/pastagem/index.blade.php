@@ -63,6 +63,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
+                                <th>Fazenda</th>
                                 <th>Tipo</th>
                                 <th>Inicio</th>
                                 <th>Finalizada</th>
@@ -77,6 +78,7 @@
                                     <td>
                                         {{ $pastagem->nome }}
                                     </td>
+                                    <td>{{ $pastagem->fazenda->nome }}</td>
                                     <td>
                                         {{ $pastagem->getTipo() }}
                                     </td>
@@ -87,7 +89,7 @@
                                         {{ $pastagem->dt_fim }}
                                     </td>
                                     <td>
-                                        {{ $pastagem->pastagem }}
+                                        {{ $pastagem->observacao }}
                                     </td>
                                     <td>
                                         {!! Helper::getAtivoInativo($pastagem->ativo) !!}

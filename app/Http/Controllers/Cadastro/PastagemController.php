@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Cadastro\Pastagem;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use Illuminate\Support\Facades\Auth;
 
 class PastagemController extends Controller
 { 
@@ -20,9 +23,21 @@ class PastagemController extends Controller
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $pastagens = Pastagem::filtros($request)        
-            ->orderBy('id', 'DESC')
+        ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado    
+        ->orderBy('id', 'DESC')
         ;
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $pastagens = Pastagem::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $pastagens = Pastagem::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($pastagens);
@@ -32,7 +47,9 @@ class PastagemController extends Controller
             return $this->indexExcel($pastagens);
         }
 
-        $pastagens = $pastagens->paginate(config('app.paginate'));
+        $pastagens = $pastagens
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
 
         $dataView = compact('breadcrumbs', 'request', 'pastagens');
@@ -74,7 +91,21 @@ class PastagemController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $pastagem = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'pastagem');
+        $users = User::select('id', 'name')->orderBy('name')->get();
+        
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+        } else {
+            // Se não, mostre apenas as fazendas do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+        }
+
+        $dataView = compact('breadcrumbs', 'pastagem','users','fazendas');
         return view('modules/cadastro/pastagem/create', $dataView);
     
     }

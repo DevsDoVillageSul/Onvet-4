@@ -11,7 +11,8 @@ use App\Http\Traits\HasUserAccess; // importando a trait
 
 class Cultura extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
+
 
     protected $table = "culturas";
     protected $tipos = [

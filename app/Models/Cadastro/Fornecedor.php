@@ -11,7 +11,8 @@ use App\Http\Traits\HasUserAccess;
 
 class Fornecedor extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
+
 
     protected $table = "fornecedor";
     protected $tipos = [
