@@ -91,23 +91,23 @@ class PopularDatabase extends Migration
         //         ]
         //     ]
         // );
-        DB::table('culturas')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Cultura Sudoeste',
-                    'dt_ini' => '01-01-2019',
-                    'dt_fim' => '22-01-2022',
-                    'tipo' => 'CANAVIAL',
-                    'ha' => '10',
-                    'custo' => '12000',
-                    'total' => '120000',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('culturas')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Cultura Sudoeste',
+        //             'dt_ini' => '01-01-2019',
+        //             'dt_fim' => '22-01-2022',
+        //             'tipo' => 'CANAVIAL',
+        //             'ha' => '10',
+        //             'custo' => '12000',
+        //             'total' => '120000',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         DB::table('pastagem')->insert(
             [
                 [
@@ -594,9 +594,9 @@ class PopularDatabase extends Migration
         // Schema::table('areas', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('culturas', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('culturas', function (Blueprint $table) {
+        //     //
+        // });
         Schema::table('pastagem', function (Blueprint $table) {
             //
         });

@@ -5,7 +5,9 @@ namespace App\Models\Cadastro;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use App\Http\Traits\HasUserAccess; // importando a trait
 
 class Cultura extends Model implements Auditable
 {
@@ -29,6 +31,10 @@ class Cultura extends Model implements Auditable
         'SILAGEM MILHO' => 'Silagem de Milho',
         'SILAGEM SORGO' => 'Silagem de Sorgo',
         'TRIGO' => 'Trigo',
+    ];
+
+    protected $fillable = [
+        'user_id',
     ];
 
     public function scopeFiltros($query, $request)
@@ -61,5 +67,14 @@ class Cultura extends Model implements Auditable
     public function getTipos()
     {
         return $this->tipos;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function fazenda()
+    {
+        return $this->belongsTo(Fazenda::class, 'fazenda_id');
     }
 }

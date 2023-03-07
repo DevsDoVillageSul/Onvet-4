@@ -22,6 +22,22 @@ class CreateCulturas extends Migration
             $table->integer('ha');
             $table->integer('custo');
             $table->integer('total');
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('fazenda_id');
+            $table->foreign('fazenda_id')
+                ->references('id')
+                ->on('fazendas')
+            ;
+
+
             $table->text('observacao')->nullable();
             $table->tinyInteger('ativo');
             $table->timestamps();

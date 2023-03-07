@@ -72,6 +72,19 @@
                                         value="{{ $cultura->total ?? '' }}" />
                                 </div>
                             </div>
+                            <div class="col-md-6 col-12">
+                            <div class="form-group" id="fazenda">
+                                <label class="form-label" for="fazenda">Fazendas</label>
+                                <select name="fazenda_id" id="fazenda_id" class="form-control">
+                                    <option value="">Selecione:</option>
+                                    @foreach ($fazendas as $fazenda)
+                                    <option value="{{ $fazenda->id }}"
+                                        {{ $fazenda->id == $cultura->fazenda_id ? 'selected="selected"' : '' }}>
+                                        {{ $fazenda->nome }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                             <div class="col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="observacao">Observação</label>

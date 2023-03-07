@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Data\Cadastro;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cadastro\Cultura;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Exception;
-
+use Illuminate\Support\Facades\Auth;
 class CulturaController extends Controller
 {
     protected $model = Cultura::class;
@@ -16,6 +15,11 @@ class CulturaController extends Controller
         try {
             $cultura = $this->model::findOrNew($request->id);
             $cultura->nome = $request->nome;
+
+            $cultura->fill($request->all());
+            $cultura->setAttribute('user_id', Auth::user()->id);
+            $cultura->fazenda_id = $request->fazenda_id;
+
             $cultura->tipo = $request->tipo;
             $cultura->dt_ini = $request->dt_ini;
             $cultura->dt_fim = $request->dt_fim;

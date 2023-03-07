@@ -63,6 +63,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
+                                <th>Fazenda</th>
                                 <th>Tipo</th>
                                 <th>Inicio</th>
                                 <th>Finalizada</th>
@@ -80,6 +81,7 @@
                                     <td>
                                         {{ $cultura->nome }}
                                     </td>
+                                    <td>{{ $cultura->fazenda->nome }}</td>
                                     <td>
                                         {{ $cultura->getTipo() }}
                                     </td>
