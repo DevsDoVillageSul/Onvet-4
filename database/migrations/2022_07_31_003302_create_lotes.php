@@ -22,6 +22,22 @@ class CreateLotes extends Migration
             $table->string('fase', 20);
             $table->text('observacao')->nullable();
             $table->tinyInteger('ativo');
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('fazenda_id');
+            $table->foreign('fazenda_id')
+                ->references('id')
+                ->on('fazendas')
+            ;
+
+
             $table->timestamps();
         });
     }

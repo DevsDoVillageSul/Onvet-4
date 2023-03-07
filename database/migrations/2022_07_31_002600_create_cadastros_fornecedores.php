@@ -20,7 +20,7 @@ class CreateCadastrosFornecedores extends Migration
             $table->string('cnpj', 20)->nullable();
             $table->string('razao', 50);
             $table->string('tipo', 20);
-            $table->string('email')->nullable();  
+            $table->string('email')->nullable();
             $table->string('telefone', 20);
             $table->string('cep', 10);
             $table->string('endereco', 100);
@@ -28,7 +28,23 @@ class CreateCadastrosFornecedores extends Migration
             $table->string('complemento', 100);
             $table->string('bairro', 50);
             $table->string('cidade', 50);
-            $table->string('uf', 2);            
+            $table->string('uf', 2);
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('fazenda_id');
+            $table->foreign('fazenda_id')
+                ->references('id')
+                ->on('fazendas')
+            ;
+
+
             $table->tinyInteger('ativo');
             $table->timestamps();
         });

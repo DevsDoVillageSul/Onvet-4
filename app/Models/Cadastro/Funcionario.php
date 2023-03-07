@@ -57,6 +57,7 @@ class Funcionario extends Model implements Auditable
     {
         return $this->belongsTo(Fazenda::class, 'fazenda_id');
     }
+    
     public function getSexo()
     {
         return $this->sexos[$this->sexo];

@@ -13,55 +13,55 @@ class PopularDatabase extends Migration
      */
     public function up()
     {   
-        DB::table('fornecedor')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Novo Mundo',
-                    'cpf' => '',
-                    'cnpj' => '01.534.080/0001-28',
-                    'razao' => 'Novo Mundo Moveis e Utilidades Ltda',
-                    'tipo' => 'externo',
-                    'email' => 'novomundo@gmail.com',
-                    'telefone' => '(99)99999-9999',
-                    'cep' => '75780-000',
-                    'endereco' => 'Rua VS 5',
-                    'numero' => '1',
-                    'complemento' => 'Quadra 12, Lote 1',
-                    'bairro' => 'Centro',
-                    'cidade' => 'Ipameri',
-                    'uf' => 'GO',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('fornecedor')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Novo Mundo',
+        //             'cpf' => '',
+        //             'cnpj' => '01.534.080/0001-28',
+        //             'razao' => 'Novo Mundo Moveis e Utilidades Ltda',
+        //             'tipo' => 'externo',
+        //             'email' => 'novomundo@gmail.com',
+        //             'telefone' => '(99)99999-9999',
+        //             'cep' => '75780-000',
+        //             'endereco' => 'Rua VS 5',
+        //             'numero' => '1',
+        //             'complemento' => 'Quadra 12, Lote 1',
+        //             'bairro' => 'Centro',
+        //             'cidade' => 'Ipameri',
+        //             'uf' => 'GO',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('fornecedor')->insert(
-            [
-                [
-                    'id' => 2,
-                    'nome' => 'Agroforte',
-                    'cpf' => '',
-                    'cnpj' => '05.333.963/0001-20',
-                    'razao' => 'AGROFORTE NUTRICAO ANIMAL LTDA',
-                    'tipo' => 'externo',
-                    'email' => 'agroforte@gmail.com',
-                    'telefone' => '(99)99999-9999',
-                    'cep' => '75780-000',
-                    'endereco' => 'Rua VS 7',
-                    'numero' => '1',
-                    'complemento' => 'Quadra 10, Lote 5',
-                    'bairro' => 'Centro',
-                    'cidade' => 'Ipameri',
-                    'uf' => 'GO',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('fornecedor')->insert(
+        //     [
+        //         [
+        //             'id' => 2,
+        //             'nome' => 'Agroforte',
+        //             'cpf' => '',
+        //             'cnpj' => '05.333.963/0001-20',
+        //             'razao' => 'AGROFORTE NUTRICAO ANIMAL LTDA',
+        //             'tipo' => 'externo',
+        //             'email' => 'agroforte@gmail.com',
+        //             'telefone' => '(99)99999-9999',
+        //             'cep' => '75780-000',
+        //             'endereco' => 'Rua VS 7',
+        //             'numero' => '1',
+        //             'complemento' => 'Quadra 10, Lote 5',
+        //             'bairro' => 'Centro',
+        //             'cidade' => 'Ipameri',
+        //             'uf' => 'GO',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         
         DB::table('tanques')->insert(
             [
@@ -234,53 +234,53 @@ class PopularDatabase extends Migration
                 ]
             ]
         );
-        DB::table('lotes')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Lote girolando',
-                    'desc' => 'Populando a base de dados para testes',
-                    'abv' => 'Gir',
-                    'sexo' => 'MACHO',
-                    'fase' => 'RECRIA',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('lotes')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Lote girolando',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'abv' => 'Gir',
+        //             'sexo' => 'MACHO',
+        //             'fase' => 'RECRIA',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('lotes')->insert(
-            [
-                [
-                    'id' => 2,
-                    'nome' => 'Lote anelorado',
-                    'desc' => 'Populando a base de dados para testes',
-                    'abv' => 'Nelore',
-                    'sexo' => 'MISTO',
-                    'fase' => 'CRIA',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('lotes')->insert(
+        //     [
+        //         [
+        //             'id' => 2,
+        //             'nome' => 'Lote anelorado',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'abv' => 'Nelore',
+        //             'sexo' => 'MISTO',
+        //             'fase' => 'CRIA',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('lotes')->insert(
-            [
-                [
-                    'id' => 3,
-                    'nome' => 'Lote angus',
-                    'desc' => 'Populando a base de dados para testes',
-                    'abv' => 'Angus',
-                    'sexo' => 'MISTO',
-                    'fase' => 'PRODUCAO',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('lotes')->insert(
+        //     [
+        //         [
+        //             'id' => 3,
+        //             'nome' => 'Lote angus',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'abv' => 'Angus',
+        //             'sexo' => 'MISTO',
+        //             'fase' => 'PRODUCAO',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
         // DB::table('animais')->insert(
         //     [
@@ -585,9 +585,9 @@ class PopularDatabase extends Migration
      */
     public function down()
     {
-        Schema::table('fornecedor', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('fornecedor', function (Blueprint $table) {
+        //     //
+        // });
         Schema::table('tanques', function (Blueprint $table) {
             //
         });
@@ -609,9 +609,9 @@ class PopularDatabase extends Migration
         Schema::table('inducoes', function (Blueprint $table) {
             //
         });
-        Schema::table('lotes', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('lotes', function (Blueprint $table) {
+        //     //
+        // });
         // Schema::table('animais', function (Blueprint $table) {
         //     //
         // });

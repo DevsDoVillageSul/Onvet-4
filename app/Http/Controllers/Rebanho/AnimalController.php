@@ -79,15 +79,37 @@ class AnimalController extends Controller
     public function create($id)
     {
         $breadcrumbs = $this->breadcrumbs;
-        $lotes = Lote::select('id', 'nome')->orderBy('nome')->get();
-        $fornecedores = Fornecedor::select('id', 'nome')->orderBy('nome')->get();
-        $fazendas = Fazenda::select('id', 'nome')->orderBy('nome')->get();
-        $users = User::select('id', 'name')->orderBy('name')->get();
+    
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+            $lotes = Lote::all();
+            $fornecedores = Fornecedor::all();
+            $users = User::all();
+        } else {
+            // Se não, mostre apenas as fazendas, lotes e fornecedores do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+            $lotes = Lote::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+            $fornecedores = Fornecedor::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+            $users = User::where(function($query) use ($user_id) {
+                $query->where('id', $user_id);
+            })->get();
+        }
+    
         $animal = $this->model::findOrNew($id);
         $dataView = compact('breadcrumbs', 'animal', 'lotes', 'fornecedores','users','fazendas');
         return view('modules/rebanho/animal/create', $dataView);
     }
-
     public function destroy($id)
     {
         try {

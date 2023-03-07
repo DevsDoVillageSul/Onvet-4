@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cadastro\Fornecedor;
 use App\Models\Cadastro\FornecedorContato;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Exception;
 
 class FornecedorController extends Controller
@@ -17,6 +17,11 @@ class FornecedorController extends Controller
         try {
             $fornecedor = $this->model::findOrNew($request->id);
             $fornecedor->nome = $request->nome;
+            
+            $fornecedor->fill($request->all());
+            $fornecedor->setAttribute('user_id', Auth::user()->id);
+            $fornecedor->fazenda_id = $request->fazenda_id;
+
             $fornecedor->razao = $request->razao;
             $fornecedor->cpf = $request->cpf;
             $fornecedor->cnpj = $request->cnpj;

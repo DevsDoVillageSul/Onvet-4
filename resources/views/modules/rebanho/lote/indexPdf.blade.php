@@ -4,6 +4,7 @@
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Fazenda</th>
                 <th>Descrição</th>
                 <th>Abreviação</th>
                 <th>Sexo</th>
@@ -18,6 +19,7 @@
                     <td>
                         {{ $lote->nome }}
                     </td>
+                    <td>{{ $lote->fazenda->nome }}</td>
                     <td>
                         {{ $lote->desc }}
                     </td>

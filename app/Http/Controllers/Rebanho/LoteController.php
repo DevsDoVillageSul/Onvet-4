@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Lote;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use Illuminate\Support\Facades\Auth;
 
 class LoteController extends Controller
 {
@@ -19,9 +22,21 @@ class LoteController extends Controller
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $lotes = Lote::filtros($request)
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
             ->orderBy('nome', 'ASC')
         ;
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $lotes = Lote::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $lotes = Lote::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($lotes);
@@ -31,7 +46,9 @@ class LoteController extends Controller
             return $this->indexExcel($lotes);
         }
 
-        $lotes = $lotes->paginate(config('app.paginate'));
+        $lotes = $lotes
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
 
         $dataView = compact('breadcrumbs', 'request', 'lotes');
@@ -61,7 +78,20 @@ class LoteController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $lote = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'lote');
+        $users = User::select('id', 'name')->orderBy('name')->get();
+    
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+        } else {
+            // Se não, mostre apenas as fazendas do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+        }
+        $dataView = compact('breadcrumbs', 'lote','users','fazendas');
         return view('modules/rebanho/lote/create', $dataView);
     }
 
