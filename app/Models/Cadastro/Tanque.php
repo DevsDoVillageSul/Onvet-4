@@ -50,12 +50,5 @@ class Tanque extends Model implements Auditable
     public function scopeAtivo($query)
     {
         return $query->where('ativo', 1);
-    }
-
-    /* função relacionada ao botão ativo, não utilizada nesse crud
-    public function scopeAtivo($query)
-    {
-        return $query->where('ativo', 1);
-    }
- */   
+    }  
 }

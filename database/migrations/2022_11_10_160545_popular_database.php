@@ -63,18 +63,18 @@ class PopularDatabase extends Migration
         //     ]
         // );
         
-        DB::table('tanques')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Tanque número 1',
-                    'litros' => '255',
-                    'ativo' => '1',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('tanques')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Tanque número 1',
+        //             'litros' => '255',
+        //             'ativo' => '1',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         DB::table('areas')->insert(
             [
                 [
@@ -588,9 +588,9 @@ class PopularDatabase extends Migration
         // Schema::table('fornecedor', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('tanques', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('tanques', function (Blueprint $table) {
+        //     //
+        // });
         Schema::table('areas', function (Blueprint $table) {
             //
         });

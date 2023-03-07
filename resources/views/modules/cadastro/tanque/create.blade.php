@@ -85,8 +85,7 @@
 <script>
 $(document).ready(function() {
     $('#formTanqueData').on('submit', function() {
-        postData('formTanqueData', '{{ url('
-            cadastros / tanques ') }}');
+        postData('formTanqueData', '{{ url('cadastros/tanques') }}');
         return false;
     });
     new Cleave('#litros', {
