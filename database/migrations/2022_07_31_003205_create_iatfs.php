@@ -17,7 +17,7 @@ class CreateIatfs extends Migration
             $table->id();
             $table->string('nome');
             $table->longText('desc');
-            
+
             //chaves estrangeiras
             $table->bigInteger('animal_id')->nullable()->unsigned();
             $table->foreign('animal_id')->nullable()->unsigned()
@@ -29,8 +29,13 @@ class CreateIatfs extends Migration
             $table->foreign('animais_id')->nullable()->unsigned()
                 ->references('id')
                 ->on('animais');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
             
-                ;
             $table->timestamps();
         });
     }

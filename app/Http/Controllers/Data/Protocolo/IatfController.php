@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Data\Protocolo;
 
 use App\Http\Controllers\Controller;
 use App\Models\Protocolo\Iatf;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -16,6 +16,10 @@ class IatfController extends Controller
         try {
             $iatf = $this->model::findOrNew($request->id);
             $iatf->nome = $request->nome;
+
+            $iatf->fill($request->all());
+            $iatf->setAttribute('user_id', Auth::user()->id);
+
             $iatf->desc = $request->desc;
             $iatf->animal_id = $request->animal_id;
             $iatf->animais_id = $request->animais_id;

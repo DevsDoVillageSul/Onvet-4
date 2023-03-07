@@ -223,17 +223,17 @@ class PopularDatabase extends Migration
         //         ]
         //     ]
         // );
-        DB::table('iatfs')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Primeiro protocolo IATF',
-                    'desc' => 'Populando a base de dados para testes',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('iatfs')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Primeiro protocolo IATF',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         // DB::table('lotes')->insert(
         //     [
         //         [
@@ -603,9 +603,9 @@ class PopularDatabase extends Migration
         // Schema::table('tes', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('iatfs', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('iatfs', function (Blueprint $table) {
+        //     //
+        // });
         // Schema::table('inducoes', function (Blueprint $table) {
         //     //
         // });
