@@ -19,11 +19,18 @@ class CreateInducoes extends Migration
             $table->longText('desc');
             $table->string('dt_prt', 20);
             $table->integer('dias_lactacao');
+           
             //chave estrangeira
             $table->bigInteger('animal_id')->nullable()->unsigned();
             $table->foreign('animal_id')->nullable()->unsigned()
                 ->references('id')
                 ->on('animais');
+            ;
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
             ;
 
             $table->timestamps();

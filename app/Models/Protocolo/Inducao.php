@@ -6,12 +6,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Rebanho\Animal;
+use App\Models\User;
+use App\Http\Traits\HasUserAccess; // importando a trait
 
 class Inducao extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
 
     protected $table = 'inducoes';
+
+    protected $fillable = [
+        'user_id',
+    ];
 
     public function scopeFiltros($query, $request)
     {
@@ -28,5 +34,10 @@ class Inducao extends Model implements Auditable
     public function animal()
     {
         return $this->belongsTo(Animal::class, 'animal_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

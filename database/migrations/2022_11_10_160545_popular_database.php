@@ -210,19 +210,19 @@ class PopularDatabase extends Migration
         //         ]
         //     ]
         // );
-        DB::table('inducoes')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Primeiro protocolo indução a lactação',
-                    'desc' => 'Populando a base de dados para testes',
-                    'dt_prt' => '2023-01-01',
-                    'dias_lactacao' => '4',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('inducoes')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Primeiro protocolo indução a lactação',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'dt_prt' => '2023-01-01',
+        //             'dias_lactacao' => '4',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         DB::table('iatfs')->insert(
             [
                 [
@@ -606,9 +606,9 @@ class PopularDatabase extends Migration
         Schema::table('iatfs', function (Blueprint $table) {
             //
         });
-        Schema::table('inducoes', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('inducoes', function (Blueprint $table) {
+        //     //
+        // });
         // Schema::table('lotes', function (Blueprint $table) {
         //     //
         // });
