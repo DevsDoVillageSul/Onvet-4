@@ -63,6 +63,7 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
+                            <th>Fazenda</th>
                             <th>Razão Social</th>
                             <th>Telefone</th>
                             <th>Bairro</th>
@@ -77,6 +78,7 @@
                             <td>
                                 {{ $fornecedor->nome }}
                             </td>
+                            <td>{{ $fornecedor->fazenda->nome }}</td>
                             <td>
                                 {{ $fornecedor->razao }}
                             </td>

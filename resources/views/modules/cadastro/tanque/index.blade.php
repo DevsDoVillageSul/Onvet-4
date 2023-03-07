@@ -65,6 +65,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
+                                <th>Fazenda</th>
                                 <th>Capacidade (L)</th>
                                 <th>Observação</th>
                                 <th style="width: 5%;">Status</th>
@@ -77,6 +78,7 @@
                                     <td>
                                         {{ $tanque->nome }}
                                     </td>
+                                    <td>{{ $tanque->fazenda->nome }}</td>
                                     <td>
                                         {!! nl2br($tanque->litros) !!}
                                     </td>

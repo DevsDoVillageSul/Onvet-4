@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nome</th>
+            <th>Fazenda</th>
             <th>Capacidade (L)</th>
             <th>Observação</th>
         </tr>
@@ -12,6 +13,7 @@
                 <td>
                     {{ $tanque->nome }}
                 </td>
+                <td>{{ $tanque->fazenda->nome }}</td>
                 <td>
                     {{ $tanque->litros }}
                 </td>
