@@ -199,17 +199,17 @@ class PopularDatabase extends Migration
         // );
 
 
-        DB::table('tes')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'Primeiro protocolo TE',
-                    'desc' => 'Populando a base de dados para testes',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('tes')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'Primeiro protocolo TE',
+        //             'desc' => 'Populando a base de dados para testes',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
         DB::table('inducoes')->insert(
             [
                 [
@@ -600,9 +600,9 @@ class PopularDatabase extends Migration
         // Schema::table('pastagem', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('tes', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('tes', function (Blueprint $table) {
+        //     //
+        // });
         Schema::table('iatfs', function (Blueprint $table) {
             //
         });

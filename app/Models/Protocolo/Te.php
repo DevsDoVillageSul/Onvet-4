@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Rebanho\Animal;
+use App\Models\User;
 use App\Http\Traits\HasUserAccess; // importando a trait
 
 class Te extends Model implements Auditable

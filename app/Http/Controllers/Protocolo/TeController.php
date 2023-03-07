@@ -9,7 +9,6 @@ use App\Models\Protocolo\Te;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Rebanho\Animal;
 use App\Models\User;
-use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
 
 class TeController extends Controller
