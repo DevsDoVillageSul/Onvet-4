@@ -17,6 +17,14 @@ class CreateFaq extends Migration
             $table->id();
             $table->string('pergunta');
             $table->text('resposta');
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
+
             $table->tinyInteger('ativo');
             $table->timestamps();
         });

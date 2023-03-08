@@ -5,11 +5,17 @@ namespace App\Models\Duvida;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Models\User;
+use App\Http\Traits\HasUserAccess; // importando a trait
 
 class Faq extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
     protected $table = "faqs";
+
+    protected $fillable = [
+        'user_id',
+    ];
     
     public function scopeFiltros($query, $request)
     {
@@ -20,6 +26,12 @@ class Faq extends Model implements Auditable
         }
         
         return $query;
+    }
+
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function scopeAtivo($query)
