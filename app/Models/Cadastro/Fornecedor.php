@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\User;
-use App\Models\Cadastro\Fazenda;
 use App\Http\Traits\HasUserAccess;
 
 class Fornecedor extends Model implements Auditable
@@ -49,10 +48,6 @@ class Fornecedor extends Model implements Auditable
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-    public function fazenda()
-    {
-        return $this->belongsTo(Fazenda::class, 'fazenda_id');
     }
 
     public function scopeAtivo($query)

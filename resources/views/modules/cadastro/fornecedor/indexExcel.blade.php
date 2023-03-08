@@ -2,7 +2,6 @@
     <thead>
         <tr>
             <th>Nome</th>
-            <th>Fazenda</th>
             <th>Tipo</th>
             <th>CPF</th>
             <th>CNPJ</th>
@@ -19,7 +18,6 @@
             <td>
                 {{ $fornecedor->nome }}
             </td>
-            <td>{{ $fornecedor->fazenda->nome }}</td>
             <td>
                 {{ $fornecedor->getTipo() }}
             </td>

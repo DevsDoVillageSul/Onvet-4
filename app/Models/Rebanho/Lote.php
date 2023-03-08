@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Http\Traits\HasUserAccess; // importando a trait
 use App\Models\User;
-use App\Models\Cadastro\Fazenda;
 
 class Lote extends Model implements Auditable
 {
@@ -73,9 +72,5 @@ class Lote extends Model implements Auditable
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-    public function fazenda()
-    {
-        return $this->belongsTo(Fazenda::class, 'fazenda_id');
     }
 }

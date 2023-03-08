@@ -8,7 +8,6 @@ use App\Models\Rebanho\Lote;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
-use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
 
 class LoteController extends Controller
@@ -79,19 +78,7 @@ class LoteController extends Controller
         $breadcrumbs = $this->breadcrumbs;
         $lote = $this->model::findOrNew($id);
         $users = User::select('id', 'name')->orderBy('name')->get();
-    
-        if(Auth::user()->role_id == 1) {
-            // Se o usuário tem a role 1, mostre todas as fazendas
-            $fazendas = Fazenda::all();
-        } else {
-            // Se não, mostre apenas as fazendas do usuário logado
-            $user_id = Auth::id();
-            $fazendas = Fazenda::where(function($query) use ($user_id) {
-                $query->where('user_id', $user_id)
-                    ->orWhereNull('user_id');
-            })->get();
-        }
-        $dataView = compact('breadcrumbs', 'lote','users','fazendas');
+        $dataView = compact('breadcrumbs', 'lote','users');
         return view('modules/rebanho/lote/create', $dataView);
     }
 

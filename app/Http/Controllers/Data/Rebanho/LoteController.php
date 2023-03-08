@@ -20,8 +20,7 @@ class LoteController extends Controller
 
             $lote->fill($request->all());
             $lote->setAttribute('user_id', Auth::user()->id);
-            $lote->fazenda_id = $request->fazenda_id;
-
+            
             $lote->desc = $request->desc;
             $lote->abv =  $request->abv;
             $lote->sexo = $request->sexo;

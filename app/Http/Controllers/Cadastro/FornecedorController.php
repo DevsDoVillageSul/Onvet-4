@@ -8,7 +8,6 @@ use App\Exports\ExcelExport;
 use App\Models\Cadastro\Fornecedor;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
-use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
 
 class FornecedorController extends Controller
@@ -97,20 +96,7 @@ class FornecedorController extends Controller
         $breadcrumbs = $this->breadcrumbs;
         $fornecedor = $this->model::findOrNew($id);
         $users = User::select('id', 'name')->orderBy('name')->get();
-
-        if(Auth::user()->role_id == 1) {
-            // Se o usuário tem a role 1, mostre todas as fazendas
-            $fazendas = Fazenda::all();
-        } else {
-            // Se não, mostre apenas as fazendas do usuário logado
-            $user_id = Auth::id();
-            $fazendas = Fazenda::where(function($query) use ($user_id) {
-                $query->where('user_id', $user_id)
-                    ->orWhereNull('user_id');
-            })->get();
-        }
-
-        $dataView = compact('breadcrumbs', 'fornecedor','users','fazendas');
+        $dataView = compact('breadcrumbs', 'fornecedor','users');
         return view('modules/cadastro/fornecedor/create', $dataView);
 
     }

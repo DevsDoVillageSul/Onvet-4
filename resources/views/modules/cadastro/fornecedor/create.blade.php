@@ -73,19 +73,6 @@
                                         value="{{ $fornecedor->email ?? '' }}" />
                                 </div>
                             </div>
-                            <div class="col-md-6 col-12">
-                                <div class="form-group" id="fazenda">
-                                    <label class="form-label" for="fazenda">Fazendas</label>
-                                    <select name="fazenda_id" id="fazenda_id" class="form-control">
-                                        <option value="">Selecione:</option>
-                                        @foreach ($fazendas as $fazenda)
-                                            <option value="{{ $fazenda->id }}"
-                                                {{ $fazenda->id == $fornecedor->fazenda_id ? 'selected="selected"' : '' }}>
-                                                {{ $fazenda->nome }} </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

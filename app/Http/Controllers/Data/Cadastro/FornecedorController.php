@@ -20,7 +20,6 @@ class FornecedorController extends Controller
             
             $fornecedor->fill($request->all());
             $fornecedor->setAttribute('user_id', Auth::user()->id);
-            $fornecedor->fazenda_id = $request->fazenda_id;
 
             $fornecedor->razao = $request->razao;
             $fornecedor->cpf = $request->cpf;

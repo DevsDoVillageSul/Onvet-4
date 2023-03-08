@@ -37,13 +37,6 @@ class CreateCadastrosFornecedores extends Migration
                 ->on('users')
             ;
 
-            //chaves estrangeiras
-            $table->unsignedBigInteger('fazenda_id');
-            $table->foreign('fazenda_id')
-                ->references('id')
-                ->on('fazendas')
-            ;
-
 
             $table->tinyInteger('ativo');
             $table->timestamps();
