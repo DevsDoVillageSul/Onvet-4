@@ -32,6 +32,12 @@ class CreateSemens extends Migration
                 ->references('id')
                 ->on('animais');
             ;
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
             
             $table->string('sangue', 20);
             $table->string('raca_2', 50);

@@ -492,90 +492,90 @@ class PopularDatabase extends Migration
         //     ]
         // );
 
-        DB::table('embrioes')->insert(
-            [
-                [
-                    'id' => 1,
-                    'nome' => 'AB',
-                    'tipo' => 'VITRO',
-                    'congelamento' => 'VITRIFICACAO',
-                    'grau' => 'MO',
-                    'observacao' => '',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('embrioes')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'nome' => 'AB',
+        //             'tipo' => 'VITRO',
+        //             'congelamento' => 'VITRIFICACAO',
+        //             'grau' => 'MO',
+        //             'observacao' => '',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('embrioes')->insert(
-            [
-                [
-                    'id' => 2,
-                    'nome' => 'AD',
-                    'tipo' => 'VITRO',
-                    'congelamento' => 'VITRIFICACAO',
-                    'grau' => 'MO',
-                    'observacao' => '',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('embrioes')->insert(
+        //     [
+        //         [
+        //             'id' => 2,
+        //             'nome' => 'AD',
+        //             'tipo' => 'VITRO',
+        //             'congelamento' => 'VITRIFICACAO',
+        //             'grau' => 'MO',
+        //             'observacao' => '',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('embrioes')->insert(
-            [
-                [
-                    'id' => 3,
-                    'nome' => 'AC',
-                    'tipo' => 'VIVO',
-                    'congelamento' => 'VITRIFICACAO',
-                    'grau' => 'BX',
-                    'observacao' => '',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('embrioes')->insert(
+        //     [
+        //         [
+        //             'id' => 3,
+        //             'nome' => 'AC',
+        //             'tipo' => 'VIVO',
+        //             'congelamento' => 'VITRIFICACAO',
+        //             'grau' => 'BX',
+        //             'observacao' => '',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('semens')->insert(
-            [
-                [
-                    'id' => 1,
-                    'registro' => '9983',
-                    'nome' => 'ABC',
-                    'raca' => 'BRAFORD',
-                    'central' => 'Central de Teste',
-                    'tipos' => '["Convencional","Sexado Macho"]',
-                    'sangue' => '3/4',
-                    'raca_2' => 'GIR',
-                    'partida' => '9',
-                    'tec' => 'João',
-                    'observacao' => '',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('semens')->insert(
+        //     [
+        //         [
+        //             'id' => 1,
+        //             'registro' => '9983',
+        //             'nome' => 'ABC',
+        //             'raca' => 'BRAFORD',
+        //             'central' => 'Central de Teste',
+        //             'tipos' => '["Convencional","Sexado Macho"]',
+        //             'sangue' => '3/4',
+        //             'raca_2' => 'GIR',
+        //             'partida' => '9',
+        //             'tec' => 'João',
+        //             'observacao' => '',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
 
-        DB::table('semens')->insert(
-            [
-                [
-                    'id' => 2,
-                    'registro' => '998',
-                    'nome' => 'XYZ',
-                    'raca' => 'BRAFORD',
-                    'central' => 'Central de Teste',
-                    'tipos' => '["Sexado F\u00eamea"]',
-                    'sangue' => '3/4',
-                    'raca_2' => 'GIR',
-                    'partida' => '9',
-                    'tec' => 'João',
-                    'observacao' => '',
-                    'created_at' => '2022-08-03 16:55:45',
-                    'updated_at' => '2022-08-03 16:55:45'
-                ]
-            ]
-        );
+        // DB::table('semens')->insert(
+        //     [
+        //         [
+        //             'id' => 2,
+        //             'registro' => '998',
+        //             'nome' => 'XYZ',
+        //             'raca' => 'BRAFORD',
+        //             'central' => 'Central de Teste',
+        //             'tipos' => '["Sexado F\u00eamea"]',
+        //             'sangue' => '3/4',
+        //             'raca_2' => 'GIR',
+        //             'partida' => '9',
+        //             'tec' => 'João',
+        //             'observacao' => '',
+        //             'created_at' => '2022-08-03 16:55:45',
+        //             'updated_at' => '2022-08-03 16:55:45'
+        //         ]
+        //     ]
+        // );
     }
 
     /**
@@ -615,11 +615,11 @@ class PopularDatabase extends Migration
         // Schema::table('animais', function (Blueprint $table) {
         //     //
         // });
-        Schema::table('semens', function (Blueprint $table) {
-            //
-        });
-        Schema::table('embrioes', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('semens', function (Blueprint $table) {
+        //     //
+        // });
+        // Schema::table('embrioes', function (Blueprint $table) {
+        //     //
+        // });
     }
 }

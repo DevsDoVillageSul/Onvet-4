@@ -28,9 +28,17 @@ class AnimalController extends Controller
         $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $animais = Animal::filtros($request)
             ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
-            ->orderBy('fazenda_id')    
+            ->orderBy('fazenda_id')
         ;
-
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $animais = Animal::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $animais = Animal::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($animais);
         }
@@ -40,18 +48,19 @@ class AnimalController extends Controller
         }
 
         $animais = $animais
-        ->with('lote:id,nome')
-        ->with('fornecedor:id,nome')
-        ->paginate(config('app.paginate'));
+            ->with('lote:id,nome')
+            ->with('fornecedor:id,nome')
+            ->with('user:id,name')
+            ->paginate(config('app.paginate'));
 
         $resume = $this->model::filtros($request)
-        ->select(
-            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
-            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
-        )
-        ->where('id', '>', 1)
-        ->first()
-    ;
+            ->select(
+                DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+                DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+            )
+            ->where('id', '>', 1)
+            ->first()
+        ;
 
 
         $dataView = compact('breadcrumbs', 'request', 'animais', 'resume');
@@ -79,8 +88,8 @@ class AnimalController extends Controller
     public function create($id)
     {
         $breadcrumbs = $this->breadcrumbs;
-    
-        if(Auth::user()->role_id == 1) {
+
+        if (Auth::user()->role_id == 1) {
             // Se o usuário tem a role 1, mostre todas as fazendas
             $fazendas = Fazenda::all();
             $lotes = Lote::all();
@@ -89,25 +98,25 @@ class AnimalController extends Controller
         } else {
             // Se não, mostre apenas as fazendas, lotes e fornecedores do usuário logado
             $user_id = Auth::id();
-            $fazendas = Fazenda::where(function($query) use ($user_id) {
+            $fazendas = Fazenda::where(function ($query) use ($user_id) {
                 $query->where('user_id', $user_id)
                     ->orWhereNull('user_id');
             })->get();
-            $lotes = Lote::where(function($query) use ($user_id) {
+            $lotes = Lote::where(function ($query) use ($user_id) {
                 $query->where('user_id', $user_id)
                     ->orWhereNull('user_id');
             })->get();
-            $fornecedores = Fornecedor::where(function($query) use ($user_id) {
+            $fornecedores = Fornecedor::where(function ($query) use ($user_id) {
                 $query->where('user_id', $user_id)
                     ->orWhereNull('user_id');
             })->get();
-            $users = User::where(function($query) use ($user_id) {
+            $users = User::where(function ($query) use ($user_id) {
                 $query->where('id', $user_id);
             })->get();
         }
-    
+
         $animal = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'animal', 'lotes', 'fornecedores','users','fazendas');
+        $dataView = compact('breadcrumbs', 'animal', 'lotes', 'fornecedores', 'users', 'fazendas');
         return view('modules/rebanho/animal/create', $dataView);
     }
     public function destroy($id)
@@ -124,7 +133,7 @@ class AnimalController extends Controller
 
     public function show($id)
     {
-        $breadcrumbs = $this->breadcrumbs;        
+        $breadcrumbs = $this->breadcrumbs;
         $animal = $this->model::findOrFail($id);
         $viewData = compact('breadcrumbs', 'animal');
         return view('modules/rebanho/animais/show', $viewData);

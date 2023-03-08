@@ -30,11 +30,11 @@ class FaqController extends Controller
         // permite que o usuário com role_id = 1 veja todos os dados
         if (auth()->user()->role_id == 1) {
             $faqs = Faq::filtros($request)
-                ->orderBy('nome', 'ASC');
+                ->orderBy('pergunta', 'ASC');
         } else {
             $faqs = Faq::filtros($request)
                 ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
-                ->orderBy('nome', 'ASC');
+                ->orderBy('pergunta', 'ASC');
         }
 
         if (isset($request->export) && $request->export == 'PDF') {

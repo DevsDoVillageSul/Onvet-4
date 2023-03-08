@@ -7,6 +7,7 @@ use App\Models\Rebanho\Semen;
 use App\Models\Rebanho\Animal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 use Exception;
@@ -30,6 +31,10 @@ class SemenController extends Controller
         try {
             $semen = $this->model::findOrNew($request->id);
             $semen->nome = $request->nome;
+
+            $semen->fill($request->all());
+            $semen->setAttribute('user_id', Auth::user()->id);
+
             $semen->registro = $request->registro;
             $semen->raca =  $request->raca;
             $semen->central = $request->central;
