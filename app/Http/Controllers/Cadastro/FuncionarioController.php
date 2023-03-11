@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FuncionarioController extends Controller
 {
@@ -52,12 +53,20 @@ class FuncionarioController extends Controller
             return $this->indexExcel($funcionarios);
         }
 
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
+
         $funcionarios = $funcionarios 
         ->with('user:id,name')
         ->paginate(config('app.paginate'));
 
 
-        $dataView = compact('breadcrumbs', 'request', 'funcionarios');
+        $dataView = compact('breadcrumbs', 'request', 'funcionarios','resume');
         return view('modules/cadastro/funcionario/index', $dataView);
 
     }

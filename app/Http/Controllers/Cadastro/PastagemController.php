@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PastagemController extends Controller
 { 
@@ -24,6 +25,13 @@ class PastagemController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $user_id = Auth::id(); // Obter o ID do usuário autenticado
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
         $pastagens = Pastagem::filtros($request)        
         ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado    
         ->orderBy('id', 'DESC')
@@ -52,7 +60,7 @@ class PastagemController extends Controller
         ->paginate(config('app.paginate'));
 
 
-        $dataView = compact('breadcrumbs', 'request', 'pastagens');
+        $dataView = compact('breadcrumbs', 'request', 'pastagens','resume');
         return view('modules/cadastro/pastagem/index', $dataView);       
 
     }

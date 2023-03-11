@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TanqueController extends Controller
 {
@@ -29,6 +30,14 @@ class TanqueController extends Controller
             ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado    
             ->orderBy('id', 'DESC')
         ;
+
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
 
         // permite que o usuário com role_id = 1 veja todos os dados
         if (auth()->user()->role_id == 1) {
@@ -55,7 +64,7 @@ class TanqueController extends Controller
 
         //caminho para salvar o objeto no banco
         //errar aqui, gera um 404 !
-        $dataView = compact('breadcrumbs', 'request', 'tanques');
+        $dataView = compact('breadcrumbs', 'request', 'tanques','resume');
         return view('modules/cadastro/tanque/index', $dataView);
     }
 

@@ -70,7 +70,6 @@
                                 <th>Pai</th>
                                 <th>Módulo de Congelamento</th>
                                 <th>Grau de Desenvolvimento</th>
-                                <th>Observação</th> 
                                 <th style="width: 5%;">Ações</th>
                             </tr>
                         </thead>
@@ -94,9 +93,6 @@
                                     </td>
                                     <td>
                                         {{ $embriao->getGrau() }}
-                                    </td>
-                                    <td>
-                                        {{ $embriao->observacao }}
                                     </td>
                                     <td nowrap>
                                         <a href="{{ url('rebanho/embrioes/create') }}/{{ $embriao->id ?? null }}"

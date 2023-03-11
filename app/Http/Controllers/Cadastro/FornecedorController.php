@@ -9,6 +9,7 @@ use App\Models\Cadastro\Fornecedor;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FornecedorController extends Controller
 {
@@ -30,8 +31,16 @@ class FornecedorController extends Controller
                 }
             ])
             ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
-            ->orderBy('nome', 'ASC')
-        ;
+            ->orderBy('nome', 'ASC');
+
+        
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
 
         // permite que o usuário com role_id = 1 veja todos os dados
         if (auth()->user()->role_id == 1) {
@@ -56,7 +65,7 @@ class FornecedorController extends Controller
         ->paginate(config('app.paginate'));
 
 
-        $dataView = compact('breadcrumbs', 'request', 'fornecedores');
+        $dataView = compact('breadcrumbs', 'request', 'fornecedores','resume');
         return view('modules/cadastro/fornecedor/index', $dataView);
 
     }

@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use App\Models\Cadastro\Fazenda;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CulturaController extends Controller
 {
@@ -28,6 +29,14 @@ class CulturaController extends Controller
         $culturas = Cultura::filtros($request)        
             ->orderBy('id', 'DESC')
         ;
+
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
 
         // permite que o usuário com role_id = 1 veja todos os dados
         if (auth()->user()->role_id == 1) {
@@ -51,7 +60,7 @@ class CulturaController extends Controller
         ->with('user:id,name')
         ->paginate(config('app.paginate'));
 
-        $dataView = compact('breadcrumbs', 'request', 'culturas');
+        $dataView = compact('breadcrumbs', 'request', 'culturas','resume');
         return view('modules/cadastro/cultura/index', $dataView);  
     }
 

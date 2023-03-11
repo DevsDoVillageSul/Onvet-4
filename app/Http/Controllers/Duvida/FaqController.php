@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FaqController extends Controller
 {
@@ -22,6 +23,14 @@ class FaqController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $user_id = Auth::id(); // Obter o ID do usuário autenticado
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
+
         $faqs = Faq::filtros($request)
             ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
             ->orderBy('pergunta', 'ASC')
@@ -50,7 +59,7 @@ class FaqController extends Controller
         ->paginate(config('app.paginate'));
 
 
-        $dataView = compact('breadcrumbs', 'request', 'faqs');
+        $dataView = compact('breadcrumbs', 'request', 'faqs', 'resume');
         return view('modules/duvida/faq/index', $dataView);
     }
 

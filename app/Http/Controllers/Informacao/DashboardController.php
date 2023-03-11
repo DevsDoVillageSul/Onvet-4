@@ -15,9 +15,9 @@ use App\Models\Cadastro\Tanque;
 use App\Models\Cadastro\Area;
 use App\Models\Cadastro\Pastagem;
 use App\Models\Cadastro\Funcionario;
+use App\Models\Cadastro\Fazenda;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
 use Illuminate\Support\Facades\DB;
 
 
@@ -117,6 +117,14 @@ class DashboardController extends Controller
         ->first()
       ;
 
+      $resume_fazenda = Fazenda::filtros($request)
+      ->select(
+        DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+        DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+      )
+      ->where('id', '>', 0)
+      ->first();
+
       //  função para o gráfico de animais
       $data = DB::table('animais')
         ->select(
@@ -168,10 +176,6 @@ class DashboardController extends Controller
       foreach ($data_lotes as $key => $value) {
         $array_lotes[++$key] = [$value->fase, $value->number];
       }
-
-
-
-
     } else {
       $resume_animal = Animal::filtros($request)
 
@@ -182,6 +186,16 @@ class DashboardController extends Controller
         ->where('id', '>', 0)
         ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
         ->first();
+   
+        $resume_fazenda = Fazenda::filtros($request)
+        ->select(
+          DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+          DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+        ->first();
+
 
       $resume_cultura = Cultura::filtros($request)
         ->select(
@@ -327,6 +341,7 @@ class DashboardController extends Controller
       'breadcrumbs',
       'request',
       'resume_animal',
+      'resume_fazenda',
       'resume_cultura',
       'resume_tanque',
       'resume_fornecedor',

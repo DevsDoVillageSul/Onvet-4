@@ -58,7 +58,7 @@ class AnimalController extends Controller
                 DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
                 DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
             )
-            ->where('id', '>', 1)
+            ->where('id', '>', 0)
             ->first()
         ;
 
