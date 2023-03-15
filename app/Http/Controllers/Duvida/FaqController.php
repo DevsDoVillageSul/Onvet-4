@@ -23,13 +23,26 @@ class FaqController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $user_id = Auth::id(); // Obter o ID do usuário autenticado
-        $resume = $this->model::filtros($request)
-        ->select(
-            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
-            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
-        )
-        ->where('id', '>', 0)
-        ->first();
+       
+        if (auth()->user()->role_id == 1) {
+            $resume = $this->model::filtros($request)
+                ->select(
+                    DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+                    DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+                )
+                ->where('id', '>', 0)
+                ->first();
+        } else {
+            $resume = $this->model::filtros($request)
+                ->select(
+                    DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+                    DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+                )
+                ->where('id', '>', 0)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->first();
+
+        }
 
         $faqs = Faq::filtros($request)
             ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
