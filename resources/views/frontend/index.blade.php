@@ -235,7 +235,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.instagram.com/joaovictor3525/" target="_blank">
+                                <a href="https://www.instagram.com/jv_queirozzs/" target="_blank">
                                     <i class="lni lni-instagram-filled"></i>
                                 </a>
                             </li>
@@ -477,7 +477,7 @@
                                 </div>
                                 <div class="ud-info-meta">
                                     <h5>Como podemos ajudar?</h5>
-                                    <p>onvet@onvet.com.br</p>
+                                    <p>contato@onvetplus.com.br</p>
                                 </div>
                             </div>
                         </div>
