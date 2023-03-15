@@ -1,4 +1,4 @@
-@extends('layouts/contentLayoutMaster')
+    @extends('layouts/contentLayoutMaster')
 
 @section('title', 'Usuários')
 
@@ -26,8 +26,10 @@
                                         <i data-feather='upload'></i>
                                         Escolher Foto
                                     </button>
+                                    <br>
+                                    <p>OBS: Imagem obrigatória</p>
                                     <input type="file" id="imagem" name="imagem" style="display: none;"
-                                        accept="image/*" onchange="loadFile(event)" />
+                                        accept="image/*" onchange="loadFile(event)" required/>
                                 </div>
                             </div>
                         </div>
@@ -173,12 +175,14 @@
             });
         });
         var loadFile = function(event) {
-            var output = document.getElementById('imagePreview');
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function() {
-                URL.revokeObjectURL(output.src)
-            }
-        };
+        var output = document.getElementById('imagePreview');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function() {
+        URL.revokeObjectURL(output.src)
+         }
+       output.style.display = "block"; // Exibe a imagem
+     };
+
         new Cleave('#phone', {
             numericOnly: true,
             blocks: [0, 2, 0, 4, 4],

@@ -5,12 +5,17 @@ namespace App\Models\Cadastro;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
-
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use App\Http\Traits\HasUserAccess; // importando a trait
 class Tanque extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
     
     protected $table = 'tanques';
+    protected $fillable = [
+        'user_id',
+    ];
 
     public function itens()
     {
@@ -34,15 +39,16 @@ class Tanque extends Model implements Auditable
         return $query;
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function fazenda()
+    {
+        return $this->belongsTo(Fazenda::class, 'fazenda_id');
+    }
     public function scopeAtivo($query)
     {
         return $query->where('ativo', 1);
-    }
-
-    /* função relacionada ao botão ativo, não utilizada nesse crud
-    public function scopeAtivo($query)
-    {
-        return $query->where('ativo', 1);
-    }
- */   
+    }  
 }

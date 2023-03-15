@@ -3,68 +3,70 @@
 @section('title', 'Animais')
 
 @section('content')
-    {{-- <div class="row" id="table-hover-row">
-        <div class="col-lg-12 col-12">
-            <div class="row">
-                <div class="col-lg-12 col-12">
-                    <div class="card card-statistics">
-                        <div class="card-header">
-                            <h4 class="card-title">Quantidade de Animais</h4>
-                            <div class="d-flex align-items-center">
-                                <p class="card-text mr-25 mb-0"></p>
-                            </div>
+<div class="row" id="table-hover-row">
+<div class="col-lg-12 col-12">
+        <div class="row">
+            <div class="col-lg-12 col-12">
+                <div class="card card-statistics">
+                    <div class="card-header">
+                        <h4 class="card-title">Quantidade de Animais</h4>
+                        <div class="d-flex align-items-center">
+                            <p class="card-text mr-25 mb-0"></p>
                         </div>
-                        <div class="card-body statistics-body">
-                            <div class="row">
-                                <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
-                                    <div class="media">
-                                        <div class="avatar bg-light-primary mr-2">
-                                            <div class="avatar-content">
-                                                <i data-feather='animais'></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body my-auto">
-                                            <h4 class="font-weight-bolder mb-0">
-                                                {{ $resume->ativos + $resume->inativos }}
-                                            </h4>
-                                            <p class="card-text font-small-3 mb-0">Animais</p>
+                    </div>
+
+                    <div class="card-body statistics-body">
+
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
+                                <div class="media">
+                                    <div class="avatar bg-light-primary mr-2">
+                                        <div class="avatar-content">
+                                            <i data-feather='gitlab'></i>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
-                                    <div class="media">
-                                        <div class="avatar bg-light-primary mr-2">
-                                            <div class="avatar-content">
-                                                <i data-feather='check-square'></i>
-                                            </div>
-                                        </div>
-                                        <div class="media-body my-auto">
-                                            <h4 class="font-weight-bolder mb-0">
-                                                {{ $resume->ativos ?? 0 }}
-                                            </h4>
-                                            <p class="card-text font-small-3 mb-0">Ativos</p>
-                                        </div>
+                                    <div class="media-body my-auto">
+                                        <h4 class="font-weight-bolder mb-0">
+                                            {{ $resume->ativos + $resume->inativos }}
+                                        </h4>
+                                        <p class="card-text font-small-3 mb-0">Animais</p>
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
-                                    <div class="media">
-                                        <div class="avatar bg-light-primary mr-2">
-                                            <div class="avatar-content">
-                                                <i data-feather='square'></i>
-                                            </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
+                                <div class="media">
+                                    <div class="avatar bg-light-primary mr-2">
+                                        <div class="avatar-content">
+                                            <i data-feather='check-square'></i>
                                         </div>
-                                        <div class="media-body my-auto">
-                                            <h4 class="font-weight-bolder mb-0">
-                                                {{ $resume->inativos ?? 0 }}
-                                            </h4>
-                                            <p class="card-text font-small-3 mb-0">Inativo</p>
+                                    </div>
+                                    <div class="media-body my-auto">
+                                        <h4 class="font-weight-bolder mb-0">
+                                            {{ $resume->ativos }}
+                                        </h4>
+                                        <p class="card-text font-small-3 mb-0">Ativos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
+                                <div class="media">
+                                    <div class="avatar bg-light-primary mr-2">
+                                        <div class="avatar-content">
+                                            <i data-feather='square'></i>
                                         </div>
+                                    </div>
+                                    <div class="media-body my-auto">
+                                        <h4 class="font-weight-bolder mb-0">
+                                            {{ $resume->inativos }}
+                                        </h4>
+                                        <p class="card-text font-small-3 mb-0">Inativos</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
+            </div>
     <div class="col-12">
         <div class="card">
             <div class="card-header">
@@ -123,10 +125,10 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th style="width: 140px;">Imagem</th>
                             <th>Nome</th>
                             <th>Video</th>
+                            <th>Fazenda</th>
                             <th>Lote</th>
                             <th style="width: 5%;">Status</th>
                             <th style="width: 5%;">Ações</th>
@@ -135,9 +137,6 @@
                     <tbody>
                         @foreach ($animais as $animal)
                             <tr>
-                                <td>
-                                    {{ $animal->id }}
-                                </td>
                                 <td>
                                     @if (isset($animal->imagem))
                                         <img src="{{ asset($animal->imagem) }}" class="img-fluid" />
@@ -149,6 +148,7 @@
                                 <td>
                                     {!! nl2br($animal->video) !!}
                                 </td>
+                                <td>{{ $animal->fazenda->nome }}</td>
                                 <td>{{ $animal->lote->nome }}</td>
                                 <td>
                                     {!! Helper::getAtivoInativo($animal->ativo) !!}

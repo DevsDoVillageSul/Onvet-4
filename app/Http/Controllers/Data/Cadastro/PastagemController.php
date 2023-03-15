@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Data\Cadastro;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cadastro\Pastagem;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class PastagemController extends Controller
 {
@@ -16,6 +16,11 @@ class PastagemController extends Controller
         try {
             $pastagem = $this->model::findOrNew($request->id);
             $pastagem->nome = $request->nome;
+
+            $pastagem->fill($request->all());
+            $pastagem->setAttribute('user_id', Auth::user()->id);
+            $pastagem->fazenda_id = $request->fazenda_id;
+
             $pastagem->tipo = $request->tipo;
             $pastagem->dt_ini = $request->dt_ini;
             $pastagem->dt_fim = $request->dt_fim;

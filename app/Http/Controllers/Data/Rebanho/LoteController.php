@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Data\Rebanho;
 use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Lote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use Exception;
 
@@ -16,6 +17,10 @@ class LoteController extends Controller
         try {
             $lote = $this->model::findOrNew($request->id);
             $lote->nome = $request->nome;
+
+            $lote->fill($request->all());
+            $lote->setAttribute('user_id', Auth::user()->id);
+            
             $lote->desc = $request->desc;
             $lote->abv =  $request->abv;
             $lote->sexo = $request->sexo;

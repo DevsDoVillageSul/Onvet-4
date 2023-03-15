@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Cadastro\Area;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AreaController extends Controller
 {
@@ -19,11 +23,31 @@ class AreaController extends Controller
 
     public function index(Request $request)
     {
-       
+
         $breadcrumbs = $this->breadcrumbs;
-        $areas = Area::filtros($request)        
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
+        $areas = Area::filtros($request)
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado       
             ->orderBy('id', 'DESC')
         ;
+
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $areas = Area::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $areas = Area::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($areas);
@@ -33,10 +57,12 @@ class AreaController extends Controller
             return $this->indexExcel($areas);
         }
 
-        $areas = $areas->paginate(config('app.paginate'));
+        $areas = $areas
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
-        $dataView = compact('breadcrumbs', 'request', 'areas');
-        return view('modules/cadastro/area/index', $dataView);  
+        $dataView = compact('breadcrumbs', 'request', 'areas','resume');
+        return view('modules/cadastro/area/index', $dataView);
     }
 
     public function destroy($id)
@@ -55,8 +81,22 @@ class AreaController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $area = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'area');
-        return view('modules/cadastro/area/create', $dataView);       
+        $users = User::select('id', 'name')->orderBy('name')->get();
+      
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+        } else {
+            // Se não, mostre apenas as fazendas do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+        }
+
+        $dataView = compact('breadcrumbs', 'area','users','fazendas');
+        return view('modules/cadastro/area/create', $dataView);
     }
     private function indexPdf($areas)
     {

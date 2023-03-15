@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nome</th>
+            <th>Fazenda</th>
             <th>Data Início</th>
             <th>Data Fim</th>
             <th>Área</th>
@@ -18,6 +19,7 @@
                 <td>
                     {{ $pastagem->nome }}
                 </td>
+                <td>{{ $pastagem->fazenda->nome }}</td>
                 <td>
                     {{ $pastagem->dt_ini }}
                 </td>
@@ -37,7 +39,7 @@
                     {{ $pastagem->total }}
                 </td>
                 <td>
-                    {{ $pastagem->pastagem }}
+                    {{ $pastagem->observacao }}
                 </td>
                 <td>
                     {!! Helper::getAtivoInativo($pastagem->ativo, true) !!}

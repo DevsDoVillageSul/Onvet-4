@@ -5,15 +5,22 @@ namespace App\Models\Cadastro;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Models\User;
+use App\Http\Traits\HasUserAccess;
 
 class Fornecedor extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
+
 
     protected $table = "fornecedor";
     protected $tipos = [
         'proprio' => 'Fornecedor próprio',
         'externo' => 'Fornecedor externo',
+    ];
+
+    protected $fillable = [
+        'user_id',
     ];
 
     public function contatos()
@@ -36,6 +43,11 @@ class Fornecedor extends Model implements Auditable
         }
 
         return $query;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function scopeAtivo($query)

@@ -2,6 +2,7 @@
     <thead>
         <tr>
             <th>Nome</th>
+            <th>Fazenda</th>
             <th>Data Início</th>
             <th>Data Fim</th>
             <th>Área</th>
@@ -17,6 +18,7 @@
                 <td>
                     {{ $cultura->nome }}
                 </td>
+                <td>{{ $cultura->fazenda->nome }}</td>
                 <td>
                     {{ $cultura->dt_ini }}
                 </td>

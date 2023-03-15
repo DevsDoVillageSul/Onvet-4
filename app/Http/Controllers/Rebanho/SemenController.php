@@ -9,6 +9,9 @@ use App\Models\Rebanho\Animal;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 class SemenController extends Controller
 {
     protected $model = Semen::class;
@@ -20,9 +23,21 @@ class SemenController extends Controller
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $semens = Semen::filtros($request)
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado        
             ->orderBy('nome', 'ASC')
         ;
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $semens = Semen::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $semens = Semen::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($semens);
@@ -32,7 +47,10 @@ class SemenController extends Controller
             return $this->indexExcel($semens);
         }
 
-        $semens = $semens->with('animal:id,nome','animais:id,nome')->paginate(config('app.paginate'));
+        $semens = $semens
+            ->with('user:id,name')
+            ->with('animal:id,nome', 'animais:id,nome')
+            ->paginate(config('app.paginate'));
 
 
         $dataView = compact('breadcrumbs', 'request', 'semens');
@@ -61,10 +79,34 @@ class SemenController extends Controller
     public function create($id)
     {
         $breadcrumbs = $this->breadcrumbs;
-        $animais = Animal::select('id', 'nome')->where('sexo', '=', 'MACHO')->orderBy('nome')->get();
-        $animais2 = Animal::select('id', 'nome')->where('sexo', '=', 'FEMEA')->orderBy('nome')->get();
+        $users = User::select('id', 'name')->orderBy('name')->get();
         $semen = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'semen','animais','animais2');
+
+        // Condições adicionadas para filtrar a tabela Animais
+        if (Auth::user()->role_id == 1) {
+            $animais = Animal::select('id', 'nome')->where('sexo', '=', 'MACHO')->orderBy('nome')->get();
+            $animais2 = Animal::select('id', 'nome')->where('sexo', '=', 'FEMEA')->orderBy('nome')->get();
+        } else {
+            $user_id = Auth::id();
+            $animais = Animal::select('id', 'nome')
+                ->where(function ($query) use ($user_id) {
+                    $query->where('user_id', $user_id)
+                        ->orWhereNull('user_id');
+                })
+                ->where('sexo', '=', 'MACHO')
+                ->orderBy('nome')
+                ->get();
+
+            $animais2 = Animal::select('id', 'nome')
+                ->where(function ($query) use ($user_id) {
+                    $query->where('user_id', $user_id)
+                        ->orWhereNull('user_id');
+                })
+                ->where('sexo', '=', 'FEMEA')
+                ->orderBy('nome')
+                ->get();
+        }
+        $dataView = compact('breadcrumbs', 'semen', 'animais', 'animais2','users');
         return view('modules/rebanho/semen/create', $dataView);
     }
 

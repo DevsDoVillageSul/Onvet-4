@@ -7,27 +7,43 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Cadastro\Funcionario;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FuncionarioController extends Controller
-{ 
+{
     protected $model = Funcionario::class;
-    
+
     protected $breadcrumbs = [
         ['name' => "Cadastros"],
         ['link' => "/cadastros/funcionarios", 'name' => "Funcionários"]
     ];
-        
+
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $funcionarios = Funcionario::filtros($request)
-        ->withCount([
-            'contatos as contato' => function ($query) {
-                $query->where('nome',"Ale");            
-            }
-        ])
+            ->withCount([
+                'contatos as contato' => function ($query) {
+                    $query->where('nome', "Ale");
+                }
+            ])
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
             ->orderBy('nome', 'ASC')
         ;
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $funcionarios = Funcionario::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $funcionarios = Funcionario::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($funcionarios);
@@ -37,11 +53,21 @@ class FuncionarioController extends Controller
             return $this->indexExcel($funcionarios);
         }
 
-        $funcionarios = $funcionarios->paginate(config('app.paginate'));
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
+
+        $funcionarios = $funcionarios 
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
 
-        $dataView = compact('breadcrumbs', 'request', 'funcionarios');
-        return view('modules/cadastro/funcionario/index', $dataView);       
+        $dataView = compact('breadcrumbs', 'request', 'funcionarios','resume');
+        return view('modules/cadastro/funcionario/index', $dataView);
 
     }
     private function indexPdf($funcionarios)
@@ -79,8 +105,21 @@ class FuncionarioController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $funcionario = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'funcionario');
-        return view('modules/cadastro/funcionario/create', $dataView);
+        $users = User::select('id', 'name')->orderBy('name')->get();
     
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+        } else {
+            // Se não, mostre apenas as fazendas do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+        }
+    
+        $dataView = compact('breadcrumbs', 'funcionario','users','fazendas');
+        return view('modules/cadastro/funcionario/create', $dataView);
     }
 }

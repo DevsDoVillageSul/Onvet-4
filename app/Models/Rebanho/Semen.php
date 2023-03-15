@@ -6,14 +6,21 @@ use App\Models\Rebanho\Animal;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Models\User;
+use App\Http\Traits\HasUserAccess; // importando a trait
+
+
 
 class Semen extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
-    protected $table = "semens";
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;    protected $table = "semens";
 
     protected $casts = [
         "tipos" => "array"
+    ];
+
+    protected $fillable = [
+        'user_id',
     ];
 
     protected $racas = [
@@ -154,5 +161,12 @@ class Semen extends Model implements Auditable
     {
         return $this->racas_2;
     }
+
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 
 }

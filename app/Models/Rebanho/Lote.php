@@ -5,10 +5,12 @@ namespace App\Models\Rebanho;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Http\Traits\HasUserAccess; // importando a trait
+use App\Models\User;
 
 class Lote extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
     protected $table = "lotes";
 
     protected $sexos = [
@@ -21,6 +23,9 @@ class Lote extends Model implements Auditable
         'CRIA' => 'Cria',
         'RECRIA' => 'Recria',
         'PRODUCAO' => 'Produção',
+    ];
+    protected $fillable = [
+        'user_id',
     ];
     
     public function scopeActive($query)
@@ -63,5 +68,9 @@ class Lote extends Model implements Auditable
     public function getFases()
     {
         return $this->fases;
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

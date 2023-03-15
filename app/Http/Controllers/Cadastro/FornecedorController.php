@@ -7,27 +7,50 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Cadastro\Fornecedor;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FornecedorController extends Controller
-{ 
+{
     protected $model = Fornecedor::class;
-    
+
     protected $breadcrumbs = [
         ['name' => "Cadastros"],
         ['link' => "/cadastros/fornecedores", 'name' => "Fornecedores"]
     ];
-        
+
     public function index(Request $request)
     {
         $breadcrumbs = $this->breadcrumbs;
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
         $fornecedores = Fornecedor::filtros($request)
-        ->withCount([
-            'contatos as contato' => function ($query) {
-                $query->where('nome',"Ale");            
-            }
-        ])
-            ->orderBy('nome', 'ASC')
-        ;
+            ->withCount([
+                'contatos as contato' => function ($query) {
+                    $query->where('nome', "Ale");
+                }
+            ])
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado 
+            ->orderBy('nome', 'ASC');
+
+        
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $fornecedores = Fornecedor::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $fornecedores = Fornecedor::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($fornecedores);
@@ -37,11 +60,13 @@ class FornecedorController extends Controller
             return $this->indexExcel($fornecedores);
         }
 
-        $fornecedores = $fornecedores->paginate(config('app.paginate'));
+        $fornecedores = $fornecedores
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
 
-        $dataView = compact('breadcrumbs', 'request', 'fornecedores');
-        return view('modules/cadastro/fornecedor/index', $dataView);       
+        $dataView = compact('breadcrumbs', 'request', 'fornecedores','resume');
+        return view('modules/cadastro/fornecedor/index', $dataView);
 
     }
     private function indexPdf($fornecedores)
@@ -79,8 +104,9 @@ class FornecedorController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $fornecedor = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'fornecedor');
+        $users = User::select('id', 'name')->orderBy('name')->get();
+        $dataView = compact('breadcrumbs', 'fornecedor','users');
         return view('modules/cadastro/fornecedor/create', $dataView);
-    
+
     }
 }

@@ -4,6 +4,7 @@
         <thead>
             <tr>
                 <th>Nome</th>
+                <th>Fazenda</th>
                 <th>Data Início</th>
                 <th>Data Fim</th>
                 <th>Área</th>
@@ -19,6 +20,7 @@
                     <td>
                         {{ $area->nome }}
                     </td>
+                    <td>{{ $area->fazenda->nome }}</td>
                     <td>
                         {{ $area->dt_ini }}
                     </td>

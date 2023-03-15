@@ -6,15 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Rebanho\Animal;
+use App\Http\Traits\HasUserAccess; // importando a trait
+use App\Models\User;
 
 class Embriao extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;    protected $table = "semens";
     protected $table = "embrioes";
 
     protected $tipos = [
         'VITRO' => 'In Vitro',
         'VIVO' => 'In Vivo',
+    ];
+
+    protected $fillable = [
+        'user_id',
     ];
 
     protected $congelamentos = [
@@ -79,6 +85,11 @@ class Embriao extends Model implements Auditable
     public function getGraus()
     {
         return $this->graus;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
 }

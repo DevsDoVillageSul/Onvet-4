@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Exports\ExcelExport;
 use App\Models\Cadastro\Tanque;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\User;
+use App\Models\Cadastro\Fazenda;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TanqueController extends Controller
 {
@@ -19,11 +23,32 @@ class TanqueController extends Controller
 
     public function index(Request $request)
     {
-       
+
         $breadcrumbs = $this->breadcrumbs;
-        $tanques = Tanque::filtros($request)        
+        $user_id = Auth::id(); // Obter o ID do usuário autenticado
+        $tanques = Tanque::filtros($request)
+            ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado    
             ->orderBy('id', 'DESC')
         ;
+
+        $resume = $this->model::filtros($request)
+        ->select(
+            DB::raw('SUM(IF(ativo = 1, 1 ,0)) as ativos'),
+            DB::raw('SUM(IF(ativo = 0, 1 ,0)) as inativos')
+        )
+        ->where('id', '>', 0)
+        ->first();
+
+        // permite que o usuário com role_id = 1 veja todos os dados
+        if (auth()->user()->role_id == 1) {
+            $tanques = Tanque::filtros($request)
+                ->orderBy('nome', 'ASC');
+        } else {
+            $tanques = Tanque::filtros($request)
+                ->where('user_id', $user_id) // Filtar fazendas pelo ID do usuário autenticado
+                ->orderBy('nome', 'ASC');
+        }
+
 
         if (isset($request->export) && $request->export == 'PDF') {
             return $this->indexPdf($tanques);
@@ -33,12 +58,14 @@ class TanqueController extends Controller
             return $this->indexExcel($tanques);
         }
 
-        $tanques = $tanques->paginate(config('app.paginate'));
+        $tanques = $tanques
+        ->with('user:id,name')
+        ->paginate(config('app.paginate'));
 
         //caminho para salvar o objeto no banco
         //errar aqui, gera um 404 !
-        $dataView = compact('breadcrumbs', 'request', 'tanques');
-        return view('modules/cadastro/tanque/index', $dataView);  
+        $dataView = compact('breadcrumbs', 'request', 'tanques','resume');
+        return view('modules/cadastro/tanque/index', $dataView);
     }
 
     public function destroy($id)
@@ -57,8 +84,22 @@ class TanqueController extends Controller
     {
         $breadcrumbs = $this->breadcrumbs;
         $tanque = $this->model::findOrNew($id);
-        $dataView = compact('breadcrumbs', 'tanque');
-        return view('modules/cadastro/tanque/create', $dataView);       
+        $users = User::select('id', 'name')->orderBy('name')->get();
+      
+        if(Auth::user()->role_id == 1) {
+            // Se o usuário tem a role 1, mostre todas as fazendas
+            $fazendas = Fazenda::all();
+        } else {
+            // Se não, mostre apenas as fazendas do usuário logado
+            $user_id = Auth::id();
+            $fazendas = Fazenda::where(function($query) use ($user_id) {
+                $query->where('user_id', $user_id)
+                    ->orWhereNull('user_id');
+            })->get();
+        }
+       
+        $dataView = compact('breadcrumbs', 'tanque','users','fazendas');
+        return view('modules/cadastro/tanque/create', $dataView);
     }
 
     private function indexPdf($tanques)

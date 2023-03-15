@@ -5,8 +5,8 @@ use App\Http\Controllers\Cadastro\FornecedorController;
 use App\Http\Controllers\Cadastro\TanqueController;
 use App\Http\Controllers\Cadastro\AreaController;
 use App\Http\Controllers\Cadastro\CulturaController;
-use App\Http\Controllers\Cadastro\IatfController;
 use App\Http\Controllers\Cadastro\PastagemController;
+use App\Http\Controllers\Cadastro\FazendaController;
 
 Route::group(['prefix' => 'cadastros'], function () {
     Route::group(['prefix' => 'funcionarios'], function () {
@@ -114,6 +114,24 @@ Route::group(['prefix' => 'cadastros'], function () {
         Route::get('/create/{id}', [PastagemController::class, 'create'])
             ->name('pastagens-create')
             ->middleware('checkPermission:14')
+        ;
+    });
+
+    Route::group(['prefix' => 'fazendas'], function () {
+        // listagem
+        Route::any('/', [FazendaController::class, 'index'])
+            ->name('fazendas-index')
+            ->middleware('checkPermission:24')
+        ;
+        // delete
+        Route::get('/delete/{id}', [FazendaController::class, 'destroy'])
+            ->name('fazendas-destroy')
+            ->middleware('checkPermission:24')   
+        ;
+        // create
+        Route::get('/create/{id}', [FazendaController::class, 'create'])
+            ->name('fazendas-create')
+            ->middleware('checkPermission:24')
         ;
     });
 });

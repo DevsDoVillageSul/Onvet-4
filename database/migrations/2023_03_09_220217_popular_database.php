@@ -13,6 +13,41 @@ class PopularDatabase extends Migration
      */
     public function up()
     {   
+
+        DB::table('fazendas')->insert(
+            [
+                [
+                    'id' => 1,
+                    'nome' => 'Fazenda User 1',
+                    'cep' => '75780-000',
+                    'endereco' => 'Rua TALTALTAL',
+                    'cidade' => 'Ipameri',
+                    'uf' => 'GO',
+                    'user_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('fazendas')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Fazenda User 2',
+                    'cep' => '75780-000',
+                    'endereco' => 'Rua ALIALIALI',
+                    'cidade' => 'Ipameri',
+                    'uf' => 'GO',
+                    'user_id' => 3,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('fornecedor')->insert(
             [
                 [
@@ -31,6 +66,7 @@ class PopularDatabase extends Migration
                     'bairro' => 'Centro',
                     'cidade' => 'Ipameri',
                     'uf' => 'GO',
+                    'user_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -56,6 +92,7 @@ class PopularDatabase extends Migration
                     'bairro' => 'Centro',
                     'cidade' => 'Ipameri',
                     'uf' => 'GO',
+                    'user_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -63,41 +100,118 @@ class PopularDatabase extends Migration
             ]
         );
 
-        DB::table('funcionario')->insert(
+        DB::table('fornecedor')->insert(
             [
                 [
-                    'id' => 1,
-                    'nome' => 'Gabriel',
-                    'cpf' => '999.999.999-99',
-                    'dt_nasc' => '04-03-1998',
-                    'sexo' => 'M',
-                    'funcao' => 'Desenvolvedor',
+                    'id' => 3,
+                    'nome' => 'Jhon dree',
+                    'cpf' => '',
+                    'cnpj' => '01.534.080/0001-28',
+                    'razao' => 'Jhon dree',
+                    'tipo' => 'externo',
+                    'email' => 'Jhondree@gmail.com',
                     'telefone' => '(99)99999-9999',
                     'cep' => '75780-000',
-                    'endereco' => 'Rua VS 9',
-                    'numero' => '12',
-                    'complemento' => 'Quadra 9, Lote 5',
+                    'endereco' => 'Rua VS 5',
+                    'numero' => '1',
+                    'complemento' => 'Quadra 12, Lote 1',
                     'bairro' => 'Centro',
                     'cidade' => 'Ipameri',
                     'uf' => 'GO',
+                    'user_id' => 3,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+
+        DB::table('fornecedor')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'For Agro',
+                    'cpf' => '',
+                    'cnpj' => '05.333.963/0001-20',
+                    'razao' => 'FOR AGRO',
+                    'tipo' => 'externo',
+                    'email' => 'foragro@gmail.com',
+                    'telefone' => '(99)99999-9999',
+                    'cep' => '75780-000',
+                    'endereco' => 'Rua VS 7',
+                    'numero' => '1',
+                    'complemento' => 'Quadra 10, Lote 5',
+                    'bairro' => 'Centro',
+                    'cidade' => 'Ipameri',
+                    'uf' => 'GO',
+                    'user_id' => 3,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+        
         DB::table('tanques')->insert(
             [
                 [
                     'id' => 1,
                     'nome' => 'Tanque número 1',
                     'litros' => '255',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+
+        DB::table('tanques')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Tanque número 2',
+                    'litros' => '2555',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('tanques')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Tanque número 3',
+                    'litros' => '255',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('tanques')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Tanque número 4',
+                    'litros' => '255',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('areas')->insert(
             [
                 [
@@ -108,12 +222,72 @@ class PopularDatabase extends Migration
                     'tipo' => 'ARRENDADA',
                     'ha' => '12',
                     'util' => '2',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+
+        DB::table('areas')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Área sul',
+                    'dt_ini' => '22-03-2021',
+                    'dt_fim' => '04-05-2022',
+                    'tipo' => 'ARRENDADA',
+                    'ha' => '12',
+                    'util' => '2',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('areas')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Área leste',
+                    'dt_ini' => '22-03-2021',
+                    'dt_fim' => '04-05-2022',
+                    'tipo' => 'ARRENDADA',
+                    'ha' => '12',
+                    'util' => '2',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('areas')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Área oeste',
+                    'dt_ini' => '22-03-2021',
+                    'dt_fim' => '04-05-2022',
+                    'tipo' => 'ARRENDADA',
+                    'ha' => '12',
+                    'util' => '2',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('culturas')->insert(
             [
                 [
@@ -125,12 +299,72 @@ class PopularDatabase extends Migration
                     'ha' => '10',
                     'custo' => '12000',
                     'total' => '120000',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+        DB::table('culturas')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Cultura Norte',
+                    'dt_ini' => '01-01-2019',
+                    'dt_fim' => '22-01-2022',
+                    'tipo' => 'CANAVIAL',
+                    'ha' => '10',
+                    'custo' => '12000',
+                    'total' => '120000',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+        DB::table('culturas')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Cultura Sul',
+                    'dt_ini' => '01-01-2019',
+                    'dt_fim' => '22-01-2022',
+                    'tipo' => 'CANAVIAL',
+                    'ha' => '10',
+                    'custo' => '12000',
+                    'total' => '120000',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+        DB::table('culturas')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Cultura Oeste',
+                    'dt_ini' => '01-01-2019',
+                    'dt_fim' => '22-01-2022',
+                    'tipo' => 'CANAVIAL',
+                    'ha' => '10',
+                    'custo' => '12000',
+                    'total' => '120000',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('pastagem')->insert(
             [
                 [
@@ -142,6 +376,8 @@ class PopularDatabase extends Migration
                     'tipo' => 'ANUAL',
                     'custo' => '9000',
                     'total' => '297000',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -160,6 +396,8 @@ class PopularDatabase extends Migration
                     'tipo' => 'NATURAL',
                     'custo' => '15000',
                     'total' => '825000',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -178,6 +416,8 @@ class PopularDatabase extends Migration
                     'tipo' => 'ANUAL',
                     'custo' => '9000',
                     'total' => '297000',
+                    'user_id' => 2,
+                    'fazenda_id' => 1,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -196,6 +436,8 @@ class PopularDatabase extends Migration
                     'tipo' => 'ANUAL',
                     'custo' => '9000',
                     'total' => '297000',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -214,6 +456,8 @@ class PopularDatabase extends Migration
                     'tipo' => 'ANUAL',
                     'custo' => '9000',
                     'total' => '297000',
+                    'user_id' => 3,
+                    'fazenda_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -228,11 +472,60 @@ class PopularDatabase extends Migration
                     'id' => 1,
                     'nome' => 'Primeiro protocolo TE',
                     'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 1,
+                    'animais_id' => 4,
+                    'user_id' => 2,
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+
+        DB::table('tes')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Segundo protocolo TE',
+                    'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 2,
+                    'animais_id' => 5,
+                    'user_id' => 2,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('tes')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Terceiro protocolo TE',
+                    'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 3,
+                    'animais_id' => 4,
+                    'user_id' => 3,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('tes')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Quarto protocolo TE',
+                    'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 1,
+                    'animais_id' => 5,
+                    'user_id' => 3,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
         DB::table('inducoes')->insert(
             [
                 [
@@ -241,22 +534,124 @@ class PopularDatabase extends Migration
                     'desc' => 'Populando a base de dados para testes',
                     'dt_prt' => '2023-01-01',
                     'dias_lactacao' => '4',
+                    'animal_id' => 1,
+                    'user_id' => 2,
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+
+        DB::table('inducoes')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Segundo protocolo indução a lactação',
+                    'desc' => 'Populando a base de dados para testes',
+                    'dt_prt' => '2023-01-01',
+                    'dias_lactacao' => '4',
+                    'animal_id' => 2,
+                    'user_id' => 2,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('inducoes')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Terceiro protocolo indução a lactação',
+                    'desc' => 'Populando a base de dados para testes',
+                    'dt_prt' => '2023-01-01',
+                    'dias_lactacao' => '4',
+                    'animal_id' => 3,
+                    'user_id' => 3,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('inducoes')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Quarto protocolo indução a lactação',
+                    'desc' => 'Populando a base de dados para testes',
+                    'dt_prt' => '2023-01-01',
+                    'dias_lactacao' => '4',
+                    'animal_id' => 4,
+                    'user_id' => 3,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+
         DB::table('iatfs')->insert(
             [
                 [
                     'id' => 1,
                     'nome' => 'Primeiro protocolo IATF',
                     'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 1,
+                    'animais_id' => 4,
+                    'user_id' => 2,
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
                 ]
             ]
         );
+
+        DB::table('iatfs')->insert(
+            [
+                [
+                    'id' => 2,
+                    'nome' => 'Segundo protocolo IATF',
+                    'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 2,
+                    'animais_id' => 4,
+                    'user_id' => 2,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('iatfs')->insert(
+            [
+                [
+                    'id' => 3,
+                    'nome' => 'Terceiro protocolo IATF',
+                    'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 3,
+                    'animais_id' => 5,
+                    'user_id' => 3,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('iatfs')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Quarto protocolo IATF',
+                    'desc' => 'Populando a base de dados para testes',
+                    'animal_id' => 3,
+                    'animais_id' => 4,
+                    'user_id' => 3,
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+
         DB::table('lotes')->insert(
             [
                 [
@@ -266,6 +661,7 @@ class PopularDatabase extends Migration
                     'abv' => 'Gir',
                     'sexo' => 'MACHO',
                     'fase' => 'RECRIA',
+                    'user_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -282,6 +678,7 @@ class PopularDatabase extends Migration
                     'abv' => 'Nelore',
                     'sexo' => 'MISTO',
                     'fase' => 'CRIA',
+                    'user_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -298,6 +695,24 @@ class PopularDatabase extends Migration
                     'abv' => 'Angus',
                     'sexo' => 'MISTO',
                     'fase' => 'PRODUCAO',
+                    'user_id' => 3,
+                    'ativo' => '1',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('lotes')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'Lote girolando 2',
+                    'desc' => 'Populando a base de dados para testes',
+                    'abv' => 'Gir',
+                    'sexo' => 'MACHO',
+                    'fase' => 'RECRIA',
+                    'user_id' => 3,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -340,6 +755,8 @@ class PopularDatabase extends Migration
                     'raca_cria' => '',
                     'lote_id' => '1',
                     'fornecedor_id' => '1',
+                    'fazenda_id' => 1,
+                    'user_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -350,7 +767,7 @@ class PopularDatabase extends Migration
         DB::table('animais')->insert(
             [
                 [
-                    'id' => 4,
+                    'id' => 2,
                     'video' => '',
                     'imagem' => 4,
                     'nome' => 'BRABO',
@@ -382,6 +799,8 @@ class PopularDatabase extends Migration
                     'raca_cria' => '',
                     'lote_id' => '1',
                     'fornecedor_id' => '1',
+                    'fazenda_id' => 1,
+                    'user_id' => 2,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -392,7 +811,7 @@ class PopularDatabase extends Migration
         DB::table('animais')->insert(
             [
                 [
-                    'id' => 5,
+                    'id' => 3,
                     'video' => '',
                     'imagem' => 5,
                     'nome' => 'BRUTÃO',
@@ -424,6 +843,8 @@ class PopularDatabase extends Migration
                     'raca_cria' => '',
                     'lote_id' => '1',
                     'fornecedor_id' => '1',
+                    'fazenda_id' => 2,
+                    'user_id' => 3,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -434,7 +855,7 @@ class PopularDatabase extends Migration
         DB::table('animais')->insert(
             [
                 [
-                    'id' => 2,
+                    'id' => 4,
                     'video' => '',
                     'imagem' => 2,
                     'nome' => 'MIMOSA',
@@ -466,6 +887,8 @@ class PopularDatabase extends Migration
                     'raca_cria' => 'PARDO SUICO',
                     'lote_id' => '1',
                     'fornecedor_id' => '1',
+                    'fazenda_id' => 2,
+                    'user_id' => 3,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -476,7 +899,7 @@ class PopularDatabase extends Migration
         DB::table('animais')->insert(
             [
                 [
-                    'id' =>3,
+                    'id' => 5,
                     'video' => '',
                     'imagem' => 3,
                     'nome' => 'JOANA',
@@ -508,6 +931,8 @@ class PopularDatabase extends Migration
                     'raca_cria' => 'PARDO SUICO',
                     'lote_id' => '1',
                     'fornecedor_id' => '1',
+                    'fazenda_id' => 2,
+                    'user_id' => 3,
                     'ativo' => '1',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -523,6 +948,9 @@ class PopularDatabase extends Migration
                     'tipo' => 'VITRO',
                     'congelamento' => 'VITRIFICACAO',
                     'grau' => 'MO',
+                    'animal_id' => 2,
+                    'animais_id' => 5,
+                    'user_id' => 2,
                     'observacao' => '',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -538,6 +966,9 @@ class PopularDatabase extends Migration
                     'tipo' => 'VITRO',
                     'congelamento' => 'VITRIFICACAO',
                     'grau' => 'MO',
+                    'animal_id' => 1,
+                    'animais_id' => 4,
+                    'user_id' => 2,
                     'observacao' => '',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -553,6 +984,27 @@ class PopularDatabase extends Migration
                     'tipo' => 'VIVO',
                     'congelamento' => 'VITRIFICACAO',
                     'grau' => 'BX',
+                    'animal_id' => 1,
+                    'animais_id' => 5,
+                    'user_id' => 3,
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('embrioes')->insert(
+            [
+                [
+                    'id' => 4,
+                    'nome' => 'AC',
+                    'tipo' => 'VIVO',
+                    'congelamento' => 'VITRIFICACAO',
+                    'grau' => 'BX',
+                    'animal_id' => 3,
+                    'animais_id' => 4,
+                    'user_id' => 3,
                     'observacao' => '',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -565,10 +1017,13 @@ class PopularDatabase extends Migration
                 [
                     'id' => 1,
                     'registro' => '9983',
-                    'nome' => 'ABC',
+                    'nome' => 'SEMEN USER 1',
                     'raca' => 'BRAFORD',
                     'central' => 'Central de Teste',
                     'tipos' => '["Convencional","Sexado Macho"]',
+                    'animal_id' => 1,
+                    'animais_id' => 4,
+                    'user_id' => 2,
                     'sangue' => '3/4',
                     'raca_2' => 'GIR',
                     'partida' => '9',
@@ -585,14 +1040,63 @@ class PopularDatabase extends Migration
                 [
                     'id' => 2,
                     'registro' => '998',
-                    'nome' => 'XYZ',
+                    'nome' => 'SEMEN USER 1',
                     'raca' => 'BRAFORD',
                     'central' => 'Central de Teste',
                     'tipos' => '["Sexado F\u00eamea"]',
+                    'animal_id' => 1,
+                    'animais_id' => 5,
+                    'user_id' => 2,
                     'sangue' => '3/4',
                     'raca_2' => 'GIR',
                     'partida' => '9',
-                    'tec' => 'João',
+                    'tec' => 'Gabriel',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('semens')->insert(
+            [
+                [
+                    'id' => 3,
+                    'registro' => '111',
+                    'nome' => 'SEMEN USER 2',
+                    'raca' => 'BRAFORD',
+                    'central' => 'Central de Teste',
+                    'tipos' => '["Sexado F\u00eamea"]',
+                    'animal_id' => 3,
+                    'animais_id' => 4,
+                    'user_id' => 3,
+                    'sangue' => '3/4',
+                    'raca_2' => 'GIR',
+                    'partida' => '9',
+                    'tec' => 'Gabriel',
+                    'observacao' => '',
+                    'created_at' => '2022-08-03 16:55:45',
+                    'updated_at' => '2022-08-03 16:55:45'
+                ]
+            ]
+        );
+
+        DB::table('semens')->insert(
+            [
+                [
+                    'id' => 4,
+                    'registro' => '1324',
+                    'nome' => 'SEMEN USER 2',
+                    'raca' => 'BRAFORD',
+                    'central' => 'Central de Teste',
+                    'tipos' => '["Sexado F\u00eamea"]',
+                    'animal_id' => 2,
+                    'animais_id' => 5,
+                    'user_id' => 3,
+                    'sangue' => '3/4',
+                    'raca_2' => 'GIR',
+                    'partida' => '9',
+                    'tec' => 'Gabriel',
                     'observacao' => '',
                     'created_at' => '2022-08-03 16:55:45',
                     'updated_at' => '2022-08-03 16:55:45'
@@ -609,9 +1113,6 @@ class PopularDatabase extends Migration
     public function down()
     {
         Schema::table('fornecedor', function (Blueprint $table) {
-            //
-        });
-        Schema::table('funcionario', function (Blueprint $table) {
             //
         });
         Schema::table('tanques', function (Blueprint $table) {
@@ -645,6 +1146,9 @@ class PopularDatabase extends Migration
             //
         });
         Schema::table('embrioes', function (Blueprint $table) {
+            //
+        });
+        Schema::table('fazendas', function (Blueprint $table) {
             //
         });
     }

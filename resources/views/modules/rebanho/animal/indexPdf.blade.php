@@ -6,6 +6,7 @@
                 <th>Imagem</th>
                 <th>Nome</th>
                 <th>Sexo</th>
+                <th>Fazenda</th>
                 <th>Sangue</th>
                 <th>Raça</th>
                 <th>Brinco</th>
@@ -33,6 +34,9 @@
                     </td>
                     <td>
                         {{ $animal->getSexo() }}
+                    </td>
+                    <td>
+                        {{ $animal->fazenda->nome ?? null }}
                     </td>
                     <td>
                         {{ $animal->sangue }}
@@ -68,7 +72,7 @@
                         {{ $animal->lote->nome ?? null }}
                     </td>
                     <td>
-                    {!! Helper::getAtivoInativo($animal->ativo, true) !!}
+                        {!! Helper::getAtivoInativo($animal->ativo, true) !!}
                     </td>
                 </tr>
             @endforeach

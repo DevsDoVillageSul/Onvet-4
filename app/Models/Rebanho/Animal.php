@@ -4,14 +4,22 @@ namespace App\Models\Rebanho;
 
 use App\Models\Rebanho\Lote;
 use App\Models\Cadastro\Fornecedor;
+use App\Models\Cadastro\Fazenda;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
+use App\Http\Traits\HasUserAccess; // importando a trait
+
 
 class Animal extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable;
+    use HasFactory, \OwenIt\Auditing\Auditable, HasUserAccess; // utilizando a trait;
     protected $table = "animais";
+
+    protected $fillable = [
+        'user_id',
+    ];
 
     protected $sexos = [
         'MACHO' => 'Macho',
@@ -208,6 +216,17 @@ class Animal extends Model implements Auditable
     public function fornecedor()
     {
         return $this->belongsTo(Fornecedor::class, 'fornecedor_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    
+    public function fazenda()
+    {
+        return $this->belongsTo(Fazenda::class, 'fazenda_id');
     }
 
     //listas

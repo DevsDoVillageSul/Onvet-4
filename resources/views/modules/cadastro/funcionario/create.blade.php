@@ -22,6 +22,19 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-12">
+                                <div class="form-group" id="fazenda">
+                                    <label class="form-label" for="fazenda">Fazendas</label>
+                                    <select name="fazenda_id" id="fazenda_id" class="form-control">
+                                        <option value="">Selecione:</option>
+                                        @foreach ($fazendas as $fazenda)
+                                            <option value="{{ $fazenda->id }}"
+                                                {{ $fazenda->id == $funcionario->fazenda_id ? 'selected="selected"' : '' }}>
+                                                {{ $fazenda->nome }} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
                                 <div class="form-group">
                                     <label class="form-label" for="nome">Data de nascimento</label>
                                     <input type="date" name="dt_nasc" class="form-control" id="dt_nasc"
@@ -109,7 +122,8 @@
                                 <div class="form-group">
                                     <label class="form-label" for="numero">Número</label>
                                     <input type="text" name="numero" class="form-control" id="numero"
-                                        placeholder="Digite o numero da sua casa" value="{{ $funcionario->cpf ?? '' }}" required />
+                                        placeholder="Digite o numero da sua casa" value="{{ $funcionario->cpf ?? '' }}"
+                                        required />
                                 </div>
                             </div>
                             <div class="col-md-3 col-6">
@@ -340,7 +354,7 @@
 
             new Cleave('#numero', {
                 numericOnly: true,
-                 blocks: [5],
+                blocks: [5],
             });
 
             var qtd = 1;

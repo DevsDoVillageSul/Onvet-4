@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Rebanho\Embriao;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 use Exception;
@@ -28,6 +29,10 @@ class EmbriaoController extends Controller
         try {
             $embriao = $this->model::findOrNew($request->id);
             $embriao->nome = $request->nome;
+
+            $embriao->fill($request->all());
+            $embriao->setAttribute('user_id', Auth::user()->id);
+
             $embriao->tipo = $request->tipo;
             $embriao->congelamento = $request->congelamento;
             $embriao->grau = $request->grau;

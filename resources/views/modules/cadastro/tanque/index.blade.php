@@ -3,7 +3,69 @@
 @section('title', 'Tanques')
 
 @section('content')
-    <div class="row" id="table-hover-row">
+<div class="row" id="table-hover-row">
+        <div class="col-lg-12 col-12">
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="card card-statistics">
+                        <div class="card-header">
+                            <h4 class="card-title">Quantidade de Tanques</h4>
+                            <div class="d-flex align-items-center">
+                                <p class="card-text mr-25 mb-0"></p>
+                            </div>
+                        </div>
+
+                        <div class="card-body statistics-body">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
+                                    <div class="media">
+                                        <div class="avatar bg-light-primary mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather='thermometer'></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4 class="font-weight-bolder mb-0">
+                                                {{ $resume->ativos + $resume->inativos }}
+                                            </h4>
+                                            <p class="card-text font-small-3 mb-0">Tanques</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
+                                    <div class="media">
+                                        <div class="avatar bg-light-primary mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather='check-square'></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4 class="font-weight-bolder mb-0">
+                                                {{ $resume->ativos }}
+                                            </h4>
+                                            <p class="card-text font-small-3 mb-0">Ativos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-12 mb-2 mb-md-0" style="padding-bottom: 20px;">
+                                    <div class="media">
+                                        <div class="avatar bg-light-primary mr-2">
+                                            <div class="avatar-content">
+                                                <i data-feather='square'></i>
+                                            </div>
+                                        </div>
+                                        <div class="media-body my-auto">
+                                            <h4 class="font-weight-bolder mb-0">
+                                                {{ $resume->inativos }}
+                                            </h4>
+                                            <p class="card-text font-small-3 mb-0">Inativos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
@@ -65,6 +127,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
+                                <th>Fazenda</th>
                                 <th>Capacidade (L)</th>
                                 <th>Observação</th>
                                 <th style="width: 5%;">Status</th>
@@ -77,6 +140,7 @@
                                     <td>
                                         {{ $tanque->nome }}
                                     </td>
+                                    <td>{{ $tanque->fazenda->nome }}</td>
                                     <td>
                                         {!! nl2br($tanque->litros) !!}
                                     </td>

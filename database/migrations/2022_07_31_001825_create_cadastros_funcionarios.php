@@ -27,8 +27,24 @@ class CreateCadastrosFuncionarios extends Migration
             $table->string('complemento', 100);
             $table->string('bairro', 50);
             $table->string('cidade', 50);
-            $table->string('uf', 2);            
+            $table->string('uf', 2);
             $table->tinyInteger('ativo');
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+            ;
+
+            //chaves estrangeiras
+            $table->unsignedBigInteger('fazenda_id');
+            $table->foreign('fazenda_id')
+                ->references('id')
+                ->on('fazendas')
+            ;
+
+
             $table->timestamps();
         });
     }
