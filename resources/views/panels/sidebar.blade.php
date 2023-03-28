@@ -6,7 +6,7 @@ $configData = Helper::applClasses();
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
-                <a href="/"class="navbar-brand" href="{{ isset(Auth::user()->name) ? url(Auth::user()->home->url ?? '/') : url('/') }}">
+                <a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse">
                     <span class="brand-logo">
                         <img src="{{ asset('images/logo/logo.png') }}" alt="{{ config('app.name') }}" title="{{ config('app.name') }}" style="max-width: 90px;" />
                     </span>

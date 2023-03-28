@@ -18,7 +18,7 @@ class AddUserAdmin extends Migration
         $user->role_id = $role->id;
         $user->imagem = 'public\images\avatars\admin.jpg';
         $user->name = 'Administrador do Sistema';
-        $user->email = 'suporte@wsbrasil.com';
+        $user->email = 'contato@onvetplus.com.br';
         $user->password = bcrypt('suporte@wsbrasil.com');
         $user->save();
     }

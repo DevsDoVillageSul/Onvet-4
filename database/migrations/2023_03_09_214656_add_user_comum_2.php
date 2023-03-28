@@ -11,7 +11,7 @@ class AddUserComum2 extends Migration
     public function up()
     {
         $role = new Role();
-        $role->name = 'Usuário2 ';
+        $role->name = 'Usuário_comum2';
         $role->save();
 
         $user = new User();

@@ -184,7 +184,7 @@
                     </div>
                 </div>
                 <div class="ud-about-image">
-                    <img src="images\about\printmenu.png" alt="about-image" />
+                    <img src="images\about\dashboardteste3.png" alt="about-image" height="670px"/>
                 </div>
             </div>
         </div>
@@ -628,7 +628,7 @@
                     <div class="col-md-4">
                         <p class="ud-footer-bottom-right">
                             ©OnVet 2022. Todos os Direitos Reservados.
-                            <a href="https://github.com/DevsDoVillageSul/Onvet-4" rel="nofollow"
+                            <a href="#" rel="nofollow"
                                 style="color:#000;">Projeto-Vet</a>
                         </p>
                     </div>
