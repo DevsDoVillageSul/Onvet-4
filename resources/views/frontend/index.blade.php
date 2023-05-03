@@ -62,17 +62,17 @@
                                 <li class="nav-item">
                                     <a class="ud-menu-scroll" href="#faq">FAQ</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="ud-menu-scroll" href="#contact">Contato</a>
+                                </li>
                             </ul>
                             </li>
                             </ul>
                         </div>
 
                         <div class="navbar-btn d-none d-sm-inline-block">
-                            <a href="/informacao/dashboard" onclick="/informacao/dashboard" class="ud-main-btn ud-login-btn">
+                            <a href="/informacao/dashboard" onclick="/informacao/dashboard" class="ud-main-btn ud-white-btn">
                                 Ir para aplicação
-                            </a>
-                            <a href="#contact" class="ud-main-btn ud-white-btn">
-                                Contato
                             </a>
                         </div>
                     </nav>
@@ -351,7 +351,7 @@
                             </button>
                             <div id="collapseOne" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Não se preocupe! Oferecemos treinamento e suporte completo para novos (e velhos, se
+                                    Não se preocupe! Oferecemos treinamento e suporte completo para novos (ou antigos, se
                                     for necessário) usuários!
                                 </div>
                             </div>
@@ -403,7 +403,7 @@
                             </button>
                             <div id="collapseFour" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Em duas abas. A aba zootécnica, e a aba financeira.
+                                    Basicamente, o sistema divide suas funcionalidades em administrativas, como nos cadastros de funcionários e fornecedores, ou em zootécnicas, como os cadastros de sêmens e embriões.
                                 </div>
                             </div>
                         </div>
@@ -436,7 +436,7 @@
                             </button>
                             <div id="collapseSix" class="accordion-collapse collapse">
                                 <div class="ud-faq-body">
-                                    Basta ter seus documentos em mãos, entrar em contato conosco e contratar o plano que
+                                    Basta entrar em contato conosco via email utilizando o formulário abaixo e aguardar o retorno, para então contratar o plano que
                                     desejar!
                                 </div>
                             </div>
@@ -457,8 +457,9 @@
                         <div class="ud-contact-title">
                             <span>CONTATE-NOS</span>
                             <h2>
-                                Vamos falar sobre <br />
-                                Adoramos ouvir você!
+                                Vamos falar sobre... <br />
+                                Adoramos ouvir você!<br />
+                                Entre em contato e tire todas as suas dúvidas.
                             </h2>
                         </div>
                         <div class="ud-contact-info-wrapper">
@@ -550,38 +551,37 @@
 
     <!-- ====== Footer Start ====== -->
     <footer class="ud-footer wow fadeInUp" data-wow-delay=".15s"
-        style="
-    background-color: #505df0;>
+        style="background-color: #505df0;">
 
         <div class="ud-footer-widgets">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-6">
                     <div class="ud-widget">
-                        <a href="index.html" class="ud-footer-logo">
+                        <a class="ud-footer-logo">
                             <img src="images/logo/on_vet_transp_2.png" alt="logo" />
                         </a>
                         <p class="ud-widget-desc">
-                            Criamos experiências digitais para marcar empresas usando tecnologia.
+                            Criamos experiências digitais para marcar empresas e pessoas usando tecnologia.
                         </p>
                         <ul class="ud-widget-socials">
                             <li>
-                                <a href="#">
+                                <a >
                                     <i class="lni lni-facebook-filled"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a >
                                     <i class="lni lni-twitter-filled"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a >
                                     <i class="lni lni-instagram-filled"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a >
                                     <i class="lni lni-linkedin-original"></i>
                                 </a>
                             </li>
